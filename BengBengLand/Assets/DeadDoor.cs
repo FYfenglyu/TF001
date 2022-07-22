@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeadDoor : MonoBehaviour
 {
     // Start is called before the first frame update
+    //public GameObject monster;
     void Start()
     {
         
@@ -14,5 +15,14 @@ public class DeadDoor : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        GameObject m = other.gameObject;
+        Monster mon = m.GetComponent<Monster>();
+        if( null != mon )
+        {
+            mon.Dead();
+            //Destroy(mon);
+        }
     }
 }
