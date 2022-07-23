@@ -20,6 +20,13 @@ public class Monster : MonoBehaviour
 
     [Space]
     public bool moving = true;
+
+    [Space]
+    [Header("其他设置")]
+
+    //移速系数，每秒移动一个单位
+    private float moveSpeedCoe;
+
     Vector2 dirLeft = Vector2.left;
     Vector2 dirRight = Vector2.right;
     // Start is called before the first frame update
@@ -29,6 +36,8 @@ public class Monster : MonoBehaviour
 
     private float roadDistance;
     private Rigidbody2D rb;
+
+
     void Start()
     {
         OriginalPos = transform.position;
@@ -39,8 +48,8 @@ public class Monster : MonoBehaviour
        // walkTime = roadDistance / moveSpeed;
        
         rb = GetComponent<Rigidbody2D>();
-        //最多存活30s
-        Invoke(nameof(Dead), 30f);
+        //最多存活90s
+        Invoke(nameof(Dead), 90f);
     }
 
     // Update is called once per frame

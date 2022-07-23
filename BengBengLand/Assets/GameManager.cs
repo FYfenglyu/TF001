@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void TestGenerateMonster()
     {
-        if(Time.frameCount % 400 == 1)
+        if(Time.frameCount % 4000 == 1)
             MonsterManager.instance.GenerateMonster(0, originalPos);
     }
 
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoseScore()
     {
-        if(playerScore > 0)
+        if(playerScore >= 0)
             playerScore -= 1;
         else
         {
