@@ -45,8 +45,13 @@ public class GameManager : MonoBehaviour
 
     public void TestGenerateMonster()
     {
-        if(Time.frameCount % 4000 == 1)
+        if(Time.frameCount % 8000 == 1)
             MonsterManager.instance.GenerateMonster(0, originalPos);
+        if(Time.frameCount % 8000 == 4000)
+            MonsterManager.instance.GenerateMonster(1, originalPos);
+        if(Time.frameCount % 8000 == 2000)
+            MonsterManager.instance.GenerateMonster(2, originalPos);
+    
     }
 
     public void InitPlayer()

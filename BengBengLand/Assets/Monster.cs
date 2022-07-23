@@ -68,11 +68,11 @@ public class Monster : MonoBehaviour
 
     public void Dead()
     {
+        //清除Manager内列表信息
+        MonsterManager.instance.monsters.Remove(this);
         Destroy(gameObject);
     }
     private void OnDestroy() {
-        //清除Manager内列表信息
-        MonsterManager.instance.monsters.Remove(this);
 
     }
 
