@@ -1,1 +1,3 @@
-# UI Part of Minigame
+# Minigame
+
+## UI Part
