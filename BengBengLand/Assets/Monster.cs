@@ -8,7 +8,7 @@ public class Monster : MonoBehaviour
     
     [Header("怪物参数")]
 
-    public float moveSpeed = 8.0f;
+    public float moveSpeed = 1.0f;
     public int healthPoint = 200;
     public int attack = 30;
     public int defence = 5;
@@ -19,25 +19,28 @@ public class Monster : MonoBehaviour
     //public float walkTime;
 
     [Space]
-
+    public bool moving = true;
     Vector2 dirLeft = Vector2.left;
     Vector2 dirRight = Vector2.right;
     // Start is called before the first frame update
 
-    private static Vector3 positionOriginal;
+    private static Vector3 OriginalPos;
+    private static Vector3 TargetPos;
+
     private float roadDistance;
     private Rigidbody2D rb;
     void Start()
     {
-        positionOriginal = transform.position;
-       // roadDistance = Vector3.Distance(deadDoor.transform.position, positionOriginal);
+        OriginalPos = transform.position;
+        TargetPos = GameManager.instance.deadDoor.transform.position;
+       // roadDistance = Vector3.Distance(deadDoor.transform.position, OriginalPos);
         if(moveSpeed <= 0.0f)
             moveSpeed = 1.0f;
        // walkTime = roadDistance / moveSpeed;
        
         rb = GetComponent<Rigidbody2D>();
         //最多存活30s
-        Invoke(nameof(Dead), 8f);
+        Invoke(nameof(Dead), 30f);
     }
 
     // Update is called once per frame
@@ -46,7 +49,7 @@ public class Monster : MonoBehaviour
     }
 
     //怪物的移动逻辑
-    public void Move(bool goLeft, Vector3 targetPosition)
+    public void Move(bool goLeft)
     {
         transform.position += new Vector3(moveSpeed* Time.deltaTime * (goLeft?-1:1), 0);
         //清理屏外多余怪物

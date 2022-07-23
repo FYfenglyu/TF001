@@ -21,8 +21,8 @@ public class DeadDoor : MonoBehaviour
         Monster mon = m.GetComponent<Monster>();
         if( null != mon )
         {
+            GameManager.instance.LoseScore();
             mon.Dead();
-            //Destroy(mon);
         }
     }
 }
