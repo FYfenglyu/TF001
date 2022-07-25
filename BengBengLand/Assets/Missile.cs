@@ -11,20 +11,30 @@ public class Missile : MonoBehaviour
     public int mid;
 
     public string missileType;
+
+    private bool isCollisied = false;
+    private Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(isCollisied)
+        {
+
+            float relativeVel = rigid.velocity.magnitude;
+            print(relativeVel);
+            if(relativeVel < 1*0.5f)
+                SelfClear();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D other) {
-        
+        isCollisied = true;
         GameObject m = other.gameObject;
         print(m.tag);
         if(m.tag.Equals("Hunter") )
@@ -46,8 +56,9 @@ public class Missile : MonoBehaviour
         }
         else
         {
-            Invoke(nameof(SelfClear), 2f);
+
         }
+
     }
 
     private void SelfClear()

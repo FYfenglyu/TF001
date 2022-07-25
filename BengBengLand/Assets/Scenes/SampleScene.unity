@@ -960,6 +960,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3551569779920174185, guid: 51de7b565e938094394d9996f9ba259f, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3274810009730167091, guid: 51de7b565e938094394d9996f9ba259f, type: 3}
       propertyPath: m_Name
       value: hunter01
@@ -2507,7 +2511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6376398771484976067, guid: b600627d8acb99444a59711eb2c6de20, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8918612252458737256, guid: b600627d8acb99444a59711eb2c6de20, type: 3}
       propertyPath: missileType
@@ -2845,7 +2849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7983105623035700808, guid: 1d90535624039b1468a0fd0d21868cc5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7983105623035700811, guid: 1d90535624039b1468a0fd0d21868cc5, type: 3}
       propertyPath: m_ConnectedRigidBody
