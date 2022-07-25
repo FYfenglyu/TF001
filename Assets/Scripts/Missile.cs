@@ -71,4 +71,8 @@ public class Missile : MonoBehaviour
 
     }
 
+    public int GetCost()
+    {
+        return cost;
+    }
 }

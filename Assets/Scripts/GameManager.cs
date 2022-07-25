@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     private int playerScore =  3;
     private int currCost;
 
+    private GameObject currProjectile;
+
+    private Transform anchorPos;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -40,6 +44,8 @@ public class GameManager : MonoBehaviour
         targetPos = deadDoor.transform.position;
 
         InitPlayer();
+
+        anchorPos = GameObject.Find("AnchorPoint").transform;
     }
 
     // essential components
@@ -92,12 +98,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CutCost(GameObject go)
+    public void CutCost(int cost)
     {
+        cost = currCost - cost;
+
         //获取go的费用
-        //减费
+        currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost);
+
+        // display current cost
+        // UIManager.instance.DisplayCurrCost(currCost);
     }
     public int GetCurrCost() { return currCost; }
 
-    public void SetCurrCost(int cost) { currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost); }
+    public void SetCurrProjectile(GameObject projectilePrefab)
+    {
+        // if there exists a projectile, destroy it
+        if(currProjectile)
+        {
+            GameObject.Destroy(currProjectile);
+        }
+
+        // create a specified projectile
+        currProjectile = GameObject.Instantiate(projectilePrefab, anchorPos);
+    }
 }
