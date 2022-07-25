@@ -20,12 +20,11 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         CardScrollView = GameObject.Find("CardScrollView");
-        CardScrollView.SetActive(false);
+
     }
 
     public void DisableCardScrollView()
     {
-        // CardScrollView = transform.Find("CardScrollView");
-        // CardScrollView.enabled = false;
+        CardScrollView.SetActive(false);
     }
 }

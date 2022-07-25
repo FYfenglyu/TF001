@@ -1,0 +1,18 @@
+[
+    {
+        "cardID": 1,
+        "icon": "../Image/Wood.png",
+        "type": "Missile",
+        "prefab": "Prefabs/test",
+        "cost": 50,
+        "attack": 10
+    },
+    {
+        "cardID": 2,
+        "icon": "../Image/Elephant.png",
+        "type": "Guardian",
+        "prefabPath": "Prefabs/test",
+        "cost": 200,
+        "attack": 20
+    }
+]

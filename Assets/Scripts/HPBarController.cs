@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class HPBarController : MonoBehaviour
 {
     [Header("总血量")]
-    public float totalHealthPoint = 100;
+    public float totalHP = 100;
 
-    private float currHealthPoint;
+    private float currHP;
 
     // HP bar image
     private Image HPBarContent;
@@ -16,7 +16,7 @@ public class HPBarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currHealthPoint = totalHealthPoint;
+        currHP = totalHP;
 
         HPBarContent = transform.Find("HPBarContent").GetComponent<Image>();
     }
@@ -24,27 +24,29 @@ public class HPBarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShowCurrHealthPoint();
     }
 
     private void FixedUpdate()
     {
-        SetCurrHealthPoint(GetCurrHealthPoint() - 1);
+
     }
 
     // set the fillAmount of  HPBarContent to show current HP
-    private void ShowCurrHealthPoint()
+    private void ShowcurrHP()
     {
-        HPBarContent.fillAmount = currHealthPoint / totalHealthPoint;
+        HPBarContent.fillAmount = currHP / totalHP;
     }
 
-    public void SetCurrHealthPoint(float currHP)
+    // set current health point
+    public void SetcurrHP(float HP)
     {
-        currHealthPoint = (currHP > totalHealthPoint) ? totalHealthPoint :(currHP < 0 ? 0 :currHP );
+        currHP = (HP > totalHP) ? totalHP :(HP < 0 ? 0 : HP );
+        ShowcurrHP();
     }
 
-        public float GetCurrHealthPoint()
+    // get current health point
+    public float GetcurrHP()
     {
-        return currHealthPoint;
+        return currHP;
     }
 }

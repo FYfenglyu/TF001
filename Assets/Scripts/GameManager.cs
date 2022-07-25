@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance; // singleton
 
     [Header("全局总费用")]
     public int totalCost = 100;   // const?
@@ -13,6 +14,11 @@ public class GameManager : MonoBehaviour
 
     private int currCost;
 
+    private void Awake()
+    {
+        instance = this;
+        currCost = totalCost;
+    }
 
     // essential components
 
@@ -27,7 +33,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -37,4 +43,8 @@ public class GameManager : MonoBehaviour
 
         // Debug.Log("Update per second.");
     }
+
+    public int getCurrCost() { return currCost; }
+
+    public void setCurrCost(int cost) { currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost); }
 }
