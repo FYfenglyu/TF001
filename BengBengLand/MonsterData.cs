@@ -8,7 +8,7 @@ public class MonsterData : MonoBehaviour
 {
 
     private
-    public GetMonster(int mid)
+    public GetMonster(int hid)
     {
 
     }    

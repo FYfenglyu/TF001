@@ -20,6 +20,9 @@ public class Projectile : MonoBehaviour
     private bool isClicked = false;
     private bool isProjected = false;
     private Vector3 originalPos;
+
+    private bool test = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,8 @@ public class Projectile : MonoBehaviour
 
     public void Project()
     {
+        //通知减费
+        GameManager.instance.CutCost(gameObject);
         sj.enabled = false;
         isProjected = true;
     }
@@ -79,20 +84,11 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D other) {
-        GameObject m = other.gameObject;
-        Monster mon = m.GetComponent<Monster>();
-        if( null != mon )
-        {
-            //TODO这边数值系统尚未做，这边碰撞完成后剩下的任务交给Missile处理
-            
-            rb.isKinematic = true;
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(test)
             GameObject.Instantiate(gameObject, originalPos, Quaternion.identity);
-            Destroy(gameObject);
-            mon.Dead();
-        }
+            test = false;
     }
-
     private void OnDestroy() {
 
     }

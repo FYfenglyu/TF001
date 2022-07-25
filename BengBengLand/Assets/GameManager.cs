@@ -60,12 +60,18 @@ public class GameManager : MonoBehaviour
     }
     public void LoseScore()
     {
-        if(playerScore >= 0)
+        if(playerScore > 0)
             playerScore -= 1;
         else
         {
             print("游戏结束");
         }
+    }
+
+    public void CutCost(GameObject go)
+    {
+        //获取go的费用
+        //减费
     }
 
 }

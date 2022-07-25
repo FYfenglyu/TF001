@@ -13,8 +13,8 @@ public class ButtonClickGH : MonoBehaviour {
     
     }
 
-    public void Clicked(int mid)
+    public void Clicked(int hid)
     {
-        MonsterManager.instance.GenerateMonster(mid, GameManager.instance.originalPos);
+        MonsterManager.instance.GenerateMonster(hid, GameManager.instance.originalPos);
     }    
 }

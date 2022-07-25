@@ -32,9 +32,9 @@ public class MonsterManager : MonoBehaviour
     }
 
 
-    public bool GenerateMonster(int mid, Vector3 birthPosition)
+    public bool GenerateMonster(int hid, Vector3 birthPosition)
     {
-        Monster prototype = GetMonster(mid);
+        Monster prototype = GetMonster(hid);
         if(prototype)
         {
             Monster newMonster = GameObject.Instantiate(prototype, birthPosition, Quaternion.identity);
@@ -44,14 +44,14 @@ public class MonsterManager : MonoBehaviour
         return false;
     }
 
-    public Monster GetMonster(int mid)
+    public Monster GetMonster(int hid)
     {
         Monster aM = monster01;
-        if(mid == 0)
+        if(hid == 0)
             aM = monster01;
-        else if(mid == 1)
+        else if(hid == 1)
             aM = monster02;
-        else if(mid == 2)
+        else if(hid == 2)
             aM = monster03;
         // 建立怪物库后进行获取 TODO
         return aM;
