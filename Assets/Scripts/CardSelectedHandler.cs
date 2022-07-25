@@ -29,7 +29,7 @@ public class CardSelectedHandler : MonoBehaviour, IPointerClickHandler
         int cardCost = corrProjectileInfo.cost;
 
         // if card cost is higher than current cost, show related warnings
-        if (cardCost > GameManager.instance.getCurrCost())
+        if (cardCost > GameManager.instance.GetCurrCost())
         {
             // Debug.Log("Not Enough Cost.");
 

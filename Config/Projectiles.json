@@ -1,9 +1,9 @@
 [
     {
         "cardID": 1,
-        "icon": "../Image/Wood.png",
+        "icon": "../Image/stone.png",
         "type": "Missile",
-        "prefab": "Prefabs/test",
+        "prefab": "Missile/stone_PROJ",
         "cost": 50,
         "attack": 10
     },

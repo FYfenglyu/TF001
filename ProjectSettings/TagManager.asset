@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hunter
+  - Road
+  - Missile
+  - Guardian
+  - AttackBox
   layers:
   - Default
   - TransparentFX
@@ -11,11 +16,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Road
+  - Hunter
+  - Missile
+  - Guardian
+  - AttackBox
   - 
   - 
   - 
@@ -40,4 +45,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Hunter
+    uniqueID: 1682422083
+    locked: 0
+  - name: Road
+    uniqueID: 3423727647
+    locked: 0
+  - name: Missile
+    uniqueID: 1311135035
+    locked: 0
+  - name: Guardian
+    uniqueID: 2213972487
+    locked: 0
+  - name: MissileOfGuardian
+    uniqueID: 3252889057
     locked: 0

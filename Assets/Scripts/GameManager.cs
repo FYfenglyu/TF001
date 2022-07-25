@@ -12,12 +12,34 @@ public class GameManager : MonoBehaviour
     [Header("每秒回复的费用")]
     public int costIncPreSencond;
 
+    [Space]
+    [Header("以下内容请勿更改")]
+    //游戏场景绑定-供其他类调用
+    public GameObject birthDoor;
+    public GameObject deadDoor;
+
+    public Vector3 originalPos;
+    public Vector3 targetPos;
+
+    public const string TAG_BIRTHDOOR = "Respawn";
+    public const string TAG_DEADDOOR = "Finish";
+
+    private int playerScore =  3;
     private int currCost;
 
+
+    // Start is called before the first frame update
     private void Awake()
     {
         instance = this;
-        currCost = totalCost;
+
+        birthDoor = GameObject.FindWithTag(TAG_BIRTHDOOR);
+        deadDoor = GameObject.FindWithTag(TAG_DEADDOOR);
+
+        originalPos = birthDoor.transform.position;
+        targetPos = deadDoor.transform.position;
+
+        InitPlayer();
     }
 
     // essential components
@@ -33,6 +55,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TestGenerateHunter();
 
     }
 
@@ -43,8 +66,38 @@ public class GameManager : MonoBehaviour
 
         // Debug.Log("Update per second.");
     }
+    public void TestGenerateHunter()
+    {
+        if(Time.frameCount % 8000 == 1)
+            HunterManager.instance.GenerateHunter(0, originalPos);
+        if(Time.frameCount % 8000 == 4000)
+            HunterManager.instance.GenerateHunter(1, originalPos);
+        if(Time.frameCount % 8000 == 2000)
+            HunterManager.instance.GenerateHunter(2, originalPos);
+    
+    }
 
-    public int getCurrCost() { return currCost; }
+    public void InitPlayer()
+    {
+        playerScore = 3;
+        currCost = totalCost;
+    }
+    public void LoseScore()
+    {
+        if(playerScore > 0)
+        {
+            playerScore -= 1;
+            if(playerScore == 0)
+                print("游戏结束");
+        }
+    }
 
-    public void setCurrCost(int cost) { currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost); }
+    public void CutCost(GameObject go)
+    {
+        //获取go的费用
+        //减费
+    }
+    public int GetCurrCost() { return currCost; }
+
+    public void SetCurrCost(int cost) { currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost); }
 }
