@@ -29,7 +29,6 @@ public class CardGenerator : MonoBehaviour
             // 1. projectile icon
             GameObject icon = projectileCard.transform.Find("Icon").gameObject;
             Sprite CardIconInConfig = Resources.Load(corrProjectileInfo.icon, typeof(Sprite)) as Sprite;
-            if (CardIconInConfig == null) Debug.Log("wrong");
             icon.GetComponent<Image>().sprite = CardIconInConfig;
 
             // 2. projectile type

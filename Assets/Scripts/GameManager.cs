@@ -101,13 +101,12 @@ public class GameManager : MonoBehaviour
     public void CutCost(int cost)
     {
         cost = currCost - cost;
-
-        //获取go的费用
         currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost);
 
         // display current cost
-        // UIManager.instance.DisplayCurrCost(currCost);
+        UIManager.instance.DisplayCurrCost(currCost);
     }
+
     public int GetCurrCost() { return currCost; }
 
     public void SetCurrProjectile(GameObject projectilePrefab)

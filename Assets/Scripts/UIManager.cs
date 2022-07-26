@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         CardScrollView = GameObject.Find("CardScrollView");
-        CardScrollView = GameObject.Find("CostDisplayer");
+        CostDisplayer = GameObject.Find("CostDisplayer");
     }
 
     public void DisplayCurrCost(int currCost)

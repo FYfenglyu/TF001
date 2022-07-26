@@ -47,7 +47,6 @@ public class Projectile : MonoBehaviour
     public void Project()
     {
         //通知减费
-        if(GameManager.instance == null ) Debug.Log("?????????????????????????");
         GameManager.instance.CutCost(gameObject.GetComponent<Missile>().GetCost());
         sj.enabled = false;
         isProjected = true;

@@ -23,8 +23,6 @@ public class CardSelectedHandler : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Debug.Log("Clicked.");
-
         // get projectile card cost
         int cardCost = corrProjectileInfo.cost;
 
@@ -32,7 +30,7 @@ public class CardSelectedHandler : MonoBehaviour, IPointerClickHandler
         if (cardCost > GameManager.instance.GetCurrCost())
         {
             // Debug.Log("Not Enough Cost.");
-
+            // UIManager.TwinkCostDis();
             return;
         }
 
@@ -41,8 +39,6 @@ public class CardSelectedHandler : MonoBehaviour, IPointerClickHandler
         // 1. get prefab with projectileCardID from projectileInfo
         // 2. let game manager generate corresponding instantiate
         GameObject projectilePrefab = (GameObject)Resources.Load(corrProjectileInfo.prefab);
-        Debug.Log(corrProjectileInfo.prefab);
-        Debug.Log(corrProjectileInfo.cardID);
         GameManager.instance.SetCurrProjectile(projectilePrefab);
     }
 }
