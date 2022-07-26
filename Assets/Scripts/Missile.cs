@@ -50,6 +50,7 @@ public class Missile : MonoBehaviour
             {
                 //之后要能通过mid指定生成的守护者
                 GameObject.Instantiate(Resources.Load<Guardian>("Guardian/elephant_GUA"), gameObject.transform.position, Quaternion.identity);
+                SelfClear();
             }
             //SelfClear();
         }

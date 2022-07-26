@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; // singleton
 
     [Header("全局总费用")]
-    public int totalCost = 100;   // const?
+    public int totalCost = 1000;   // const?
 
     [Header("每秒回复的费用")]
     public int costIncPreSencond;
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     public void InitPlayer()
     {
         playerScore = 3;
-        currCost = totalCost;
+        currCost = 200;
     }
     public void LoseScore()
     {
@@ -100,14 +100,25 @@ public class GameManager : MonoBehaviour
 
     public void CutCost(int cost)
     {
-        cost = currCost - cost;
-        currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost);
+        SetCurrCost(currCost - cost);
+    }
 
+    public void AddCost(int cost) {
+        if(cost <=0)
+            return;
+        SetCurrCost(currCost + cost);
+        
+    }
+    public int GetCurrCost() { return currCost; }
+
+    private void SetCurrCost(int cost)
+    {
+        //currCost = Math.Min(Math.Max(cost, 0), totalCost);
+        currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost);
+    
         // display current cost
         UIManager.instance.DisplayCurrCost(currCost);
     }
-
-    public int GetCurrCost() { return currCost; }
 
     public void SetCurrProjectile(GameObject projectilePrefab)
     {
@@ -120,4 +131,6 @@ public class GameManager : MonoBehaviour
         // create a specified projectile
         currProjectile = GameObject.Instantiate(projectilePrefab, anchorPos);
     }
+
+
 }

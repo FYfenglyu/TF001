@@ -13,8 +13,13 @@ public class ButtonClickGH : MonoBehaviour {
     
     }
 
-    public void Clicked(int hid)
+    public void GenerateHunter(int hid)
     {
         HunterManager.instance.GenerateHunter(hid, GameManager.instance.originalPos);
-    }    
+    }   
+
+    public void Add100Cost()
+    {
+        GameManager.instance.AddCost(100);
+    }
 }
