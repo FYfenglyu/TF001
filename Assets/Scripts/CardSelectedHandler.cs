@@ -15,7 +15,7 @@ public class CardSelectedHandler : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         // get card generate point positon
-        cardGenPos = GameObject.Find("CardGenPos").transform.position;
+        cardGenPos = GameObject.Find("AnchorPoint").transform.position;
 
         // load corresponding projectile information
         corrProjectileInfo = ProjectileInfoManager.instance.GetProjectileInfoByID(projectileCardID);
