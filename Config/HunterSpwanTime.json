@@ -1,0 +1,22 @@
+[
+    {
+        "birthTime": 5,
+        "hunterID": 1
+    },
+    {
+        "birthTime": 7,
+        "hunterID": 2
+    },
+    {
+        "birthTime": 9,
+        "hunterID": 2
+    },
+    {
+        "birthTime": 11,
+        "hunterID": 1
+    },
+    {
+        "birthTime": 12,
+        "hunterID": 3
+    }
+]

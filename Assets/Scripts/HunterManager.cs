@@ -1,6 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine;
+using System.IO;
+using System;
+using System.Text;
+using LitJson;
+
+public class HunterGenInfo : IComparable<HunterGenInfo>
+{
+    public float birthTime;
+    public int hunterID;
+
+    // make it comparable
+    public int CompareTo(HunterGenInfo anoGenInfo)
+    {
+        return birthTime.CompareTo(anoGenInfo.birthTime);
+    }
+}
 
 public class HunterManager : MonoBehaviour
 {
@@ -10,7 +27,11 @@ public class HunterManager : MonoBehaviour
     protected Hunter hunter02;
     protected Hunter hunter03;
 
-    private void Awake() {
+    private List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();    // hunter spawn information list (spawn time, hunter ID)
+    private int currHunterIndex = 0;    // hunter index which is the next one to be spawned
+    private int maxHunterIndex;     // total hunter number
+    private void Awake()
+    {
         instance = this;
     }
 
@@ -19,23 +40,27 @@ public class HunterManager : MonoBehaviour
         hunter01 = Resources.Load<Hunter>("Hunters/hunter_01");
         hunter02 = Resources.Load<Hunter>("Hunters/hunter_02");
         hunter03 = Resources.Load<Hunter>("Hunters/hunter_03");
+
+        LoadHunterGenInfoList();
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach(Hunter m in hunters)
+        foreach (Hunter m in hunters)
         {
-            if(m.moving)
+            if (m.moving)
                 MoveHunter(m, true);
         }
+
+        GenerateHunterOnConfig();
     }
 
 
     public bool GenerateHunter(int hid, Vector3 birthPosition)
     {
         Hunter prototype = GetHunter(hid);
-        if(prototype)
+        if (prototype)
         {
             Hunter newHunter = GameObject.Instantiate(prototype, birthPosition, Quaternion.identity);
             hunters.Add(newHunter);
@@ -47,16 +72,16 @@ public class HunterManager : MonoBehaviour
     public Hunter GetHunter(int hid)
     {
         Hunter aM = hunter01;
-        if(hid == 0)
+        if (hid == 0)
             aM = hunter01;
-        else if(hid == 1)
+        else if (hid == 1)
             aM = hunter02;
-        else if(hid == 2)
+        else if (hid == 2)
             aM = hunter03;
         // 建立怪物库后进行获取 TODO
         return aM;
-    }    
-    
+    }
+
     public void MoveHunter(Hunter m, bool goLeft)
     {
         m.Move(goLeft);
@@ -68,5 +93,36 @@ public class HunterManager : MonoBehaviour
 
     public void ClearHunter(Hunter hunter)
     {
+    }
+
+    private void LoadHunterGenInfoList()
+    {
+        // load hunter spawn information list from json file
+        string jsonFilePath = Application.streamingAssetsPath + "/../../Config/HunterSpwanTime.json";
+        hunterGenInfoList = JsonMapper.ToObject<List<HunterGenInfo>>(File.ReadAllText(jsonFilePath));
+
+        // sort hunter generation information by spawn time 
+        hunterGenInfoList.Sort();
+
+        // set total hunter number
+        maxHunterIndex = hunterGenInfoList.Count;
+        Debug.Log("hunter number: ");
+        Debug.Log(maxHunterIndex);
+    }
+
+    private void GenerateHunterOnConfig()
+    {
+        for (; currHunterIndex < maxHunterIndex; ++currHunterIndex)
+        {
+            if (TimeManager.instance.GetTimeSecond() >= hunterGenInfoList[currHunterIndex].birthTime)
+            {
+                GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos);
+                Debug.Log("Generate");
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 }
