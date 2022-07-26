@@ -25,7 +25,6 @@ public class Missile : MonoBehaviour
     {
         if(isCollisied)
         {
-
             float relativeVel = rigid.velocity.magnitude;
             print(relativeVel);
             if(relativeVel < 1*0.5f)
@@ -52,7 +51,7 @@ public class Missile : MonoBehaviour
                 //之后要能通过mid指定生成的守护者
                 GameObject.Instantiate(Resources.Load<Guardian>("Guardian/elephant_GUA"), gameObject.transform.position, Quaternion.identity);
             }
-            SelfClear();
+            //SelfClear();
         }
         else
         {
