@@ -24,5 +24,5 @@ if __name__ == '__main__':
         },
     ]
 
-    with open("HunterSpwanTime.json", "w+") as hunter_spawn_time_file:
+    with open("../Config/HunterSpwanTime.json", "w+") as hunter_spawn_time_file:
         json.dump(hunter_gen_time_table, hunter_spawn_time_file, indent=4)
