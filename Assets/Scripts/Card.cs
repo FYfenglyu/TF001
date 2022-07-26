@@ -8,14 +8,14 @@ public class Card : MonoBehaviour, IPointerClickHandler
     [Header("投掷物卡牌ID")]
     public int projectileCardID;
 
-    private ProjectileInfo corrProjectileInfo;  // corresponding projectile information
+    private ProjAttribute corrProjectileInfo;  // corresponding projectile information
 
     private void Start()
     {
         // load corresponding projectile information
-        corrProjectileInfo = ProjectileInfoManager.instance.GetProjectileInfoByID(projectileCardID);
+        corrProjectileInfo = ProjectileData.instance.GetProjectileInfoByID(projectileCardID);
     }
-    
+
     public void OnPointerClick(PointerEventData eventData)
     {
         // get projectile card cost

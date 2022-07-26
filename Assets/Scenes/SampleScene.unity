@@ -1543,7 +1543,7 @@ GameObject:
   - component: {fileID: 613741039}
   - component: {fileID: 613741038}
   m_Layer: 5
-  m_Name: CardScrollView
+  m_Name: Cards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2515,7 +2515,8 @@ Transform:
   m_LocalPosition: {x: -54.236504, y: 6.899242, z: -175.32826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1225212803}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2852,6 +2853,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1134969355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1134969356}
+  - component: {fileID: 1134969358}
+  - component: {fileID: 1134969357}
+  m_Layer: 0
+  m_Name: ProjectileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1134969356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134969355}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -54.236504, y: 6.899242, z: -175.32826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1134969357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134969355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8d4d48db312844f938086f76058d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileCardIDList: 0100000002000000
+--- !u!114 &1134969358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134969355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5abdc2b31310248aa12c29c86bb489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1146905201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,8 +3166,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225212802}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 54.236504, y: -6.899242, z: 175.32826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3116,8 +3175,8 @@ Transform:
   - {fileID: 2048874882}
   - {fileID: 32300585933442780}
   - {fileID: 7819443296554853770}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 963551123}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1289859728
 GameObject:
@@ -3644,7 +3703,7 @@ GameObject:
   - component: {fileID: 1492381642}
   - component: {fileID: 1492381641}
   m_Layer: 5
-  m_Name: Viewport
+  m_Name: CardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4361,9 +4420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327255dc90a52f54ab28ef972cb26184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHP: 100
-  currHP: 0
-  HPBarContent: {fileID: 0}
 --- !u!1 &1757902153
 GameObject:
   m_ObjectHideFlags: 0
@@ -4461,9 +4517,8 @@ GameObject:
   - component: {fileID: 1800779753}
   - component: {fileID: 1800779755}
   - component: {fileID: 1800779756}
-  - component: {fileID: 1800779757}
   m_Layer: 5
-  m_Name: Cards
+  m_Name: CardList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4567,19 +4622,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &1800779757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800779751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5bef370eeeae040992abd7ab067d73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileCardIDList: 0100000002000000
 --- !u!4 &1870583586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2942558704121202650, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}

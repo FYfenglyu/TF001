@@ -6,14 +6,15 @@ using System.Text;
 using LitJson;
 
 // Flyweight Pattern
-public class ProjectileInfoManager : MonoBehaviour
+public class ProjectileData : MonoBehaviour 
 {
-    public static ProjectileInfoManager instance;   // singleton
+    public static ProjectileData instance;   // singleton
 
     // match projectile card id with corresponding information
-    private Dictionary<int, ProjectileInfo> projectileInfoDict = new Dictionary<int, ProjectileInfo>();
+    private Dictionary<int, ProjAttribute> projectileInfoDict = new Dictionary<int, ProjAttribute>();
     private Dictionary<string, string> projectileTypeIconDict;
 
+    
     private void Awake()
     {
         instance = this;
@@ -25,9 +26,9 @@ public class ProjectileInfoManager : MonoBehaviour
     private void LoadInfoFromJson()
     {
         string jsonFilePath = Application.streamingAssetsPath + "/../../Config/Projectiles.json";
-        List<ProjectileInfo> projectileInfoList = JsonMapper.ToObject<List<ProjectileInfo>>(File.ReadAllText(jsonFilePath));
+        List<ProjAttribute> projectileInfoList = JsonMapper.ToObject<List<ProjAttribute>>(File.ReadAllText(jsonFilePath));
 
-        foreach (ProjectileInfo projectileInfo_i in projectileInfoList)
+        foreach (ProjAttribute projectileInfo_i in projectileInfoList)
         {
             projectileInfoDict.Add(projectileInfo_i.cardID, projectileInfo_i);
         }
@@ -40,7 +41,7 @@ public class ProjectileInfoManager : MonoBehaviour
     }
 
     // get projectile information by card id
-    public ProjectileInfo GetProjectileInfoByID(int projectileCardID)
+    public ProjAttribute GetProjectileInfoByID(int projectileCardID)
     {
         return projectileInfoDict[projectileCardID];
     }
