@@ -10,7 +10,11 @@ public class GameManager : MonoBehaviour
     public int totalCost = 1000;
 
     [Header("每秒回复的费用")]
+
+    private int currCost;
     public int costIncPerS = 1;
+
+    private float lastCostIncTime = 0f;
 
     [Space]
     [Header("以下内容请勿更改")]
@@ -24,8 +28,8 @@ public class GameManager : MonoBehaviour
     public const string TAG_BIRTHDOOR = "Respawn";
     public const string TAG_DEADDOOR = "Finish";
 
-    private int playerScore =  3;
-    private int currCost;
+    private int playerScore = 3;
+
 
     private GameObject currProjectile;
 
@@ -57,23 +61,19 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // TestGenerateHunter();
-    }
 
-    private void FixedUpdate()
-    {
-        // update cost per sencond
-        // currCost = (currCost + costIncPreSencond > totalCost) ? currCost + costIncPreSencond : currCost;
+        IncCostPreS();
     }
 
     public void TestGenerateHunter()
     {
-        if(Time.frameCount % 12000 == 1)
+        if (Time.frameCount % 12000 == 1)
             HunterManager.instance.GenerateHunter(0, originalPos);
-        if(Time.frameCount % 12000 == 8000)
+        if (Time.frameCount % 12000 == 8000)
             HunterManager.instance.GenerateHunter(1, originalPos);
-        if(Time.frameCount % 12000 == 2000)
+        if (Time.frameCount % 12000 == 2000)
             HunterManager.instance.GenerateHunter(2, originalPos);
-    
+
     }
 
     public void InitPlayer()
@@ -83,10 +83,10 @@ public class GameManager : MonoBehaviour
     }
     public void LoseScore()
     {
-        if(playerScore > 0)
+        if (playerScore > 0)
         {
             playerScore -= 1;
-            if(playerScore == 0)
+            if (playerScore == 0)
                 Debug.Log("游戏结束");
         }
     }
@@ -96,11 +96,12 @@ public class GameManager : MonoBehaviour
         SetCurrCost(currCost - cost);
     }
 
-    public void AddCost(int cost) {
-        if(cost <=0)
+    public void AddCost(int cost)
+    {
+        if (cost <= 0)
             return;
         SetCurrCost(currCost + cost);
-        
+
     }
     public int GetCurrCost() { return currCost; }
 
@@ -108,15 +109,25 @@ public class GameManager : MonoBehaviour
     {
         //currCost = Math.Min(Math.Max(cost, 0), totalCost);
         currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost);
-    
+
         // display current cost
         UIManager.instance.DisplayCurrCost(currCost);
+    }
+
+    private void IncCostPreS()
+    {
+        float currTime = TimeManager.instance.GetTimeSecond();
+        if(TimeManager.instance.GetTimeSecond() - lastCostIncTime >= 1.0f)
+        {
+            SetCurrCost(currCost + costIncPerS);
+            lastCostIncTime = currTime;
+        }
     }
 
     public void SetCurrProj(GameObject projPrefab)
     {
         // if there exists a projectile, destroy it
-        if(currProjectile)
+        if (currProjectile)
         {
             GameObject.Destroy(currProjectile);
         }
