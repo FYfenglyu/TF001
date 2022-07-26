@@ -9,7 +9,7 @@ public class CardGenerator : MonoBehaviour
     [Header("关卡投掷物卡牌列表")]
     public List<int> projectileCardIDList;
 
-    private const string projectileCardPrefabPath = "Prefabs/ProjectileCard";
+    private const string projectileCardPrefabPath = "Cards/ProjectileCard";
 
     // Start is called before the first frame update
     private void Start()
@@ -43,7 +43,7 @@ public class CardGenerator : MonoBehaviour
             costText.GetComponent<Text>().text = costTextInConfig;
 
             // 4. set ID
-            projectileCard.GetComponent<CardSelectedHandler>().projectileCardID = projectileCardID;
+            projectileCard.GetComponent<Card>().projectileCardID = projectileCardID;
             
             // set parent
             projectileCard.transform.SetParent(transform, false);

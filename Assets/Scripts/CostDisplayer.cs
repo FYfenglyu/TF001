@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CostDisController : MonoBehaviour
+public class CostDisplayer : MonoBehaviour
 {
     private void Start()
     {
