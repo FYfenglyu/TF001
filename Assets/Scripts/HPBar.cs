@@ -11,13 +11,13 @@ public class HPBar : MonoBehaviour
     private float currHP;
 
     // HP bar image
-    private Image HPBarContent;
+    private Image HPBarContImg;
 
     // Start is called before the first frame update
     private void Start()
     {
         // get component
-        HPBarContent = transform.Find("HPBarContent").GetComponent<Image>();
+        HPBarContImg = transform.Find("HPBarContent").GetComponent<Image>();
 
         // set total HP as current HP
         SetCurrHP(totalHP);
@@ -34,7 +34,7 @@ public class HPBar : MonoBehaviour
     {
         // set the fill amount of HP bar content
         float fillAmount = currHP / totalHP;
-        HPBarContent.fillAmount = fillAmount > 1 ? 1 : (fillAmount < 0 ? 0 : fillAmount);
+        HPBarContImg.fillAmount = fillAmount > 1 ? 1 : (fillAmount < 0 ? 0 : fillAmount);
     }
 
     // set current health point

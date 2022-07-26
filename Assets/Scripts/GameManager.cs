@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; // singleton
 
     [Header("全局总费用")]
-    public int totalCost = 1000;   // const?
+    public int totalCost = 1000;
 
     [Header("每秒回复的费用")]
-    public int costIncPreSencond;
+    public int costIncPerS = 1;
 
     [Space]
     [Header("以下内容请勿更改")]
@@ -48,30 +48,18 @@ public class GameManager : MonoBehaviour
         anchorPos = GameObject.Find("AnchorPoint").transform;
     }
 
-    // essential components
-
-    // private Hunter[] HunterList;    // Hunters (undo)
-    // private Projectile[] ProjectileList; // Projectiles (undo)
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         TestGenerateHunter();
-
     }
 
     private void FixedUpdate()
     {
         // update cost per sencond
         // currCost = (currCost + costIncPreSencond > totalCost) ? currCost + costIncPreSencond : currCost;
-
-        // Debug.Log("Update per second.");
     }
+
     public void TestGenerateHunter()
     {
         if(Time.frameCount % 8000 == 1)
@@ -120,7 +108,7 @@ public class GameManager : MonoBehaviour
         UIManager.instance.DisplayCurrCost(currCost);
     }
 
-    public void SetCurrProjectile(GameObject projectilePrefab)
+    public void SetCurrProj(GameObject projPrefab)
     {
         // if there exists a projectile, destroy it
         if(currProjectile)
@@ -129,7 +117,7 @@ public class GameManager : MonoBehaviour
         }
 
         // create a specified projectile
-        currProjectile = GameObject.Instantiate(projectilePrefab, anchorPos);
+        currProjectile = GameObject.Instantiate(projPrefab, anchorPos);
     }
 
 

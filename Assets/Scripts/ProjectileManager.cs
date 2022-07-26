@@ -16,55 +16,55 @@ public struct ProjAttribute
 public class ProjectileManager : MonoBehaviour
 {
     [Header("关卡投掷物卡牌列表")]
-    public List<int> projectileCardIDList;
+    public List<int> projCardIDList;
 
-    private const string projectileCardPrefabPath = "Cards/ProjectileCard";
+    private const string cardPrefabPath = "Cards/ProjectileCard";
     
-    private GameObject CardList;    // card list is the parent of every card on UI layer
+    private GameObject cardList;    // card list is the parent of every card on UI layer
 
     // Start is called before the first frame update
     private void Start()
     {
-        CardList = GameObject.Find("CardList");
+        cardList = GameObject.Find("CardList");
 
         GenProjCards();
     }
 
     private void GenProjCards()
     {
-        foreach (int projectileCardID in projectileCardIDList)
+        foreach (int projCardID in projCardIDList)
         {
             // load projectile information
-            ProjAttribute corrProjectileInfo = ProjectileData.instance.GetProjectileInfoByID(projectileCardID);
+            ProjAttribute corrProjectileInfo = ProjectileData.instance.GetProjAttr(projCardID);
 
             // load basic projectile card prefab
-            GameObject projectileCardPrefab = Resources.Load(projectileCardPrefabPath) as GameObject;
+            GameObject projectileCardPrefab = Resources.Load(cardPrefabPath) as GameObject;
 
             // create projectile card entity
             GameObject projectileCard = GameObject.Instantiate(projectileCardPrefab);
 
             // generate corresponding projectile card prefab
-            // 1. projectile icon
+            // - projectile icon
             GameObject icon = projectileCard.transform.Find("Icon").gameObject;
             Sprite CardIconInConfig = Resources.Load(corrProjectileInfo.icon, typeof(Sprite)) as Sprite;
             icon.GetComponent<Image>().sprite = CardIconInConfig;
 
-            // 2. projectile type
+            // - projectile type
             GameObject typeIcon = projectileCard.transform.Find("TypeIcon").gameObject;
-            string typeIconPathInConfig = ProjectileData.instance.GetTypeIconPathByType(corrProjectileInfo.type);
+            string typeIconPathInConfig = ProjectileData.instance.GetTypeIconPath(corrProjectileInfo.type);
             Sprite typeIconInConfig = Resources.Load(typeIconPathInConfig, typeof(Sprite)) as Sprite;
             typeIcon.GetComponent<Image>().sprite = typeIconInConfig;
 
-            // 3. projectile cost
+            // - projectile cost
             GameObject costText = projectileCard.transform.Find("Cost").gameObject;
             string costTextInConfig = corrProjectileInfo.cost.ToString();
             costText.GetComponent<Text>().text = costTextInConfig;
 
-            // 4. set ID
-            projectileCard.GetComponent<Card>().projectileCardID = projectileCardID;
+            // - set projectile card ID
+            projectileCard.GetComponent<Card>().projCardID = projCardID;
             
             // set parent
-            projectileCard.transform.SetParent(CardList.transform, false);
+            projectileCard.transform.SetParent(cardList.transform, false);
         }
     }
 }

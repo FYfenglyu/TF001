@@ -10,45 +10,51 @@ public class ProjectileData : MonoBehaviour
 {
     public static ProjectileData instance;   // singleton
 
-    // match projectile card id with corresponding information
-    private Dictionary<int, ProjAttribute> projectileInfoDict = new Dictionary<int, ProjAttribute>();
-    private Dictionary<string, string> projectileTypeIconDict;
+    private Dictionary<int, ProjAttribute> projAttrDict = new Dictionary<int, ProjAttribute>();    // match projectile card id with corresponding information
+
+    private Dictionary<string, string> projTypeIconDict;  // match projectile type with corresponding icon
 
     
     private void Awake()
     {
+        // singleton
         instance = this;
-        LoadInfoFromJson();
+
+        LoadProjAttriFromJson();
 		LoadTypeIconInfoFromJson();
     }
 
     // load projectile information from json file
-    private void LoadInfoFromJson()
+    private void LoadProjAttriFromJson()
     {
         string jsonFilePath = Application.streamingAssetsPath + "/../../Config/Projectiles.json";
         List<ProjAttribute> projectileInfoList = JsonMapper.ToObject<List<ProjAttribute>>(File.ReadAllText(jsonFilePath));
 
+        // build dictionary 
+        // key : projectile card ID
+        // value : projectile information
         foreach (ProjAttribute projectileInfo_i in projectileInfoList)
         {
-            projectileInfoDict.Add(projectileInfo_i.cardID, projectileInfo_i);
+            projAttrDict.Add(projectileInfo_i.cardID, projectileInfo_i);
         }
     }
 
+    // load projectile type icon file from json file
     private void LoadTypeIconInfoFromJson()
     {
         string jsonFilePath = Application.streamingAssetsPath + "/../../Config/projectilesType.json";
-        projectileTypeIconDict = JsonMapper.ToObject<Dictionary<string, string>>(File.ReadAllText(jsonFilePath));
+        projTypeIconDict = JsonMapper.ToObject<Dictionary<string, string>>(File.ReadAllText(jsonFilePath));
     }
 
     // get projectile information by card id
-    public ProjAttribute GetProjectileInfoByID(int projectileCardID)
+    public ProjAttribute GetProjAttr(int projectileCardID)
     {
-        return projectileInfoDict[projectileCardID];
+        return projAttrDict[projectileCardID];
     }
 
     // get projectile type icon path by projectile type
-    public string GetTypeIconPathByType(string type)
+    public string GetTypeIconPath(string type)
     {
-        return projectileTypeIconDict[type];
+        return projTypeIconDict[type];
     }
 }

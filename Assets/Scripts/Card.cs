@@ -6,20 +6,20 @@ using UnityEngine.EventSystems; // IPointerClickHandler
 public class Card : MonoBehaviour, IPointerClickHandler
 {
     [Header("投掷物卡牌ID")]
-    public int projectileCardID;
+    public int projCardID;
 
-    private ProjAttribute corrProjectileInfo;  // corresponding projectile information
+    private ProjAttribute corrProjAttr;  // corresponding projectile information
 
     private void Start()
     {
         // load corresponding projectile information
-        corrProjectileInfo = ProjectileData.instance.GetProjectileInfoByID(projectileCardID);
+        corrProjAttr = ProjectileData.instance.GetProjAttr(projCardID);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         // get projectile card cost
-        int cardCost = corrProjectileInfo.cost;
+        int cardCost = corrProjAttr.cost;
 
         // if card cost is higher than current cost, show related warnings
         if (cardCost > GameManager.instance.GetCurrCost())
@@ -33,7 +33,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
         // generate a projectile on card generate point
         // 1. get prefab with projectileCardID from projectileInfo
         // 2. let game manager generate corresponding instantiate
-        GameObject projectilePrefab = (GameObject)Resources.Load(corrProjectileInfo.prefab);
-        GameManager.instance.SetCurrProjectile(projectilePrefab);
+        GameObject projectilePrefab = (GameObject)Resources.Load(corrProjAttr.prefab);
+        GameManager.instance.SetCurrProj(projectilePrefab);
     }
 }
