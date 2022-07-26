@@ -2,23 +2,23 @@ import json
 
 if __name__ == '__main__':
 	projectiles = [
-		{
-			"cardID" : 1 ,
-			"icon" : "Image/Wood",
-			"type" : "Missile",
-			"prefab" : "Prefabs/test",
-			"cost" : 50,
-			"attack" : 10
-		},
-		{
-			"cardID" : 2 ,
-			"icon" : "Image/Elephant_01", 
-			"type" : "Guardian",
-			"prefabPath" : "Prefabs/test",
-			"cost" : 200,
-			"attack" : 20
-		},
-	]
+    {
+        "cardID": 1,
+        "icon": "Image/Stone",
+        "type": "Missile",
+        "prefab": "Missile/stone_PROJ",
+        "cost": 50,
+        "attack": 10
+    },
+    {
+        "cardID": 2,
+        "icon": "Image/Elephant_01",
+        "type": "Guardian",
+        "prefab": "Guardian/elephant_PROJ",
+        "cost": 100,
+        "attack": 30
+    }
+]
 
 	projectiles_type_info = {
 		"Missile" : "Image/CardTypeIcon_Missile",
