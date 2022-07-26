@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        TestGenerateHunter();
+        // TestGenerateHunter();
     }
 
     private void FixedUpdate()
