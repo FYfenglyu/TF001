@@ -10,9 +10,13 @@ public class Hunter : MonoBehaviour
 
     public float moveSpeed = 1.0f;
     public int healthPoint = 200;
+
+    [Header("战斗属性")]
     public int attack = 30;
-    public int defence = 5;
-    public int attackRange = 20; //可能需要乘上缩放系数
+    public float attackSpeed = 30;
+    public float attackRange = 20; //交给预制件
+
+    //public int defence = 0;
 
     //以上相关变量的操作应该分离，但现在还没分离
 
@@ -64,6 +68,22 @@ public class Hunter : MonoBehaviour
         //清理屏外多余怪物
         if(transform.position.x < -20 )
             Dead();
+    }
+
+    public void CutHealthPoint(int attack)
+    {
+        if(attack > 0)
+        {
+            healthPoint = Mathf.Max(0, healthPoint - attack);
+        }
+
+        //HPbar显示更新
+        GameManager.instance.UpdateDisplayer(gameObject, ConstantTable.DIS_HPBAR);
+        Debug.Log("受击怪物血量" + healthPoint.ToString());
+        if(healthPoint == 0)
+        {
+            Dead();
+        }
     }
 
     public void Dead()

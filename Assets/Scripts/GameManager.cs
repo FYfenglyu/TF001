@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
         anchorPos = GameObject.Find("AnchorPoint").transform;
     }
 
+    void Start()
+    {
+    }
+
+
     // Update is called once per frame
     private void Update()
     {
@@ -62,11 +67,11 @@ public class GameManager : MonoBehaviour
 
     public void TestGenerateHunter()
     {
-        if(Time.frameCount % 8000 == 1)
+        if(Time.frameCount % 12000 == 1)
             HunterManager.instance.GenerateHunter(0, originalPos);
-        if(Time.frameCount % 8000 == 4000)
+        if(Time.frameCount % 12000 == 8000)
             HunterManager.instance.GenerateHunter(1, originalPos);
-        if(Time.frameCount % 8000 == 2000)
+        if(Time.frameCount % 12000 == 2000)
             HunterManager.instance.GenerateHunter(2, originalPos);
     
     }
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour
         {
             playerScore -= 1;
             if(playerScore == 0)
-                print("游戏结束");
+                Debug.Log("游戏结束");
         }
     }
 
@@ -118,6 +123,11 @@ public class GameManager : MonoBehaviour
 
         // create a specified projectile
         currProjectile = GameObject.Instantiate(projPrefab, anchorPos);
+    }
+
+    public void UpdateDisplayer(GameObject go, string component)
+    {
+        //TODO
     }
 
 
