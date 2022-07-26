@@ -50,8 +50,8 @@ public class GameManager : MonoBehaviour
 
     // essential components
 
-    // private Hunter[] HunterList;    // Hunters (undo)
-    // private Projectile[] ProjectileList; // Projectiles (undo)
+    // private Hunter[] HunterList;    // Hunters (undo) in HunterManager
+    // private Projectile[] ProjectileList; // Projectiles (undo) //in ProjectileManager
 
     // Start is called before the first frame update
     void Start()
@@ -74,11 +74,11 @@ public class GameManager : MonoBehaviour
     }
     public void TestGenerateHunter()
     {
-        if(Time.frameCount % 8000 == 1)
+        if(Time.frameCount % 12000 == 1)
             HunterManager.instance.GenerateHunter(0, originalPos);
-        if(Time.frameCount % 8000 == 4000)
+        if(Time.frameCount % 12000 == 8000)
             HunterManager.instance.GenerateHunter(1, originalPos);
-        if(Time.frameCount % 8000 == 2000)
+        if(Time.frameCount % 12000 == 2000)
             HunterManager.instance.GenerateHunter(2, originalPos);
     
     }
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         {
             playerScore -= 1;
             if(playerScore == 0)
-                print("游戏结束");
+                Debug.Log("游戏结束");
         }
     }
 
@@ -130,6 +130,11 @@ public class GameManager : MonoBehaviour
 
         // create a specified projectile
         currProjectile = GameObject.Instantiate(projectilePrefab, anchorPos);
+    }
+
+    public void UpdateDisplayer(GameObject go, string component)
+    {
+        //TODO
     }
 
 

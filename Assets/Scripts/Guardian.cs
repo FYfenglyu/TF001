@@ -5,14 +5,15 @@ using UnityEngine;
 public class Guardian : MonoBehaviour
 {
     [Header("守护者属性")]
-    public float attack;
-    public float attackDistance; //前方距离 
-    public float attackHigh;
-    public float attackSpeed;
-
     public int healthPoint;
     public int cost;
     public int gid;
+
+    [Header("战斗属性")]
+    public int attack;
+    public float attackRange; //前方距离 
+    public float attackHigh;
+    public float attackSpeed;
 
     private Vector3 selfPos;
     private Vector3 leftPoint;
@@ -64,9 +65,6 @@ public class Guardian : MonoBehaviour
         
     }
 
-    private void OnCollisionStay2D(Collision2D other) {
-        
-    }
     private void OnDestroy() {
 
     }

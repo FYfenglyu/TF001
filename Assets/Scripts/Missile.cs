@@ -5,12 +5,18 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     [Header("导弹属性")]
-    public float attack;
-    public float attackRange;
     public int cost;
     public int mid;
 
+    [Space]
+    public float dispearVelocity;
+
+    [Header("战斗属性")]
+    public int attack;
+    public float attackRange;
     public string missileType;
+
+    private ArrayList injuredHunters = new ArrayList();
 
     private bool isCollisied = false;
     private Rigidbody2D rigid;
@@ -23,30 +29,34 @@ public class Missile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //碰撞后，速度小于0.5f秒则消失
         if(isCollisied)
         {
             float relativeVel = rigid.velocity.magnitude;
-            print(relativeVel);
-            if(relativeVel < 1*0.5f)
+            //Debug.Log(relativeVel);
+            if(relativeVel < dispearVelocity)
                 SelfClear();
         }
     }
 
     private void OnCollisionStay2D(Collision2D other) {
+
         isCollisied = true;
-        GameObject m = other.gameObject;
-        print(m.tag);
-        if(m.tag.Equals("Hunter") )
+        GameObject go = other.gameObject;
+        Debug.Log("撞到了" + go.tag);
+        if(go.tag.Equals(ConstantTable.TYPE_HUNTER) )
         {
-            //TODO这边数值系统尚未做
-            Hunter mons = m.GetComponent<Hunter>();
-            if(mons)
-                mons.Dead();
+            Hunter injuredHunter = go.GetComponent<Hunter>();
+            if(injuredHunter && !injuredHunters.Contains(injuredHunter))
+            {
+                injuredHunter.CutHealthPoint(attack);
+                injuredHunters.Add(injuredHunter);
+            }
 
         }
-        else if(m.tag.Equals("Road"))
+        else if(go.tag.Equals(ConstantTable.TYPE_ROAD))
         {
-            if(missileType.Equals("Guardian"))
+            if(missileType.Equals(ConstantTable.TYPE_GUARDIAN))
             {
                 //之后要能通过mid指定生成的守护者
                 GameObject.Instantiate(Resources.Load<Guardian>("Guardian/elephant_GUA"), gameObject.transform.position, Quaternion.identity);
