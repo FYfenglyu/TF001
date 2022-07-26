@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private static UIManager instance;
+    public static UIManager instance;
 
-    // Scroll View 
-    private GameObject CardScrollView;
+    private GameObject CostDisplayer;
+    private GameObject CardScrollView;    // Scroll View 
+
 
     private UIManager() {}
 
@@ -20,7 +21,12 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         CardScrollView = GameObject.Find("CardScrollView");
+        CostDisplayer = GameObject.Find("CostDisplayer");
+    }
 
+    public void DisplayCurrCost(int currCost)
+    {
+        CostDisplayer.GetComponent<Text>().text = currCost.ToString();
     }
 
     public void DisableCardScrollView()

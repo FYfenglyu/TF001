@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     [Header("弹射设置")]
     public float maxDis;
     public float minDis;
-    public Transform anchor;
+    private Transform anchor;
 
     [Space]
 
@@ -21,7 +21,8 @@ public class Projectile : MonoBehaviour
     private bool isProjected = false;
     private Vector3 originalPos;
 
-    private bool test = true;
+    private bool test = false;
+    private GameObject anchorPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,9 @@ public class Projectile : MonoBehaviour
         isClicked = false;
         sj.enabled = true;
         isProjected = false;
-        //anchorPos = new Vector3(sj.connectedAnchor.x, sj.connectedAnchor.y, 0);
+        anchorPoint = GameObject.Find("AnchorPoint");
+        sj.connectedBody = anchorPoint.GetComponent<Rigidbody2D>();
+        anchor = anchorPoint.transform;
     }
 
     // Update is called once per frame
@@ -44,7 +47,7 @@ public class Projectile : MonoBehaviour
     public void Project()
     {
         //通知减费
-        GameManager.instance.CutCost(gameObject);
+        GameManager.instance.CutCost(gameObject.GetComponent<Missile>().GetCost());
         sj.enabled = false;
         isProjected = true;
     }
