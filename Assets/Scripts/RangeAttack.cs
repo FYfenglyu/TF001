@@ -47,17 +47,29 @@ public class RangeAttack : MonoBehaviour
         
     } 
     
-    private void OnCollisionStay2D(Collision2D other) {
-        
-        GameObject m = other.gameObject;
-        Debug.Log(m.tag);
-        if(m.tag.Equals("Hunter") )
+    private void OnTriggerStay2D(Collider2D other) {
+        GameObject go = other.gameObject;
+        if(identity == ConstantTable.TYPE_HUNTER)
         {
-            //TODO这边数值系统尚未做
-            Hunter mons = m.GetComponent<Hunter>();
-            if(mons)
-                mons.Dead();
-
+            if(go.tag.Equals(ConstantTable.TYPE_GUARDIAN) )
+            {
+               Guardian injuredGuardian = go.GetComponent<Guardian>(); 
+               injuredGuardian.CutHealthPoint(attack);
+            }
+          
+        }
+        else if(identity == ConstantTable.TYPE_GUARDIAN)
+        {
+            if(go.tag.Equals(ConstantTable.TYPE_HUNTER))
+            {
+                //发射子弹！
+                //Instantiate
+                //子弹动画！
+                //撞到人再扣血
+                //这里临时手动扣一下
+               Hunter injuredHunter = go.GetComponent<Hunter>(); 
+               injuredHunter.CutHealthPoint(attack);
+            }
         }
     }
 }

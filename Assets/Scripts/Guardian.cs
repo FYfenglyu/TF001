@@ -24,7 +24,6 @@ public class Guardian : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CountAttackRange();
     }
 
     // Update is called once per frame
@@ -32,37 +31,30 @@ public class Guardian : MonoBehaviour
     {
         
     }
-    //下面两个都是错误代码，舍弃
-    private void CountAttackRange()
+    public void CutHealthPoint(int attack)
     {
-        /*
-        selfPos = gameObject.transform.position;
-        selfPos.z = 0;
-        leftPoint = selfPos;
-        rightUpPoint = leftPoint + new Vector3(attackDistance, attackHigh, 0.0f); 
-        */
+        if(attack > 0)
+        {
+            healthPoint = Mathf.Max(0, healthPoint - attack);
+        }
+
+        //HPbar显示更新
+        GameManager.instance.UpdateDisplayer(gameObject, ConstantTable.DIS_HPBAR);
+        Debug.Log("受击守护者血量" + healthPoint.ToString());
+        if(healthPoint == 0)
+        {
+            Dead();
+        }
     }
 
-    private bool isInAttackRange(Vector3 target)
-    {
-        /*
-        if(null == leftPoint)
-            CountAttackRange();
-        Debug.DrawLine(leftPoint, rightUpPoint, Color.red);
-        if(target.x > leftPoint.x && target.y > rightUpPoint.y && target.x < rightUpPoint.x && target.y < rightUpPoint.y)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        */
-        return false;
-    }
     private void AttackFront()
     {
         
+    }
+
+    public void Dead()
+    {
+        Destroy(gameObject);
     }
 
     private void OnDestroy() {
