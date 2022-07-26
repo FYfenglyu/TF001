@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class Projectile : MonoBehaviour
 {
-    
+
     private SpringJoint2D sj;
     private Rigidbody2D rb;
 
@@ -54,32 +54,38 @@ public class Projectile : MonoBehaviour
 
     private void MoveWithMouse()
     {
-        if(isClicked )
+        if (isClicked)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position += new Vector3(0, 0, -Camera.main.transform.position.z);
 
-
-            
             //limit the distant
-            if(Vector2.Distance(transform.position, anchor.position) >= maxDis)
+            if (Vector2.Distance(transform.position, anchor.position) >= maxDis)
             {
                 transform.position = anchor.position + (transform.position - anchor.position).normalized * maxDis;
             }
 
         }
     }
-    private void OnMouseDown() {
-        if(isProjected)
+    private void OnMouseDown()
+    {
+        if (isProjected)
             return;
+
+        // hide the card scroll view if the projectile is clicked
+        UIManager.instance.DisableCardScrollView();
+        
         isClicked = true;
+
         rb.isKinematic = true;
     }
 
-    private void OnMouseUp() {
+    private void OnMouseUp()
+    {
         isClicked = false;
         rb.isKinematic = false;
-        if(false && Vector2.Distance(transform.position, anchor.position) <= minDis)
+        UIManager.instance.EnableCardScrollView();
+        if (false && Vector2.Distance(transform.position, anchor.position) <= minDis)
         {
             transform.position = originalPos;
         }
@@ -89,14 +95,16 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(test)
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (test)
             GameObject.Instantiate(gameObject, originalPos, Quaternion.identity);
-            test = false;
+        test = false;
     }
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
 
     }
 
-    
+
 }

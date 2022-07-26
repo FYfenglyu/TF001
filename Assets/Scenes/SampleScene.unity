@@ -2000,8 +2000,9 @@ GameObject:
   - component: {fileID: 613741040}
   - component: {fileID: 613741039}
   - component: {fileID: 613741038}
+  - component: {fileID: 613741041}
   m_Layer: 5
-  m_Name: Cards
+  m_Name: CardScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2096,6 +2097,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613741036}
   m_CullTransparentMesh: 1
+--- !u!114 &613741041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613741036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5a13611a27eff48b4c1574f5cfe08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &625322311
 GameObject:
   m_ObjectHideFlags: 0
@@ -4174,7 +4187,7 @@ GameObject:
   - component: {fileID: 1492381642}
   - component: {fileID: 1492381641}
   m_Layer: 5
-  m_Name: CardView
+  m_Name: ViewContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
