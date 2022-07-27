@@ -29,11 +29,11 @@ public class Guardian : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void CutHealthPoint(int attack)
     {
-        if(attack > 0)
+        if (attack > 0)
         {
             healthPoint = Mathf.Max(0, healthPoint - attack);
         }
@@ -41,23 +41,19 @@ public class Guardian : MonoBehaviour
         //HPbar显示更新
         GameManager.instance.UpdateDisplayer(gameObject, ConstantTable.DIS_HPBAR);
         Debug.Log("受击守护者血量" + healthPoint.ToString());
-        if(healthPoint == 0)
+        if (healthPoint == 0)
         {
             Dead();
         }
     }
-
-    private void AttackFront()
-    {
-        
-    }
-
+    
     public void Dead()
     {
         Destroy(gameObject);
     }
 
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
 
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Hunter : MonoBehaviour
 {
 
-    
+
     [Header("怪物参数")]
 
     public float moveSpeed = 1.0f;
@@ -48,11 +48,11 @@ public class Hunter : MonoBehaviour
     {
         OriginalPos = transform.position;
         TargetPos = GameManager.instance.deadDoor.transform.position;
-       // roadDistance = Vector3.Distance(deadDoor.transform.position, OriginalPos);
-        if(moveSpeed <= 0.0f)
+        // roadDistance = Vector3.Distance(deadDoor.transform.position, OriginalPos);
+        if (moveSpeed <= 0.0f)
             moveSpeed = 1.0f;
-       // walkTime = roadDistance / moveSpeed;
-       
+        // walkTime = roadDistance / moveSpeed;
+
         rb = GetComponent<Rigidbody2D>();
         //最多存活90s
         Invoke(nameof(Dead), 90f);
@@ -61,27 +61,29 @@ public class Hunter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         rb.velocity = Vector3.zero;
-        
+
     }
     //怪物的移动逻辑
     public void Move(bool goLeft)
     {
-        if(!isFreezed)
+        if (!isFreezed)
         {
-            transform.position += new Vector3(moveSpeed* Time.deltaTime * (goLeft?-1:1), 0);
+            transform.position += new Vector3(moveSpeed * Time.deltaTime * (goLeft ? -1 : 1), 0);
             //清理屏外多余怪物
-            if(transform.position.x < -20 )
+            if (transform.position.x < -20)
                 Dead();
         }
     }
 
     public void CutHealthPoint(int attack)
     {
-        if(attack > 0)
+        if (attack > 0)
         {
             healthPoint = Mathf.Max(0, healthPoint - attack);
         }
@@ -89,7 +91,7 @@ public class Hunter : MonoBehaviour
         //HPbar显示更新
         GameManager.instance.UpdateDisplayer(gameObject, ConstantTable.DIS_HPBAR);
         Debug.Log("受击怪物血量" + healthPoint.ToString());
-        if(healthPoint == 0)
+        if (healthPoint == 0)
         {
             Dead();
         }
@@ -101,7 +103,8 @@ public class Hunter : MonoBehaviour
         HunterManager.instance.hunters.Remove(this);
         Destroy(gameObject);
     }
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
 
     }
 
@@ -113,7 +116,8 @@ public class Hunter : MonoBehaviour
     {
         isFreezed = false;
     }
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnCollisionEnter2D(Collision2D other)
+    {
         //if(other.gameObject.tag.Equals(ConstantTable.TYPE_GUARDIAN))
         //    Freeze(); 
     }
