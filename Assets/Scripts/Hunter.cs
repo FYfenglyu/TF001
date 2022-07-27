@@ -36,11 +36,11 @@ public class Hunter : Lifebody
     //重载了Move，为了保持和以前的接口一致
     public void Move(bool goLeft)
     {
-        if(!isFreezed)
+        if (!isFreezed)
         {
             Move(new Vector3(moveSpeed* Time.deltaTime * (goLeft?-1:1), 0));
             //清理屏外多余怪物
-            if(transform.position.x < -20 )
+            if (transform.position.x < -20)
                 Dead();
         }
     }
@@ -51,5 +51,4 @@ public class Hunter : Lifebody
         HunterManager.instance.hunters.Remove(this);
         Destroy(gameObject);
     }
-
 }
