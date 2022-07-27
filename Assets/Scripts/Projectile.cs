@@ -91,6 +91,7 @@ public class Projectile : MonoBehaviour
         }
         else
         {
+            ProjectileManager.instance.ClearCurrCard();
             Invoke(nameof(Project), 0.12f);
         }
     }

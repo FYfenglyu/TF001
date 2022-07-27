@@ -31,11 +31,6 @@ public class GameManager : MonoBehaviour
     private int playerScore = 3;
 
 
-    private GameObject currProjectile;
-
-    private Transform anchorPos;
-
-
     // Start is called before the first frame update
     private void Awake()
     {
@@ -48,8 +43,6 @@ public class GameManager : MonoBehaviour
         targetPos = deadDoor.transform.position;
 
         InitPlayer();
-
-        anchorPos = GameObject.Find("AnchorPoint").transform;
     }
 
     void Start()
@@ -124,22 +117,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetCurrProj(GameObject projPrefab)
-    {
-        // if there exists a projectile, destroy it
-        if (currProjectile)
-        {
-            GameObject.Destroy(currProjectile);
-        }
-
-        // create a specified projectile
-        currProjectile = GameObject.Instantiate(projPrefab, anchorPos);
-    }
-
     public void UpdateDisplayer(GameObject go, string component)
     {
         //TODO
     }
-
-
 }
