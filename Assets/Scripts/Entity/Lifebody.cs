@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class Lifebody : MonoBehaviour
 {
-
-    
+    [Header("生命体参数")]
     [Header("生命体参数")]
     public int healthPoint = 200;
 
@@ -31,7 +30,6 @@ public class Lifebody : MonoBehaviour
     {
         OriginalPos = transform.position;
         rb = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
