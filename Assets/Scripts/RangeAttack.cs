@@ -58,24 +58,32 @@ public class RangeAttack : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D other) {
         GameObject go = other.gameObject;
-        if(TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
+        //本人为猎人
+        if(identity == ConstantTable.TYPE_HUNTER)
         {
-            if(identity == ConstantTable.TYPE_HUNTER)
+            //对方为守护者
+            if(go.tag.Equals(ConstantTable.TYPE_GUARDIAN) )
             {
-                if(go.tag.Equals(ConstantTable.TYPE_GUARDIAN) )
+                if(TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
                 {
-                    Debug.Log(TimeManager.instance.GetTimeSecond().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
+                
+                    //Debug.Log(TimeManager.instance.GetTimeSecond().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
                     Guardian injuredGuardian = go.GetComponent<Guardian>(); 
                     injuredGuardian.CutHealthPoint(attack);
                     lastAttackTime = TimeManager.instance.GetTimeSecond();
                 }
             
             }
-            else if(identity == ConstantTable.TYPE_GUARDIAN)
+        }
+        //本人为守护者
+        else if(identity == ConstantTable.TYPE_GUARDIAN)
+        {
+            //对方为猎人
+            if(go.tag.Equals(ConstantTable.TYPE_HUNTER))
             {
-                if(go.tag.Equals(ConstantTable.TYPE_HUNTER))
+                if(TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
                 {
-                    Debug.Log(TimeManager.instance.GetTimeSecond().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
+                    //Debug.Log(TimeManager.instance.GetTimeSecond().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
                     //发射子弹！
                     //Instantiate
                     //子弹动画！
@@ -84,10 +92,26 @@ public class RangeAttack : MonoBehaviour
                     Hunter injuredHunter = go.GetComponent<Hunter>(); 
                     injuredHunter.CutHealthPoint(attack);
                     lastAttackTime = TimeManager.instance.GetTimeSecond();
-
                 }
             }
         }
+        
 
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        /*
+        GameObject go = other.gameObject;
+
+        if(identity == ConstantTable.TYPE_HUNTER)
+        {
+            //对方为守护者
+            if(go.tag.Equals(ConstantTable.TYPE_GUARDIAN) )
+            {
+                gameObject.GetComponentInParent<Hunter>().Unfreeze();
+
+            }
+        }
+        */
     }
 }

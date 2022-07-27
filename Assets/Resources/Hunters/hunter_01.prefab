@@ -293,14 +293,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 8000
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 10
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!114 &5733125044682200313
 MonoBehaviour:
   m_ObjectHideFlags: 0

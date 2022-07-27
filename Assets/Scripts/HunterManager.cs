@@ -47,8 +47,7 @@ public class HunterManager : MonoBehaviour
         LoadHunterGenInfoList();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         foreach (Hunter m in hunters)
         {
@@ -56,9 +55,13 @@ public class HunterManager : MonoBehaviour
                 MoveHunter(m, true);
         }
 
-        GenerateHunterOnConfig();
     }
 
+    // Update is called once per frame
+    private void Update() {
+        GenerateHunterOnConfig();
+        
+    }
 
     public bool GenerateHunter(int hid, Vector3 birthPosition)
     {

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Hunter : MonoBehaviour
 {
@@ -41,7 +43,7 @@ public class Hunter : MonoBehaviour
     private float roadDistance;
     private Rigidbody2D rb;
 
-
+    private bool isFreezed = false;
     void Start()
     {
         OriginalPos = transform.position;
@@ -61,13 +63,20 @@ public class Hunter : MonoBehaviour
     {
     }
 
+    private void FixedUpdate() {
+        rb.velocity = Vector3.zero;
+        
+    }
     //怪物的移动逻辑
     public void Move(bool goLeft)
     {
-        transform.position += new Vector3(moveSpeed* Time.deltaTime * (goLeft?-1:1), 0);
-        //清理屏外多余怪物
-        if(transform.position.x < -20 )
-            Dead();
+        if(!isFreezed)
+        {
+            transform.position += new Vector3(moveSpeed* Time.deltaTime * (goLeft?-1:1), 0);
+            //清理屏外多余怪物
+            if(transform.position.x < -20 )
+                Dead();
+        }
     }
 
     public void CutHealthPoint(int attack)
@@ -96,4 +105,16 @@ public class Hunter : MonoBehaviour
 
     }
 
+    public void Freeze()
+    {
+        isFreezed = true;
+    }
+    public void Unfreeze()
+    {
+        isFreezed = false;
+    }
+    private void OnCollisionEnter2D(Collision2D other) {
+        //if(other.gameObject.tag.Equals(ConstantTable.TYPE_GUARDIAN))
+        //    Freeze(); 
+    }
 }

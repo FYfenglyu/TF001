@@ -1261,6 +1261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hunter_03
       objectReference: {fileID: 0}
+    - target: {fileID: 5409387268876532520, guid: a915e97b17382af4ab1286d77d9b30ed, type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6492899540716305032, guid: a915e97b17382af4ab1286d77d9b30ed, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1899,7 +1903,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1225212803}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -2042,7 +2046,6 @@ GameObject:
   - component: {fileID: 613741039}
   - component: {fileID: 613741038}
   - component: {fileID: 613741041}
-  - component: {fileID: 613741042}
   m_Layer: 5
   m_Name: CardScrollView
   m_TagString: Untagged
@@ -2148,19 +2151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 613741036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd5a13611a27eff48b4c1574f5cfe08c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &613741042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 613741036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5f631db57f20f459e9be1d8a1892be, type: 3}
+  m_Script: {fileID: 11500000, guid: a5e31e5fb6964284ea0c55454931068d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &625322311
@@ -2521,7 +2512,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &827732345
 GameObject:
@@ -3812,13 +3803,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 990224863}
   - {fileID: 516219029}
   - {fileID: 2048874882}
   - {fileID: 32300585933442780}
   - {fileID: 7819443296554853770}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1289859728
 GameObject:
@@ -4074,6 +4064,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 217532764943376528, guid: ff5d84ef0f31d0a44923b5f926fa4b56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300902923561312560, guid: ff5d84ef0f31d0a44923b5f926fa4b56, type: 3}
+      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5832732801537086587, guid: ff5d84ef0f31d0a44923b5f926fa4b56, type: 3}
@@ -4658,6 +4652,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1260376372615167393, guid: 68fb6407a9a620a46a51ad896d1b91bb, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 6017506636569315562, guid: 68fb6407a9a620a46a51ad896d1b91bb, type: 3}
       propertyPath: m_Name
       value: hunter_02
@@ -4777,6 +4775,7 @@ GameObject:
   - component: {fileID: 1694486985}
   - component: {fileID: 1694486984}
   - component: {fileID: 1694486988}
+  - component: {fileID: 1694486989}
   m_Layer: 5
   m_Name: UILayer
   m_TagString: Untagged
@@ -4885,6 +4884,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ccde81ace520349a2be9f3ece69da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1694486989
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694486983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc1d8e72474ed8d4aa57dd0b685767ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1715819660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8877942948411482185, guid: 72f5c456bbfeddd4083a430b94f05d36, type: 3}
@@ -6271,14 +6290,6 @@ PrefabInstance:
     - target: {fileID: 2942558704121202650, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102454091799090637, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
-      propertyPath: cost
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6102454091799090637, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
-      propertyPath: attackSpeed
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
