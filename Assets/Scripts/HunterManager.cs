@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 using System.IO;
 using System;
 using System.Text;
@@ -117,7 +116,7 @@ public class HunterManager : MonoBehaviour
             if (TimeManager.instance.GetTimeSecond() >= hunterGenInfoList[currHunterIndex].birthTime)
             {
                 GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos);
-                Debug.Log("Generate");
+                //Debug.Log("Generate");
             }
             else
             {

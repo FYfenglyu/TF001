@@ -44,6 +44,7 @@ public class Missile : MonoBehaviour
         isCollisied = true;
         GameObject go = other.gameObject;
         Debug.Log("撞到了" + go.tag);
+
         if(go.tag.Equals(ConstantTable.TYPE_HUNTER) )
         {
             Hunter injuredHunter = go.GetComponent<Hunter>();
@@ -64,9 +65,13 @@ public class Missile : MonoBehaviour
             }
             //SelfClear();
         }
-        else
+        else if(go.tag.Equals(ConstantTable.TYPE_GUARDIAN))
         {
-
+            if(missileType.Equals(ConstantTable.TYPE_GUARDIAN))
+            {
+                Guardian switchGuardian = go.GetComponent<Guardian>();
+                switchGuardian.Dead();
+            }
         }
 
     }

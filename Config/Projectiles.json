@@ -4,15 +4,15 @@
         "icon": "Image/Stone",
         "type": "Missile",
         "prefab": "Missile/stone_PROJ",
-        "cost": 50,
-        "attack": 10
+        "cost": 10,
+        "attack": 35
     },
     {
         "cardID": 2,
         "icon": "Image/Elephant_01",
         "type": "Guardian",
         "prefab": "Guardian/elephant_PROJ",
-        "cost": 100,
-        "attack": 30
+        "cost": 15,
+        "attack": 15
     }
 ]
