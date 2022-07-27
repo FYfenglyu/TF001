@@ -116,4 +116,9 @@ public class ProjectileManager : MonoBehaviour
     {
         currCard.ChangeIconImgMaterial(spriteDefault);
     }
+
+    public void DetachProjectile()
+    {
+        currProj = null;
+    }
 }

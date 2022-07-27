@@ -10,8 +10,7 @@ public class HPBar : MonoBehaviour
 
     private float currHP;
 
-    // HP bar image
-    private Image HPBarContImg;
+    private Image HPBarContImg;    // HP bar image
 
     // Start is called before the first frame update
     private void Start()
@@ -21,6 +20,16 @@ public class HPBar : MonoBehaviour
 
         // set total HP as current HP
         SetCurrHP(totalHP);
+    }
+
+    private void Update()
+    {
+        MoveWithOwner();
+    }
+
+    private void MoveWithOwner()
+    {
+
     }
 
     // set total health point
