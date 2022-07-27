@@ -66,11 +66,11 @@ public class RangeAttack : MonoBehaviour
             {
                 if(TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
                 {
-                
                     //Debug.Log(TimeManager.instance.GetTimeSecond().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
                     Guardian injuredGuardian = go.GetComponent<Guardian>(); 
                     injuredGuardian.CutHealthPoint(attack);
                     lastAttackTime = TimeManager.instance.GetTimeSecond();
+                    gameObject.GetComponentInParent<Hunter>().Still();
                 }
             
             }
@@ -100,7 +100,7 @@ public class RangeAttack : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        /*
+        
         GameObject go = other.gameObject;
 
         if(identity == ConstantTable.TYPE_HUNTER)
@@ -108,10 +108,10 @@ public class RangeAttack : MonoBehaviour
             //对方为守护者
             if(go.tag.Equals(ConstantTable.TYPE_GUARDIAN) )
             {
-                gameObject.GetComponentInParent<Hunter>().Unfreeze();
+                gameObject.GetComponentInParent<Hunter>().Unstill();
 
             }
         }
-        */
+        
     }
 }
