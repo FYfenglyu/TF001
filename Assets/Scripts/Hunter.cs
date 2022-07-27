@@ -33,17 +33,18 @@ public class Hunter : Lifebody
         }
     }
 
-    //怪物的移动逻辑
-    public override void Move(bool goLeft)
+    //重载了Move，为了保持和以前的接口一致
+    public void Move(bool goLeft)
     {
         if(!isFreezed)
         {
-            transform.position += new Vector3(moveSpeed* Time.deltaTime * (goLeft?-1:1), 0);
+            Move(new Vector3(moveSpeed* Time.deltaTime * (goLeft?-1:1), 0));
             //清理屏外多余怪物
             if(transform.position.x < -20 )
                 Dead();
         }
     }
+
     public override void Dead()
     {
         //清除Manager内列表信息
