@@ -26,6 +26,8 @@ public class HunterManager : MonoBehaviour
     protected Hunter hunter02;
     protected Hunter hunter03;
 
+    private GameObject hunterContainer;     // UI : hunter list
+
     private List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();    // hunter spawn information list (spawn time, hunter ID)
     private int currHunterIndex = 0;    // hunter index which is the next one to be spawned
     private int maxHunterIndex;     // total hunter number
@@ -39,6 +41,8 @@ public class HunterManager : MonoBehaviour
         hunter01 = Resources.Load<Hunter>("Hunters/hunter_01");
         hunter02 = Resources.Load<Hunter>("Hunters/hunter_02");
         hunter03 = Resources.Load<Hunter>("Hunters/hunter_03");
+
+        hunterContainer = GameObject.Find("Hunters");
 
         LoadHunterGenInfoList();
     }
@@ -62,7 +66,10 @@ public class HunterManager : MonoBehaviour
         if (prototype)
         {
             Hunter newHunter = GameObject.Instantiate(prototype, birthPosition, Quaternion.identity);
+            newHunter.transform.SetParent(hunterContainer.transform, false);
+
             hunters.Add(newHunter);
+            
             return true;
         }
         return false;
@@ -105,8 +112,6 @@ public class HunterManager : MonoBehaviour
 
         // set total hunter number
         maxHunterIndex = hunterGenInfoList.Count;
-        Debug.Log("hunter number: ");
-        Debug.Log(maxHunterIndex);
     }
 
     private void GenerateHunterOnConfig()
@@ -115,8 +120,15 @@ public class HunterManager : MonoBehaviour
         {
             if (TimeManager.instance.GetTimeSecond() >= hunterGenInfoList[currHunterIndex].birthTime)
             {
+<<<<<<< HEAD
                 GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos);
                 //Debug.Log("Generate");
+=======
+                if(!GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos))
+                {
+                    Debug.Log("Fali to generate hunter.");
+                }
+>>>>>>> d6ff18d7082a0a4efcbaf953deca66c7e4da1244
             }
             else
             {

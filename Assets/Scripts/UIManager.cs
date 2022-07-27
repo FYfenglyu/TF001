@@ -31,6 +31,11 @@ public class UIManager : MonoBehaviour
 
     public void DisableCardScrollView()
     {
-        CardScrollView.SetActive(false);
+        CardScrollView.GetComponent<CardScrollView>().Hide();
+    }
+
+    public void EnableCardScrollView()
+    {
+        CardScrollView.GetComponent<CardScrollView>().Display();
     }
 }

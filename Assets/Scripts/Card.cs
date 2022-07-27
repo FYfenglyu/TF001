@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems; // IPointerClickHandler
 
 public class Card : MonoBehaviour, IPointerClickHandler
@@ -10,10 +11,15 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     private ProjAttribute corrProjAttr;  // corresponding projectile information
 
+    private Image iconImg;
+
     private void Start()
     {
         // load corresponding projectile information
         corrProjAttr = ProjectileData.instance.GetProjAttr(projCardID);
+
+        // get icon image
+        iconImg = transform.Find("Icon").GetComponent<Image>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -30,10 +36,13 @@ public class Card : MonoBehaviour, IPointerClickHandler
         }
 
         // if card cost is lower than current cost or equal to current cost,
-        // generate a projectile on card generate point
-        // 1. get prefab with projectileCardID from projectileInfo
-        // 2. let game manager generate corresponding instantiate
-        GameObject projectilePrefab = (GameObject)Resources.Load(corrProjAttr.prefab);
-        GameManager.instance.SetCurrProj(projectilePrefab);
+        // let projectile manager generate corresponding instantiate
+
+        ProjectileManager.instance.SetCurrCard(this);
+    }
+
+    public void ChangeIconImgMaterial(Material material)
+    {
+        iconImg.material = material;
     }
 }
