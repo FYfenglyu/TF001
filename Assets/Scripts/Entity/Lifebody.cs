@@ -54,8 +54,9 @@ public class Lifebody : MonoBehaviour
         }
     }
 
-    public virtual void Move(bool direction)
+    public virtual void Move(Vector3 displacement)
     {
+            transform.position += displacement;
 
     }
     public virtual void Dead()
