@@ -56,6 +56,11 @@ public class Lifebody : MonoBehaviour
         }
     }
 
+    public virtual void Attack(GameObject go)
+    {
+        
+    }
+
     public virtual void Move(Vector3 displacement)
     {
             transform.position += displacement;
