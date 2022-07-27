@@ -38,27 +38,10 @@ public class HPBar : MonoBehaviour
     }
 
 
-    // ????????????????????????????????????????
-    // weird
     private int GetOwerHP()
     {
-        // LifeBody lifeBody = owner.GetComponent<LifeBody>();
-        // return lifeBody.GetHealthPoint;
-
-        // get total cost
-        Hunter hunter = owner.GetComponent<Hunter>();
-        if (hunter)
-        {
-            return hunter.healthPoint;
-        }
-
-        Guardian guardian = owner.GetComponent<Guardian>();
-        if (guardian)
-        {
-            return guardian.healthPoint;
-        }
-
-        return 0;   // hahaha
+        Lifebody lifebody = owner.GetComponent<Lifebody>();
+        return lifebody.healthPoint;
     }
 
     private void Update()

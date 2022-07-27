@@ -51,8 +51,7 @@ public class HunterManager : MonoBehaviour
     {
         foreach (Hunter m in hunters)
         {
-            if (m.moving)
-                MoveHunter(m, true);
+            MoveHunter(m, true);
         }
 
     }

@@ -18,7 +18,7 @@ public class RangeAttack : MonoBehaviour
     void Start()
     {
         Hunter try_hunter = gameObject.GetComponentInParent<Hunter>();
-        if(try_hunter)
+        if (try_hunter)
         {
             identity = ConstantTable.TYPE_HUNTER;
             attack = try_hunter.attack;
@@ -26,15 +26,15 @@ public class RangeAttack : MonoBehaviour
             attackRange = try_hunter.attackRange;
         }
         Guardian try_guardian = gameObject.GetComponentInParent<Guardian>();
-        if(try_guardian)
+        if (try_guardian)
         {
             identity = ConstantTable.TYPE_GUARDIAN;
             attack = try_guardian.attack;
             attackSpeed = try_guardian.attackSpeed;
-            attackRange = try_guardian.attackRange; 
-        }   
+            attackRange = try_guardian.attackRange;
+        }
         Missile try_missile = gameObject.GetComponentInParent<Missile>();
-        if(try_missile)
+        if (try_missile)
         {
             identity = ConstantTable.TYPE_MISSILE;
             attack = try_missile.attack;
@@ -53,35 +53,36 @@ public class RangeAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    } 
-    
-    private void OnTriggerStay2D(Collider2D other) {
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
         GameObject go = other.gameObject;
         //本人为猎人
-        if(identity == ConstantTable.TYPE_HUNTER)
+        if (identity == ConstantTable.TYPE_HUNTER)
         {
             //对方为守护者
-            if(go.tag.Equals(ConstantTable.TYPE_GUARDIAN) )
+            if (go.tag.Equals(ConstantTable.TYPE_GUARDIAN))
             {
-                if(TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
+                if (TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
                 {
-                
                     //Debug.Log(TimeManager.instance.GetTimeSecond().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
-                    Guardian injuredGuardian = go.GetComponent<Guardian>(); 
+                    Guardian injuredGuardian = go.GetComponent<Guardian>();
                     injuredGuardian.CutHealthPoint(attack);
                     lastAttackTime = TimeManager.instance.GetTimeSecond();
+                    gameObject.GetComponentInParent<Hunter>().Still();
                 }
-            
+
             }
         }
         //本人为守护者
-        else if(identity == ConstantTable.TYPE_GUARDIAN)
+        else if (identity == ConstantTable.TYPE_GUARDIAN)
         {
             //对方为猎人
-            if(go.tag.Equals(ConstantTable.TYPE_HUNTER))
+            if (go.tag.Equals(ConstantTable.TYPE_HUNTER))
             {
-                if(TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
+                if (TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
                 {
                     //Debug.Log(TimeManager.instance.GetTimeSecond().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
                     //发射子弹！
@@ -89,29 +90,30 @@ public class RangeAttack : MonoBehaviour
                     //子弹动画！
                     //撞到人再扣血
                     //这里临时手动扣一下
-                    Hunter injuredHunter = go.GetComponent<Hunter>(); 
+                    Hunter injuredHunter = go.GetComponent<Hunter>();
                     injuredHunter.CutHealthPoint(attack);
                     lastAttackTime = TimeManager.instance.GetTimeSecond();
                 }
             }
         }
-        
+
 
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        /*
+    private void OnTriggerExit2D(Collider2D other)
+    {
+
         GameObject go = other.gameObject;
 
-        if(identity == ConstantTable.TYPE_HUNTER)
+        if (identity == ConstantTable.TYPE_HUNTER)
         {
             //对方为守护者
-            if(go.tag.Equals(ConstantTable.TYPE_GUARDIAN) )
+            if (go.tag.Equals(ConstantTable.TYPE_GUARDIAN))
             {
-                gameObject.GetComponentInParent<Hunter>().Unfreeze();
+                gameObject.GetComponentInParent<Hunter>().Unstill();
 
             }
         }
-        */
+
     }
 }
