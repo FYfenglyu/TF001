@@ -46,21 +46,19 @@ public class HPBar : MonoBehaviour
 
     private void Update()
     {
-        MoveWithOwner();
+        if (owner == null)
+        {
+            GameObject.Destroy(gameObject);
+            return;
+        }
 
+        MoveWithOwner();
         SetCurrHP(GetOwerHP());
     }
 
     private void MoveWithOwner()
     {
-        if (owner)
-        {
-            transform.position = owner.transform.position + new Vector3(0, yDistance, 0);
-        }
-        else
-        {
-            GameObject.Destroy(gameObject);
-        }
+        transform.position = owner.transform.position + new Vector3(0, yDistance, 0);
     }
 
     // set the fillAmount of  HPBarContent to show current HP
