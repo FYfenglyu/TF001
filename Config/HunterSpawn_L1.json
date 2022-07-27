@@ -1,0 +1,38 @@
+[
+    {
+        "birthTime": 0,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 10,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 20,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 25,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 25.1,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 25.2,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 25.3,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 28,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 30,
+        "hunterID": 301
+    }
+]

@@ -8,7 +8,7 @@ using LitJson;
 
 public class HunterGenInfo : IComparable<HunterGenInfo>
 {
-    public float birthTime;
+    public double birthTime;
     public int hunterID;
 
     // make it comparable
@@ -53,13 +53,11 @@ public class HunterManager : MonoBehaviour
         {
             MoveHunter(m, true);
         }
-
     }
 
     // Update is called once per frame
     private void Update() {
         GenerateHunterOnConfig();
-        
     }
 
     public bool GenerateHunter(int hid, Vector3 birthPosition)
@@ -106,7 +104,7 @@ public class HunterManager : MonoBehaviour
     private void LoadHunterGenInfoList()
     {
         // load hunter spawn information list from json file
-        string jsonFilePath = Application.streamingAssetsPath + "/../../Config/HunterSpwanTime.json";
+        string jsonFilePath = Application.streamingAssetsPath + "/../../Config/HunterSpawn_L1.json";
         hunterGenInfoList = JsonMapper.ToObject<List<HunterGenInfo>>(File.ReadAllText(jsonFilePath));
 
         // sort hunter generation information by spawn time 
@@ -126,7 +124,6 @@ public class HunterManager : MonoBehaviour
                 {
                     Debug.Log("Fali to generate hunter.");
                 }
-
             }
             else
             {
