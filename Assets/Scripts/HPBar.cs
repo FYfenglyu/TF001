@@ -8,15 +8,29 @@ public class HPBar : MonoBehaviour
     [Header("总血量")]
     public float totalHP = 100;
 
+    [Header("血条对应角色")]
+    public GameObject owner;
+
+    [Header("血条与人物的y轴距离")]
+    public float yDistance = 0.8f;
+
     private float currHP;
 
-    private Image HPBarContImg;    // HP bar image
+    private Image HPBarContImg;    // HP bar image    
 
     // Start is called before the first frame update
     private void Start()
     {
         // get component
         HPBarContImg = transform.Find("HPBarContent").GetComponent<Image>();
+
+        // set owner
+        owner = transform.parent.gameObject;
+
+        // get HP bars 
+        // and set it as the parent of HP bar
+        GameObject HPBars = GameObject.Find("HPBars");
+        transform.SetParent(HPBars.transform, false);
 
         // set total HP as current HP
         SetCurrHP(totalHP);
@@ -29,7 +43,14 @@ public class HPBar : MonoBehaviour
 
     private void MoveWithOwner()
     {
-
+        if (owner)
+        {
+            transform.position = owner.transform.position + new Vector3(0, yDistance, 0);
+        }
+        else
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 
     // set total health point
@@ -54,8 +75,8 @@ public class HPBar : MonoBehaviour
     }
 
     // get current health point
-    public float GetCurrHP() 
+    public float GetCurrHP()
     {
-        return currHP; 
+        return currHP;
     }
 }
