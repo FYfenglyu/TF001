@@ -120,15 +120,11 @@ public class HunterManager : MonoBehaviour
         {
             if (TimeManager.instance.GetTimeSecond() >= hunterGenInfoList[currHunterIndex].birthTime)
             {
-<<<<<<< HEAD
-                GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos);
-                //Debug.Log("Generate");
-=======
                 if(!GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos))
                 {
                     Debug.Log("Fali to generate hunter.");
                 }
->>>>>>> d6ff18d7082a0a4efcbaf953deca66c7e4da1244
+
             }
             else
             {

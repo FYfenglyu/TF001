@@ -2027,11 +2027,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 12
-=======
   m_RootOrder: 8
->>>>>>> d6ff18d7082a0a4efcbaf953deca66c7e4da1244
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &613741036
 GameObject:
@@ -3130,11 +3126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 925561229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 93efafe0fdfa56741b35b607065d5d32, type: 3}
-=======
   m_Script: {fileID: 11500000, guid: 516819b675b9d04498f6e408f5745e85, type: 3}
->>>>>>> d6ff18d7082a0a4efcbaf953deca66c7e4da1244
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &963551122
@@ -3268,13 +3260,8 @@ Transform:
   m_LocalScale: {x: 0.28014946, y: 0.28014946, z: 0.28014946}
   m_ConstrainProportionsScale: 0
   m_Children: []
-<<<<<<< HEAD
-  m_Father: {fileID: 1225212803}
-  m_RootOrder: 0
-=======
   m_Father: {fileID: 0}
   m_RootOrder: 13
->>>>>>> d6ff18d7082a0a4efcbaf953deca66c7e4da1244
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1037258136
 GameObject:
