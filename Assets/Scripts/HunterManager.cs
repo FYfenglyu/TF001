@@ -116,6 +116,10 @@ public class HunterManager : MonoBehaviour
 
         // sort hunter generation information by spawn time 
         hunterGenInfoList.Sort();
+        foreach(HunterGenInfo info_i in hunterGenInfoList)
+        {
+            Debug.Log(new String("Spawn Hunter: ")+info_i.birthTime.ToString()+new String(" : ") + info_i.hunterID.ToString());
+        }
 
         // set total hunter number
         maxHunterIndex = hunterGenInfoList.Count;
