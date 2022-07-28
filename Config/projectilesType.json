@@ -1,4 +1,4 @@
 {
-    "Missile": "Image/CardTypeIcon_Missile",
-    "Guardian": "Image/CardTypeIcon_Guardian"
+    "Missile": "Image/Cards/TypeIcon/tb_gj",
+    "Guardian": "Image/Cards/TypeIcon/tb_swz"
 }

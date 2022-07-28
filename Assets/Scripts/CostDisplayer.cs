@@ -5,8 +5,15 @@ using UnityEngine.UI;
 
 public class CostDisplayer : MonoBehaviour
 {
+    private Text costText;
+
     private void Start()
     {
-        GetComponent<Text>().text = GameManager.instance.GetCurrCost().ToString();
+        costText = GameObject.Find("CostText").GetComponent<Text>();
+    }
+
+    public void DisplayCurrCost(int currCost)
+    {
+        costText.text = currCost.ToString();
     }
 }

@@ -35,7 +35,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
 
+    void Start()
+    {
         birthDoor = GameObject.FindWithTag(TAG_BIRTHDOOR);
         deadDoor = GameObject.FindWithTag(TAG_DEADDOOR);
 
@@ -43,10 +46,6 @@ public class GameManager : MonoBehaviour
         targetPos = deadDoor.transform.position;
 
         InitPlayer();
-    }
-
-    void Start()
-    {
     }
 
 
@@ -72,7 +71,7 @@ public class GameManager : MonoBehaviour
     public void InitPlayer()
     {
         playerScore = 3;
-        currCost = 200;
+        SetCurrCost(200);
     }
     public void LoseScore()
     {

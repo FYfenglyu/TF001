@@ -43,6 +43,7 @@ public class Missile : MonoBehaviour
 
         isCollisied = true;
         GameObject go = other.gameObject;
+
         Debug.Log("撞到了" + go.tag);
 
         if(go.tag.Equals(ConstantTable.TYPE_HUNTER) )

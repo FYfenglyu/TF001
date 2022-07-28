@@ -7,8 +7,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    private GameObject CostDisplayer;
-    private GameObject CardScrollView;    // Scroll View 
+    private GameObject costDisplayer;
+    private GameObject cardScrollView;    // Scroll View 
 
 
     private UIManager() {}
@@ -16,26 +16,27 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        cardScrollView = GameObject.Find("CardScrollView");
+        costDisplayer = GameObject.Find("CostDisplayer");        
     }
 
     private void Start()
     {
-        CardScrollView = GameObject.Find("CardScrollView");
-        CostDisplayer = GameObject.Find("CostDisplayer");
+
     }
 
     public void DisplayCurrCost(int currCost)
     {
-        CostDisplayer.GetComponent<Text>().text = currCost.ToString();
+        costDisplayer.GetComponent<CostDisplayer>().DisplayCurrCost(currCost);
     }
 
     public void DisableCardScrollView()
     {
-        CardScrollView.GetComponent<CardScrollView>().Hide();
+        cardScrollView.GetComponent<CardScrollView>().Hide();
     }
 
     public void EnableCardScrollView()
     {
-        CardScrollView.GetComponent<CardScrollView>().Display();
+        cardScrollView.GetComponent<CardScrollView>().Display();
     }
 }
