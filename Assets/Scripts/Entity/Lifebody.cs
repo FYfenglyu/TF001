@@ -82,7 +82,7 @@ public class Lifebody : MonoBehaviour
 
         //HPbar显示更新
         GameManager.instance.UpdateDisplayer(gameObject, ConstantTable.DIS_HPBAR);
-        Debug.Log("受击生物血量" + healthPoint.ToString());
+        //Debug.Log("受击生物血量" + healthPoint.ToString());
         
         if(healthPoint == 0)
         {
@@ -94,7 +94,7 @@ public class Lifebody : MonoBehaviour
     {
         if (TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
         {
-            Debug.Log("attackInterval: " + attackInterval.ToString());
+            //Debug.Log("attackInterval: " + attackInterval.ToString());
             Lifebody injuredLb = injuredGo.GetComponent<Lifebody>();
             injuredLb.CutHealthPoint(attack);
             lastAttackTime = TimeManager.instance.GetTimeSecond();
@@ -136,22 +136,22 @@ public class Lifebody : MonoBehaviour
     protected virtual void AnimateAttackOn() 
     {
         if(ator) 
-            ator.SetBool("attack",false);
+            ator.SetBool("attack", false);
     }
     protected virtual void AnimateWalkOn()
     {
         if(ator) 
-            ator.SetBool("walk",true);
+            ator.SetBool("walk", true);
     }
     protected virtual void AnimateAttackOff() 
     {
         if(ator) 
-            ator.SetBool("attack",false);
+            ator.SetBool("attack", false);
     }
     protected virtual void AnimateWalkOff() 
     {
         if(ator) 
-            ator.SetBool("walk",false);
+            ator.SetBool("walk", false);
     }
 
     private void OnDestroy() {
