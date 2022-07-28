@@ -60,10 +60,10 @@ public class Lifebody : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ator = GetComponent<Animator>();
         //自动获取种类
-        if(tag == ConstantTable.TYPE_GUARDIAN)
-            lifebodyType = ConstantTable.TYPE_GUARDIAN;
-        else if(tag == ConstantTable.TYPE_HUNTER)
-            lifebodyType = ConstantTable.TYPE_HUNTER;
+        if(tag == TYPE_GUARDIAN)
+            lifebodyType = TYPE_GUARDIAN;
+        else if(tag == TYPE_HUNTER)
+            lifebodyType = TYPE_HUNTER;
 
 
         //计算时间间隔
@@ -81,7 +81,7 @@ public class Lifebody : MonoBehaviour
         }
 
         //HPbar显示更新
-        GameManager.instance.UpdateDisplayer(gameObject, ConstantTable.DIS_HPBAR);
+        GameManager.instance.UpdateDisplayer(gameObject, DIS_HPBAR);
         //Debug.Log("受击生物血量" + healthPoint.ToString());
         
         if(healthPoint == 0)

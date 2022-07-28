@@ -15,4 +15,10 @@ public class ConstantTable
     public const string DIS_CARDITEM = "r";
     public const string DIS_CARDLIST = "";
     public const string DIS_HPBAR = "HPbar";
+
+    //地址
+    public const string PATH_PROJECTILECARD = "Prefabs/UI/ProjectileCard";
+    public const string PATH_ELEPHANT_GUA = "Prefabs/Guardian/elephant_GUA";
+
+
 }
