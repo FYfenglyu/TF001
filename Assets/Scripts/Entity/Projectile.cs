@@ -63,7 +63,6 @@ public class Projectile : MonoBehaviour
             {
                 transform.position = anchor.position + (transform.position - anchor.position).normalized * maxDis;
             }
-
         }
     }
     private void OnMouseDown()

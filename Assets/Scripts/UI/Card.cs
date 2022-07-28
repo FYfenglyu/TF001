@@ -44,7 +44,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     public void ChangeIconImgMaterial(Material material)
     {
-        // iconImg.material = material;  // attention : a bug here, disable it and i will fix it later
+        iconImg.material = material;  // attention : a bug here, disable it and i will fix it later
     }
 
     public ref bool IsSelected() { return ref isSelected; }
