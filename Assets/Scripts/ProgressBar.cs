@@ -12,12 +12,16 @@ public class ProgressBar : MonoBehaviour
     private Image HPBarContImg;    // HP bar image
     private Text progressText;  // HP text
 
-    // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         // get component
         HPBarContImg = transform.Find("HPBarContent").GetComponent<Image>();
         progressText = transform.Find("ProgressText").GetComponent<Text>();
+    }
+
+    // Start is called before the first frame update
+    private void Start()
+    {
     }
 
     // set current health point
