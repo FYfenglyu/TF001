@@ -7,6 +7,6 @@ public class ContinueButton : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-		Time.timeScale = 1;
+        Time.timeScale = 1;
     }
 }
