@@ -7,9 +7,9 @@ public class CostDisplayer : MonoBehaviour
 {
     private Text costText;
 
-    private void Start()
+    private void Awake()
     {
-        costText = GameObject.Find("CostText").GetComponent<Text>();
+        costText = GameObject.Find("CostText").GetComponent<Text>();        
     }
 
     public void DisplayCurrCost(int currCost)

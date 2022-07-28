@@ -93,32 +93,44 @@ public class ProjectileManager : MonoBehaviour
 
     public void SetCurrCard(Card card)
     {
+        // set current card as null
+        if (card == null)
+        {
+            // chnage the icon image material to sprite default
+            currCard.ChangeIconImgMaterial(spriteDefault);
+            currCard.IsSelected() = false;
+            currCard = null;
+
+            // if current projectile is not null
+            if (currProj)
+            {
+                // if current projectile is not projected, destroy it
+                if (!currProj.GetComponent<Projectile>().IsProjectiled()) GameObject.Destroy(currProj);
+                currProj = null;                
+            }
+            return;
+        }
+
         // cancle the highlight of last card
         // and if there exists a projectile, destroy it
         if (currProj)
         {
+            currCard.IsSelected() = false;
+            currCard.ChangeIconImgMaterial(spriteDefault);
+
             GameObject.Destroy(currProj);
-            ClearCurrCard();
         }
 
-        // highlight current card
-        card.ChangeIconImgMaterial(highLight);
 
         // set card as current card
         currCard = card;
+        currCard.IsSelected() = true;
+
+        // highlight current card
+        // currCard.ChangeIconImgMaterial(highLight);
 
         // create a specified projectile, and set it as current projectile
         GameObject projPrefab = (GameObject)Resources.Load(ProjectileData.instance.GetProjAttr(card.projCardID).prefab);
         currProj = GameObject.Instantiate(projPrefab, anchorPos);
-    }
-
-    public void ClearCurrCard()
-    {
-        currCard.ChangeIconImgMaterial(spriteDefault);
-    }
-
-    public void DetachProjectile()
-    {
-        currProj = null;
     }
 }

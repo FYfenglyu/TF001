@@ -27,6 +27,7 @@ public class HunterManager : MonoBehaviour
     protected Hunter hunter03;
 
     private GameObject hunterContainer;     // UI : hunter list
+    private ProgressBar gameProgress;
 
     private List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();    // hunter spawn information list (spawn time, hunter ID)
     private int currHunterIndex = 0;    // hunter index which is the next one to be spawned
@@ -43,8 +44,12 @@ public class HunterManager : MonoBehaviour
         hunter03 = Resources.Load<Hunter>("Hunters/hunter_03");
 
         hunterContainer = GameObject.Find("Hunters");
+        gameProgress = GameObject.Find("GameProgress").GetComponent<ProgressBar>();
+
 
         LoadHunterGenInfoList();
+
+        gameProgress.SetTotalHP(maxHunterIndex);
     }
 
     private void FixedUpdate()
@@ -56,8 +61,10 @@ public class HunterManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update() {
+    private void Update()
+    {
         GenerateHunterOnConfig();
+        gameProgress.SetCurrHP(maxHunterIndex - currHunterIndex);
     }
 
     public bool GenerateHunter(int hid, Vector3 birthPosition)
@@ -69,7 +76,7 @@ public class HunterManager : MonoBehaviour
             newHunter.transform.SetParent(hunterContainer.transform, false);
 
             hunters.Add(newHunter);
-            
+
             return true;
         }
         return false;
@@ -120,7 +127,7 @@ public class HunterManager : MonoBehaviour
         {
             if (TimeManager.instance.GetTimeSecond() >= hunterGenInfoList[currHunterIndex].birthTime)
             {
-                if(!GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos))
+                if (!GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos))
                 {
                     Debug.Log("Fali to generate hunter.");
                 }

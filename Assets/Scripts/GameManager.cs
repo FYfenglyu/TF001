@@ -35,16 +35,16 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
 
-    void Start()
-    {
         birthDoor = GameObject.FindWithTag(TAG_BIRTHDOOR);
         deadDoor = GameObject.FindWithTag(TAG_DEADDOOR);
 
         originalPos = birthDoor.transform.position;
         targetPos = deadDoor.transform.position;
+    }
 
+    void Start()
+    {
         InitPlayer();
     }
 
@@ -103,13 +103,14 @@ public class GameManager : MonoBehaviour
         currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost);
 
         // display current cost
-        UIManager.instance.DisplayCurrCost(currCost);
+        if (UIManager.instance) UIManager.instance.DisplayCurrCost(currCost);
+        else Debug.Log("GameManager ： Null UI Manager.");
     }
 
     private void IncCostPreS()
     {
         float currTime = TimeManager.instance.GetTimeSecond();
-        if(TimeManager.instance.GetTimeSecond() - lastCostIncTime >= 1.0f)
+        if (TimeManager.instance.GetTimeSecond() - lastCostIncTime >= 1.0f)
         {
             SetCurrCost(currCost + costIncPerS);
             lastCostIncTime = currTime;

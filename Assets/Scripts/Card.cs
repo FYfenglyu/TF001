@@ -13,6 +13,8 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
     private Image iconImg;
 
+    private bool isSelected = false;
+
     private void Start()
     {
         // load corresponding projectile information
@@ -37,12 +39,13 @@ public class Card : MonoBehaviour, IPointerClickHandler
 
         // if card cost is lower than current cost or equal to current cost,
         // let projectile manager generate corresponding instantiate
-
-        ProjectileManager.instance.SetCurrCard(this);
+        ProjectileManager.instance.SetCurrCard(isSelected ? null : this);
     }
 
     public void ChangeIconImgMaterial(Material material)
     {
-        iconImg.material = material;
+        // iconImg.material = material;  // attention : a bug here, disable it and i will fix it later
     }
+
+    public ref bool IsSelected() { return ref isSelected; }
 }

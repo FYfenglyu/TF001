@@ -49,7 +49,6 @@ public class Projectile : MonoBehaviour
         //通知减费
         GameManager.instance.CutCost(gameObject.GetComponent<Missile>().GetCost());
         sj.enabled = false;
-        isProjected = true;
     }
 
     private void MoveWithMouse()
@@ -74,7 +73,7 @@ public class Projectile : MonoBehaviour
 
         // hide the card scroll view if the projectile is clicked
         UIManager.instance.DisableCardScrollView();
-        
+
         isClicked = true;
 
         rb.isKinematic = true;
@@ -91,8 +90,8 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            ProjectileManager.instance.ClearCurrCard();
-            ProjectileManager.instance.DetachProjectile();
+            isProjected = true;
+            ProjectileManager.instance.SetCurrCard(null);
             Invoke(nameof(Project), 0.12f);
         }
     }
@@ -103,6 +102,9 @@ public class Projectile : MonoBehaviour
             GameObject.Instantiate(gameObject, originalPos, Quaternion.identity);
         test = false;
     }
+
+    public bool IsProjectiled() { return isProjected; }
+
     private void OnDestroy()
     {
 
