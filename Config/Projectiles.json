@@ -3,7 +3,7 @@
         "cardID": 1,
         "icon": "Image/Cards/kp_st",
         "type": "Missile",
-        "prefab": "Missile/stone_PROJ",
+        "prefab": "Prefabs/Missile/stone_PROJ",
         "cost": 10,
         "attack": 35
     },
@@ -11,7 +11,7 @@
         "cardID": 2,
         "icon": "Image/Cards/kp_dx",
         "type": "Guardian",
-        "prefab": "Guardian/elephant_PROJ",
+        "prefab": "Prefabs/Guardian/elephant_PROJ",
         "cost": 15,
         "attack": 15
     }
