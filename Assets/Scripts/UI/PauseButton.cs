@@ -7,6 +7,6 @@ public class PauseButton : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-		Time.timeScale = 0;
+        Time.timeScale = 0;
     }
 }
