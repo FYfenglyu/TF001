@@ -65,18 +65,8 @@ public class RangeAttack : MonoBehaviour
             //对方为守护者
             if (go.tag.Equals(ConstantTable.TYPE_GUARDIAN))
             {
-                if (TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
-                {
-                    //TODO这段逻辑写到Lifebody 的attack里去
-                    //Debug.Log(TimeManager.instance.GetTimeSecond().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
-                    Guardian injuredGuardian = go.GetComponent<Guardian>();
-                    injuredGuardian.CutHealthPoint(attack);
-                    lastAttackTime = TimeManager.instance.GetTimeSecond();
-                    Hunter ahun = gameObject.GetComponentInParent<Hunter>();
-                    ahun.Still();
-                    ahun.ator.SetBool("attack", true);
-                }
-
+                Lifebody Lb = gameObject.GetComponentInParent<Lifebody>();
+                Lb.Attack(go);
             }
         }
         //本人为守护者
@@ -113,9 +103,8 @@ public class RangeAttack : MonoBehaviour
             //对方为守护者
             if (go.tag.Equals(ConstantTable.TYPE_GUARDIAN))
             {
-                Hunter ahun = gameObject.GetComponentInParent<Hunter>();
-                ahun.Unstill();
-                ahun.ator.SetBool("attack", false);
+                Lifebody Lb = gameObject.GetComponentInParent<Lifebody>();
+                Lb.Unstill();
 
             }
         }

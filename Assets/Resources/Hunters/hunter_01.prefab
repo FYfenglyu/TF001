@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7924958813668642053}
   - component: {fileID: 2401617713964505036}
   - component: {fileID: 1300902923561312560}
-  - component: {fileID: 5733125044682200313}
   - component: {fileID: 1137137495128145367}
+  - component: {fileID: 5733125044682200313}
   m_Layer: 7
   m_Name: hunter_01
   m_TagString: Hunter
@@ -137,24 +137,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5733125044682200313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5832732801537086587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d453d953506c3749844d61f7471460b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoint: 100
-  attack: 10
-  attackSpeed: 1
-  attackRange: 2
-  moveSpeed: 0.5
-  ator: {fileID: 0}
 --- !u!95 &1137137495128145367
 Animator:
   serializedVersion: 4
@@ -175,6 +157,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5733125044682200313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832732801537086587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d453d953506c3749844d61f7471460b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifebodyType: 
+  id: 0
+  healthPoint: 100
+  attack: 10
+  attackSpeed: 1
+  attackRange: 2
+  moveSpeed: 0.5
 --- !u!1 &8722541683610824552
 GameObject:
   m_ObjectHideFlags: 0
