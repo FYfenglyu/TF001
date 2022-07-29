@@ -11,8 +11,12 @@ public class GameManager : MonoBehaviour
 
     [Header("每秒回复的费用")]
 
-    private int currCost;
     public int costIncPerS = 1;
+
+    [Header("开局初始费用")]
+    public int initCost = 50;
+
+    private int currCost;
 
     private float lastCostIncTime = 0f;
 
@@ -45,9 +49,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        InitPlayer();
+        playerScore = 3;
+        SetCurrCost(initCost);
     }
-
 
     // Update is called once per frame
     private void Update()
@@ -65,14 +69,8 @@ public class GameManager : MonoBehaviour
             HunterManager.instance.GenerateHunter(1, originalPos);
         if (Time.frameCount % 12000 == 2000)
             HunterManager.instance.GenerateHunter(2, originalPos);
-
     }
 
-    public void InitPlayer()
-    {
-        playerScore = 3;
-        SetCurrCost(200);
-    }
     public void LoseScore()
     {
         if (playerScore > 0)

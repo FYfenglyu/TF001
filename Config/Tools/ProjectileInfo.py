@@ -1,7 +1,7 @@
 import json
 
 if __name__ == '__main__':
-	missiles = [
+    missiles = [
         {   # 石头
             "cardID": 201,
             "iconPath": "Image/Cards/Missile/kp_st",
@@ -39,16 +39,27 @@ if __name__ == '__main__':
         }
     ]
 
-	projectiles_type_info = {
-		"Missile" : "Image/Cards/TypeIcon/tb_gj",
-		"Guardian" : "Image/Cards/TypeIcon/tb_swz"
-	}
+    guardians = [
+        {   # 大象
+            "cardID": 103,
+            "iconPath": "Image/Cards/Guardian/kp_dx",
+            "type": "Guardian",
+            "prefabPath": "prefabs/Guardian/elephant_PROJ",
+            "cost": 25
+        }
+    ]
 
-	# https://docs.unity3d.com/ScriptReference/Resources.Load.html
-	# Resources.Load(FilePath/FileNameWithoutExtension) 
+    projectiles_type_info = {
+        "Missile" : "Image/Cards/TypeIcon/tb_gj",
+        "Guardian" : "Image/Cards/TypeIcon/tb_swz"
+    }
 
-	with open("../Projectiles.json", "w+") as projectiles_info_file:
-		json.dump(missiles, projectiles_info_file, indent=4)
+    # https://docs.unity3d.com/ScriptReference/Resources.Load.html
+    # Resources.Load(FilePath/FileNameWithoutExtension) 
 
-	with open("../projectilesType.json", "w+") as projectiles_type_info_file:
-		json.dump(projectiles_type_info, projectiles_type_info_file, indent=4)
+    projectils = missiles + guardians
+    with open("../Projectiles.json", "w+") as projectiles_info_file:
+        json.dump(projectils, projectiles_info_file, indent=4)
+
+    with open("../projectilesType.json", "w+") as projectiles_type_info_file:
+        json.dump(projectiles_type_info, projectiles_type_info_file, indent=4)

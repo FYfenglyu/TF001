@@ -24,4 +24,19 @@ public class TimeManager : MonoBehaviour
     {
         return second;
     }
+
+    public void Pause()
+    {
+        SetTimeScale(0.0f);
+    }
+
+    public void Continue()
+    {
+        SetTimeScale(1.0f);
+    }
+
+    private void SetTimeScale(float scale)
+    {
+        Time.timeScale = scale;
+    }
 }

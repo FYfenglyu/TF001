@@ -63,7 +63,6 @@ public class HunterManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-    
         GenerateHunterOnConfig();
         gameProgress.SetCurrHP(maxHunterIndex - currHunterIndex);
     }
@@ -77,6 +76,7 @@ public class HunterManager : MonoBehaviour
             newHunter.transform.SetParent(hunterContainer.transform, false);
 
             hunters.Add(newHunter);
+            Debug.Log(new String("Hunter count : ")+hunters.Count.ToString());
 
             return true;
         }
@@ -118,10 +118,10 @@ public class HunterManager : MonoBehaviour
 
         // sort hunter generation information by spawn time 
         hunterGenInfoList.Sort();
-        foreach (HunterGenInfo info_i in hunterGenInfoList)
-        {
-            Debug.Log(new String("Spawn Hunter: ") + info_i.birthTime.ToString() + new String(" : ") + info_i.hunterID.ToString());
-        }
+        // foreach (HunterGenInfo info_i in hunterGenInfoList)
+        // {
+        //     Debug.Log(new String("Spawn Hunter: ") + info_i.birthTime.ToString() + new String(" : ") + info_i.hunterID.ToString());
+        // }
 
         // set total hunter number
         maxHunterIndex = hunterGenInfoList.Count;

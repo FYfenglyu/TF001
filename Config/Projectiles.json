@@ -33,5 +33,12 @@
         "type": "Missile",
         "prefabPath": "prefabs/Missile/apple_PROJ",
         "cost": 15
+    },
+    {
+        "cardID": 103,
+        "iconPath": "Image/Cards/Guardian/kp_dx",
+        "type": "Guardian",
+        "prefabPath": "prefabs/Guardian/elephant_PROJ",
+        "cost": 25
     }
 ]
