@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5265427472864938196}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.04, y: -4.24, z: 80.713135}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.209, y: -0.128, z: 0}
+  m_LocalScale: {x: 0.627, y: 0.627, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5265427473771725227}
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &5265427473467152968
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -103,10 +103,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.017320275, y: -0.14013594}
+  m_Offset: {x: -0.01, y: 0.76}
   m_SpriteTilingProperty:
     border: {x: 0.29999998, y: 0.08, z: 0.31, w: 0.31}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.8, y: 1.8}
     newSize: {x: 1.8, y: 1.8}
     adaptiveTilingThreshold: 0.5
@@ -114,7 +114,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1368215, y: 1.5197281}
+  m_Size: {x: 1.21, y: 1.53}
   m_EdgeRadius: 0
 --- !u!114 &5265427473467152969
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
   id: 103
   healthPoint: 200
   attack: 15
-  attackSpeed: 2
+  attackSpeed: 1
   attackRange: 1
   cost: 15
   gid: 103
@@ -216,7 +216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5265427473771725224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.86, y: 0.4996, z: 0}
+  m_LocalPosition: {x: 2.95, y: 1.11, z: 0}
   m_LocalScale: {x: 3.4436963, y: 1.5354598, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

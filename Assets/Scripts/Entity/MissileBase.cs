@@ -13,7 +13,7 @@ public class MissileBase : MonoBehaviour
     public int attack;
     public float attackRange;
     public float disapearVelocity;
-    public int persistency; 
+    public int persistency;
 
     [Space]
     protected ArrayList lbs = new ArrayList();
@@ -21,7 +21,8 @@ public class MissileBase : MonoBehaviour
     protected bool isAttacked = false;
     protected Rigidbody2D rb;
 
-    void Start() {
+    void Start()
+    {
         InitParam();
     }
 
@@ -32,15 +33,11 @@ public class MissileBase : MonoBehaviour
 
     public virtual void ClearSelf()
     {
-
         Destroy(gameObject);
-
     }
 
     public virtual void DestroySelf()
     {
         Destroy(gameObject);
     }
-
-
 }
