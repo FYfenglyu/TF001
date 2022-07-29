@@ -3,42 +3,42 @@
         "cardID": 201,
         "iconPath": "Image/Cards/Missile/kp_st",
         "type": "Missile",
-        "prefabPath": "prefabs/Missile/stone_PROJ",
+        "prefabPath": "Prefabs/Missile/stone_PROJ",
         "cost": 10
     },
     {
         "cardID": 202,
         "iconPath": "Image/Cards/Missile/kp_ll",
         "type": "Missile",
-        "prefabPath": "prefabs/Missile/durian_PROJ",
+        "prefabPath": "Prefabs/Missile/durian_PROJ",
         "cost": 10
     },
     {
         "cardID": 203,
         "iconPath": "Image/Cards/Missile/kp_gm",
         "type": "Missile",
-        "prefabPath": "prefabs/Missile/wood_PROJ",
+        "prefabPath": "Prefabs/Missile/wood_PROJ",
         "cost": 10
     },
     {
         "cardID": 204,
         "iconPath": "Image/Cards/Missile/kp_mg",
         "type": "Missile",
-        "prefabPath": "prefabs/Missile/mushroom_PROJ",
+        "prefabPath": "Prefabs/Missile/mushroom_PROJ",
         "cost": 10
     },
     {
         "cardID": 205,
         "iconPath": "Image/Cards/Missile/kp_pg",
         "type": "Missile",
-        "prefabPath": "prefabs/Missile/apple_PROJ",
+        "prefabPath": "Prefabs/Missile/apple_PROJ",
         "cost": 15
     },
     {
         "cardID": 103,
         "iconPath": "Image/Cards/Guardian/kp_dx",
         "type": "Guardian",
-        "prefabPath": "prefabs/Guardian/elephant_PROJ",
+        "prefabPath": "Prefabs/Guardian/elephant_PROJ",
         "cost": 25
     }
 ]

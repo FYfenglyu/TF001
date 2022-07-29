@@ -129,6 +129,6 @@ public class ProjectileManager : MonoBehaviour
 
         // create a specified projectile, and set it as current projectile
         GameObject projPrefabPath = (GameObject)Resources.Load(ProjectileData.instance.GetProjAttr(card.projCardID).prefabPath);
-        currProj = GameObject.Instantiate(projPrefabPath, anchorPos);
+        currProj = GameObject.Instantiate(projPrefabPath, anchorPos.position, Quaternion.identity);
     }
 }

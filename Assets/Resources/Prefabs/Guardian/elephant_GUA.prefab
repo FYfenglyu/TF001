@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5265427472864938196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.209, y: -0.128, z: 0}
-  m_LocalScale: {x: 0.627, y: 0.627, z: 1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5265427473771725227}
@@ -106,7 +106,7 @@ BoxCollider2D:
   m_Offset: {x: -0.01, y: 0.76}
   m_SpriteTilingProperty:
     border: {x: 0.29999998, y: 0.08, z: 0.31, w: 0.31}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.4558081, y: 0.15435606}
     oldSize: {x: 1.8, y: 1.8}
     newSize: {x: 1.8, y: 1.8}
     adaptiveTilingThreshold: 0.5
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 5265427473771725220}
   - component: {fileID: 5265427473771725221}
   - component: {fileID: 5265427473771725226}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: AttackBox
   m_TagString: AttackBox
   m_Icon: {fileID: 0}
