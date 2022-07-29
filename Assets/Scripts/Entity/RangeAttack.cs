@@ -47,7 +47,7 @@ public class RangeAttack : MonoBehaviour
         attackSpeed = Mathf.Max(attackSpeed, 0.02f);
         attackSpeed = Mathf.Min(attackSpeed, 50);
         attackInterval = 1 / attackSpeed;
-        lastAttackTime = TimeManager.instance.GetTimeSecond();
+        lastAttackTime = TimeManager.instance.GetCurrTime();
         Debug.Log(attackInterval);
     }
 
@@ -76,9 +76,9 @@ public class RangeAttack : MonoBehaviour
             //对方为猎人
             if (go.tag.Equals(TYPE_HUNTER))
             {
-                if (TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
+                if (TimeManager.instance.GetCurrTime() - lastAttackTime > attackInterval)
                 {
-                    //Debug.Log(TimeManager.instance.GetTimeSecond().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
+                    //Debug.Log(TimeManager.instance.GetCurrTime().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
                     //发射子弹！
                     //Instantiate
                     //子弹动画！
@@ -86,7 +86,7 @@ public class RangeAttack : MonoBehaviour
                     //这里临时手动扣一下
                     Hunter injuredHunter = go.GetComponent<Hunter>();
                     injuredHunter.CutHealthPoint(attack);
-                    lastAttackTime = TimeManager.instance.GetTimeSecond();
+                    lastAttackTime = TimeManager.instance.GetCurrTime();
                 }
             }
         }

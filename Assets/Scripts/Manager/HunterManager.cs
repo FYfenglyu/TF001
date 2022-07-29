@@ -129,7 +129,7 @@ public class HunterManager : MonoBehaviour
     {
         for (; currHunterIndex < maxHunterIndex; ++currHunterIndex)
         {
-            if (TimeManager.instance.GetTimeSecond() >= hunterGenInfoList[currHunterIndex].birthTime)
+            if (TimeManager.instance.GetCurrTime() >= hunterGenInfoList[currHunterIndex].birthTime)
             {
                 if (!GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos))
                 {

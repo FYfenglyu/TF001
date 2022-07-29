@@ -13,7 +13,7 @@ public class CardScrollView : MonoBehaviour
     private float lastMoveTime = 0;
 
 
-    private const float hiddenXDis = 6f;
+    private const float hiddenXDis = 3f;
 
 
     private const float moveTimeSpan = 0.05f;
@@ -50,16 +50,16 @@ public class CardScrollView : MonoBehaviour
     private void MoveToDestPos()
     {
         // if there is no need to move card scroll view, return 
-        if(!needMoving) return;
+        if (!needMoving) return;
 
         // get current time
-        float currTime = TimeManager.instance.GetTimeSecond();
+        float currTime = TimeManager.instance.GetCurrTime();
 
         // if current time is before scheduled time, return 
-        if(currTime - lastMoveTime < moveTimeSpan) return;
+        if (currTime - lastMoveTime < moveTimeSpan) return;
 
         // if card scroll view is close to destination position, change its status
-        if(Mathf.Abs(transform.position.x - destPos.x) <= disDeviation)
+        if (Mathf.Abs(transform.position.x - destPos.x) <= disDeviation)
         {
             transform.position = destPos;
             needMoving = false;
@@ -70,7 +70,7 @@ public class CardScrollView : MonoBehaviour
         // else move card scroll view
         // x2 + (x2 - x1 ) * moveTimeSpan
         Vector3 newPos = transform.position;
-        newPos.x += (destPos.x - transform.position.x) *moveTimeSpan;
+        newPos.x += (destPos.x - transform.position.x) * moveTimeSpan * 2;
         transform.position = newPos;
         lastMoveTime = currTime;
     }

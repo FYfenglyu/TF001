@@ -15,12 +15,12 @@ public class TimeManager : MonoBehaviour
     }
 
     void Update()
-    { 
+    {
         second += Time.deltaTime;
     }
 
     // get time : second
-    public float GetTimeSecond()
+    public float GetCurrTime()
     {
         return second;
     }

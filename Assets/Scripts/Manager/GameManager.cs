@@ -109,8 +109,8 @@ public class GameManager : MonoBehaviour
 
     private void IncCostPreS()
     {
-        float currTime = TimeManager.instance.GetTimeSecond();
-        if (TimeManager.instance.GetTimeSecond() - lastCostIncTime >= 1.0f)
+        float currTime = TimeManager.instance.GetCurrTime();
+        if (TimeManager.instance.GetCurrTime() - lastCostIncTime >= 1.0f)
         {
             SetCurrCost(currCost + costIncPerS);
             lastCostIncTime = currTime;
