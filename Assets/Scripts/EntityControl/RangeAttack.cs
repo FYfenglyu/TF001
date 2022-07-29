@@ -23,6 +23,14 @@ public class RangeAttack : MonoBehaviour
             identity = TYPE_GUARDIAN;
         }
         //计算时间间隔
+<<<<<<< HEAD:Assets/Scripts/EntityControl/RangeAttack.cs
+=======
+        attackSpeed = Mathf.Max(attackSpeed, 0.02f);
+        attackSpeed = Mathf.Min(attackSpeed, 50);
+        attackInterval = 1 / attackSpeed;
+        lastAttackTime = TimeManager.instance.GetCurrTime();
+        Debug.Log(attackInterval);
+>>>>>>> a9cee4b57ab92e7e1f9991c837356ab4cd7cab8f:Assets/Scripts/Entity/RangeAttack.cs
     }
 
     // Update is called once per frame
@@ -50,10 +58,25 @@ public class RangeAttack : MonoBehaviour
             //对方为猎人
             if (go.tag.Equals(TYPE_HUNTER))
             {
+<<<<<<< HEAD:Assets/Scripts/EntityControl/RangeAttack.cs
                 gameObject.GetComponentInParent<Guardian>().EmitMissile();
             }
             else if (go.tag.Equals(TYPE_EMITMISSILE))
             {
+=======
+                if (TimeManager.instance.GetCurrTime() - lastAttackTime > attackInterval)
+                {
+                    //Debug.Log(TimeManager.instance.GetCurrTime().ToString() + " :" + identity + "触发！" + lastAttackTime.ToString());
+                    //发射子弹！
+                    //Instantiate
+                    //子弹动画！
+                    //撞到人再扣血
+                    //这里临时手动扣一下
+                    Hunter injuredHunter = go.GetComponent<Hunter>();
+                    injuredHunter.CutHealthPoint(attack);
+                    lastAttackTime = TimeManager.instance.GetCurrTime();
+                }
+>>>>>>> a9cee4b57ab92e7e1f9991c837356ab4cd7cab8f:Assets/Scripts/Entity/RangeAttack.cs
             }
         }
 

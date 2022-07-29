@@ -7,11 +7,10 @@ using static ConstantTable;
 public struct ProjAttribute
 {
     public int cardID;
-    public string icon;
+    public string iconPath;
     public string type;
-    public string prefab;
+    public string prefabPath;
     public int cost;
-    public int attack;
 }
 
 public class ProjectileManager : MonoBehaviour
@@ -69,7 +68,7 @@ public class ProjectileManager : MonoBehaviour
             // generate corresponding projectile card prefab
             // - projectile icon
             GameObject icon = projectileCard.transform.Find("Icon").gameObject;
-            Sprite CardIconInConfig = Resources.Load(corrProjectileInfo.icon, typeof(Sprite)) as Sprite;
+            Sprite CardIconInConfig = Resources.Load(corrProjectileInfo.iconPath, typeof(Sprite)) as Sprite;
             icon.GetComponent<Image>().sprite = CardIconInConfig;
 
             // - projectile type
@@ -121,16 +120,15 @@ public class ProjectileManager : MonoBehaviour
             GameObject.Destroy(currProj);
         }
 
-
         // set card as current card
         currCard = card;
         currCard.IsSelected() = true;
 
         // highlight current card
-        // currCard.ChangeIconImgMaterial(highLight);
+        currCard.ChangeIconImgMaterial(highLight);
 
         // create a specified projectile, and set it as current projectile
-        GameObject projPrefab = (GameObject)Resources.Load(ProjectileData.instance.GetProjAttr(card.projCardID).prefab);
-        currProj = GameObject.Instantiate(projPrefab, anchorPos);
+        GameObject projPrefabPath = (GameObject)Resources.Load(ProjectileData.instance.GetProjAttr(card.projCardID).prefabPath);
+        currProj = GameObject.Instantiate(projPrefabPath, anchorPos);
     }
 }

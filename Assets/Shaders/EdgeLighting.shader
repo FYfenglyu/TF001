@@ -1,10 +1,25 @@
+// references :
+// @ https://zhuanlan.zhihu.com/p/133439889
+// @ https://blog.csdn.net/chillxiaohan/article/details/107759321
+// @ https://blog.csdn.net/WPAPA/article/details/71242812
+// @ https://answers.unity.com/questions/980924/ui-mask-with-shader.html
+
 Shader "EdgeLighting"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "red" {}
-        _lineWidth("lineWidth",Range(0,10)) = 3
-        _lineColor("lineColor",Color) = ( 255, 0, 0, 255)
+        _MainTex ("Texture", 2D) = "yellow" {}
+        _lineWidth("lineWidth",Range(0,10)) = 5
+        _lineColor("lineColor",Color) = ( 255, 255, 0, 255)
+
+        //MASK SUPPORT ADD
+        _StencilComp ("Stencil Comparison", Float) = 8
+        _Stencil ("Stencil ID", Float) = 0
+        _StencilOp ("Stencil Operation", Float) = 0
+        _StencilWriteMask ("Stencil Write Mask", Float) = 255
+        _StencilReadMask ("Stencil Read Mask", Float) = 255
+        _ColorMask ("Color Mask", Float) = 15
+        //MASK SUPPORT END
     }
 
     SubShader
@@ -14,6 +29,18 @@ Shader "EdgeLighting"
         }
         Blend SrcAlpha OneMinusSrcAlpha
         
+        //MASK SUPPORT ADD
+        Stencil
+        {
+            Ref [_Stencil]
+            Comp [_StencilComp]
+            Pass [_StencilOp] 
+            ReadMask [_StencilReadMask]
+            WriteMask [_StencilWriteMask]
+        }
+        ColorMask [_ColorMask]
+        //MASK SUPPORT END
+
         Pass
         {
             CGPROGRAM

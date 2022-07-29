@@ -46,7 +46,7 @@ public class Lifebody : MonoBehaviour
     
     protected virtual void ResetStatus()
     {
-        if(TimeManager.instance.GetTimeSecond() - lastAttackTime > 1.1*attackInterval)
+        if(TimeManager.instance.GetCurrTime() - lastAttackTime > 1.1*attackInterval)
         {
             Unstill();
             AnimateWalkOn();
@@ -70,7 +70,7 @@ public class Lifebody : MonoBehaviour
         attackSpeed = Mathf.Max(attackSpeed, 0.02f);
         attackSpeed = Mathf.Min(attackSpeed, 50);
         attackInterval = 1 / attackSpeed;
-        lastAttackTime = TimeManager.instance.GetTimeSecond();
+        lastAttackTime = TimeManager.instance.GetCurrTime();
     }
 
     public virtual void CutHealthPoint(int attack)
@@ -92,12 +92,12 @@ public class Lifebody : MonoBehaviour
 
     public virtual void Attack(GameObject injuredGo)
     {
-        if (TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
+        if (TimeManager.instance.GetCurrTime() - lastAttackTime > attackInterval)
         {
             //Debug.Log("attackInterval: " + attackInterval.ToString());
             Lifebody injuredLb = injuredGo.GetComponent<Lifebody>();
             injuredLb.CutHealthPoint(attack);
-            lastAttackTime = TimeManager.instance.GetTimeSecond();
+            lastAttackTime = TimeManager.instance.GetCurrTime();
             Still();
             if(ator)
                 ator.SetBool("attack", true);
