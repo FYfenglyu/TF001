@@ -17,7 +17,7 @@ public class Guardian : Lifebody
     }
     public void EmitMissile()
     {
-        if (TimeManager.instance.GetTimeSecond() - lastAttackTime > attackInterval)
+        if (TimeManager.instance.GetCurrTime() - lastAttackTime > attackInterval)
         {
             GameObject missile = GameObject.Instantiate(missilePrefab, emitPos, Quaternion.identity);
             missile.transform.SetParent(gameObject.transform);

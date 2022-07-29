@@ -172,9 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67bf30167b23224a945b8d5b755a793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 10
-  mid: 0
-  dispearVelocity: 0.5
+  missileType: Missile
+  id: 0
   attack: 50
   attackRange: 0.4
-  missileType: 
+  disapearVelocity: 0
+  persistency: 0
+  cost: 10
