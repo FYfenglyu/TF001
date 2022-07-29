@@ -39,9 +39,9 @@ public class HunterManager : MonoBehaviour
 
     void Start()
     {
-        hunter01 = Resources.Load<Hunter>("Hunters/hunter_01");
-        hunter02 = Resources.Load<Hunter>("Hunters/hunter_02");
-        hunter03 = Resources.Load<Hunter>("Hunters/hunter_03");
+        hunter01 = Resources.Load<Hunter>("Prefabs/Hunters/hunter_01");
+        hunter02 = Resources.Load<Hunter>("Prefabs/Hunters/hunter_02");
+        hunter03 = Resources.Load<Hunter>("Prefabs/Hunters/hunter_03");
 
         hunterContainer = GameObject.Find("Hunters");
         gameProgress = GameObject.Find("GameProgress").GetComponent<ProgressBar>();
@@ -85,11 +85,11 @@ public class HunterManager : MonoBehaviour
     public Hunter GetHunter(int hid)
     {
         Hunter aM = hunter01;
-        if (hid == 0)
+        if (hid == 301)
             aM = hunter01;
-        else if (hid == 1)
+        else if (hid == 302)
             aM = hunter02;
-        else if (hid == 2)
+        else if (hid == 303)
             aM = hunter03;
         // 建立怪物库后进行获取 TODO
         return aM;
@@ -116,9 +116,9 @@ public class HunterManager : MonoBehaviour
 
         // sort hunter generation information by spawn time 
         hunterGenInfoList.Sort();
-        foreach(HunterGenInfo info_i in hunterGenInfoList)
+        foreach (HunterGenInfo info_i in hunterGenInfoList)
         {
-            Debug.Log(new String("Spawn Hunter: ")+info_i.birthTime.ToString()+new String(" : ") + info_i.hunterID.ToString());
+            Debug.Log(new String("Spawn Hunter: ") + info_i.birthTime.ToString() + new String(" : ") + info_i.hunterID.ToString());
         }
 
         // set total hunter number
@@ -133,7 +133,7 @@ public class HunterManager : MonoBehaviour
             {
                 if (!GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos))
                 {
-                    Debug.Log("Fali to generate hunter.");
+                    Debug.Log("Fali to generate hunter. Hunter ID : " + hunterGenInfoList[currHunterIndex].hunterID.ToString());
                 }
             }
             else
