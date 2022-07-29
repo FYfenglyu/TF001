@@ -72,5 +72,9 @@ public class BoomAttack : MonoBehaviour
         {
             Debug.Log("Oh hou.");
         }
+        else
+        {
+            Debug.Log(new string("Bomm ") + theAttacked.tag);
+        }
     }
 }
