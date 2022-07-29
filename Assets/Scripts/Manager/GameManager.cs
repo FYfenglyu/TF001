@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -56,9 +57,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // TestGenerateHunter();
-
         IncCostPreS();
+
+        Debug.Log(HunterManager.instance.hunters.Count);
+
+        if (HunterManager.instance.areHuntersAllDead() && playerScore > 0)
+        {
+            Debug.Log("Game Over: Win.");
+            SceneManager.LoadSceneAsync("Game@Win");
+        }
     }
 
     public void TestGenerateHunter()
@@ -77,7 +84,10 @@ public class GameManager : MonoBehaviour
         {
             playerScore -= 1;
             if (playerScore == 0)
-                Debug.Log("游戏结束");
+            {
+                Debug.Log("Game Over: Lose.");
+                SceneManager.LoadSceneAsync("Game@Lose");
+            }
         }
     }
 
@@ -101,8 +111,7 @@ public class GameManager : MonoBehaviour
         currCost = (cost > totalCost) ? totalCost : (cost < 0 ? 0 : cost);
 
         // display current cost
-        if (UIManager.instance) UIManager.instance.DisplayCurrCost(currCost);
-        else Debug.Log("GameManager ： Null UI Manager.");
+        UIManager.instance.DisplayCurrCost(currCost);
     }
 
     private void IncCostPreS()

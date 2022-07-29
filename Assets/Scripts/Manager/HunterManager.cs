@@ -32,6 +32,7 @@ public class HunterManager : MonoBehaviour
     private List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();    // hunter spawn information list (spawn time, hunter ID)
     private int currHunterIndex = 0;    // hunter index which is the next one to be spawned
     private int maxHunterIndex;     // total hunter number
+
     private void Awake()
     {
         instance = this;
@@ -76,7 +77,7 @@ public class HunterManager : MonoBehaviour
             newHunter.transform.SetParent(hunterContainer.transform, false);
 
             hunters.Add(newHunter);
-            Debug.Log(new String("Hunter count : ")+hunters.Count.ToString());
+            Debug.Log(new String("Hunter count : ") + hunters.Count.ToString());
 
             return true;
         }
@@ -143,5 +144,10 @@ public class HunterManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public bool areHuntersAllDead()
+    {
+        return currHunterIndex == maxHunterIndex && hunters.Count == 0;
     }
 }
