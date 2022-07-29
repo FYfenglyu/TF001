@@ -32,7 +32,7 @@ public class Lifebody : MonoBehaviour
     protected static Vector3 OriginalPos;
     protected bool nextStepStill = false;
     protected bool isFreezed = false;
-    private float attackInterval;
+    protected float attackInterval;
     protected float lastAttackTime;
     
     void Start()

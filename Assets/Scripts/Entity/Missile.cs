@@ -3,89 +3,79 @@ using System.Collections.Generic;
 using UnityEngine;
 using static ConstantTable;
 
-public class Missile : MonoBehaviour
+public class Missile : MissileBase
 {
-    [Header("导弹属性")]
+    [Header("其他属性")]
     public int cost;
-    public int mid;
 
-    [Space]
-    public float dispearVelocity;
-
-    [Header("战斗属性")]
-    public int attack;
-    public float attackRange;
-    public string missileType;
-
-    private ArrayList injuredHunters = new ArrayList();
-
-    private bool isCollisied = false;
-    private Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        InitParam();
     }
 
     // Update is called once per frame
     void Update()
     {
+        ClearSelf();
+    }
+
+    public override void ClearSelf()
+    {
         //碰撞后，速度小于0.5f秒则消失
-        if(isCollisied)
+        if(persistency == PERS_VELOCITY && isCollisied)
         {
-            float relativeVel = rigid.velocity.magnitude;
+            float relativeVel = rb.velocity.magnitude;
             //Debug.Log(relativeVel);
-            if(relativeVel < dispearVelocity)
-                SelfClear();
+            if(relativeVel < disapearVelocity)
+                base.ClearSelf();
+        }
+        else if(persistency == PERS_TIME && isAttacked)
+        {
+            Invoke(nameof(base.ClearSelf), 10f);
         }
     }
+
+
 
     private void OnCollisionStay2D(Collision2D other) {
 
-        isCollisied = true;
         GameObject go = other.gameObject;
-
-        Debug.Log("撞到了" + go.tag);
-
-        if(go.tag.Equals(TYPE_HUNTER) )
+        //对于守卫者
+        if(missileType.Equals(TYPE_GUARDIAN))
         {
-            Hunter injuredHunter = go.GetComponent<Hunter>();
-            if(injuredHunter && !injuredHunters.Contains(injuredHunter))
+            if(go.tag.Equals(TYPE_ROAD))
             {
-                injuredHunter.CutHealthPoint(attack);
-                injuredHunters.Add(injuredHunter);
+                //之后要能通过id指定生成的守护者
+                Debug.Log("即将生成守卫者");
+                GuardianManager.instance.GenerateGuardian(id, gameObject.transform.position, Quaternion.identity);
+                DestroySelf();
             }
-
-        }
-        else if(go.tag.Equals(TYPE_ROAD))
-        {
-            if(missileType.Equals(TYPE_GUARDIAN))
+            else if(go.tag.Equals(TYPE_GUARDIAN))
             {
-                //之后要能通过mid指定生成的守护者
-                GameObject.Instantiate(Resources.Load<Guardian>(PATH_ELEPHANT_GUA), gameObject.transform.position, Quaternion.identity);
-                SelfClear();
-            }
-            //SelfClear();
-        }
-        else if(go.tag.Equals(TYPE_GUARDIAN))
-        {
-            if(missileType.Equals(TYPE_GUARDIAN))
-            {
-                Guardian switchGuardian = go.GetComponent<Guardian>();
-                switchGuardian.Dead();
+                go.GetComponent<Guardian>().Dead();
             }
         }
-
-    }
-
-    private void SelfClear()
-    {
-
-        Destroy(gameObject);
-
-    }
-    private void OnDestroy() {
-
+        //对普通攻击的导弹
+        else
+        {
+            if(go.tag.Equals(TYPE_HUNTER) )
+            {
+                //要增加buff操作
+                Lifebody lb = go.GetComponent<Lifebody>();
+                if(lb && !lbs.Contains(lb))
+                {   
+                    Emit e = gameObject.GetComponent<Emit>();
+                    if(e)
+                        e.AnimationEndOn();
+                    lb.CutHealthPoint(attack);
+                    lbs.Add(lb);
+                    isAttacked = true;
+                }
+            }
+            
+        }
+        isCollisied = true;
     }
 
     public int GetCost()

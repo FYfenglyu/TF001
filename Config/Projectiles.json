@@ -1,6 +1,6 @@
 [
     {
-        "cardID": 1,
+        "cardID": 201,
         "icon": "Image/Cards/kp_st",
         "type": "Missile",
         "prefab": "Prefabs/Missile/stone_PROJ",
@@ -8,7 +8,7 @@
         "attack": 35
     },
     {
-        "cardID": 2,
+        "cardID": 103,
         "icon": "Image/Cards/kp_dx",
         "type": "Guardian",
         "prefab": "Prefabs/Guardian/elephant_PROJ",

@@ -63,6 +63,7 @@ public class HunterManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+    
         GenerateHunterOnConfig();
         gameProgress.SetCurrHP(maxHunterIndex - currHunterIndex);
     }
@@ -108,6 +109,7 @@ public class HunterManager : MonoBehaviour
     {
     }
 
+    //  建议拉到LevelManager上
     private void LoadHunterGenInfoList()
     {
         // load hunter spawn information list from json file
