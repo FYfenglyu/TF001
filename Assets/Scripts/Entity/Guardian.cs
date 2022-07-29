@@ -21,7 +21,7 @@ public class Guardian : Lifebody
         {
             GameObject missile = GameObject.Instantiate(missilePrefab, emitPos, Quaternion.identity);
             missile.transform.SetParent(gameObject.transform);
-            lastAttackTime = TimeManager.instance.GetTimeSecond();
+            lastAttackTime = TimeManager.instance.GetCurrTime();
         }
     }
 }

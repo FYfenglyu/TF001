@@ -2855,17 +2855,6 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 924203851}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.49, y: -4.84, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
   m_GameObject: {fileID: 940257636}
   m_CullTransparentMesh: 1
 --- !u!114 &940257642
@@ -2880,7 +2869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d24241208fb1a0428d9e6909b5565f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> a9cee4b57ab92e7e1f9991c837356ab4cd7cab8f
 --- !u!1 &963551122
 GameObject:
   m_ObjectHideFlags: 0
@@ -2988,7 +2976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8d4d48db312844f938086f76058d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   projCardIDList: c9000000c9000000670000006700000067000000
 --- !u!114 &963551129
 MonoBehaviour:
@@ -3002,9 +2989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca0d576376214d40aa7f41b91c6b900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
-  projCardIDList: c9000000ca000000cb000000cc000000cd000000
->>>>>>> a9cee4b57ab92e7e1f9991c837356ab4cd7cab8f
 --- !u!1 &990224861
 GameObject:
   m_ObjectHideFlags: 0
@@ -4016,7 +4000,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
@@ -4117,9 +4100,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> a9cee4b57ab92e7e1f9991c837356ab4cd7cab8f
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1330627269 stripped
