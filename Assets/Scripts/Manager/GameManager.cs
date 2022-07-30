@@ -123,8 +123,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateDisplayer(GameObject go, string component)
+    public void ResetGameStatus()
     {
-        //TODO
+        // 费用重置
+        currCost = initCost;
+        SetCurrCost(initCost);
+        
+        // 分数重置
+        totalScore = 3;
+        scoreProgress.SetTotalHP(totalScore);
+
+        // 时间重置
+        TimeManager.instance.ResetTime();
+        lastCostIncTime = 0f;
     }
 }

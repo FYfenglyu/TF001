@@ -39,4 +39,10 @@ public class TimeManager : MonoBehaviour
     {
         Time.timeScale = scale;
     }
+
+    public void ResetTime()
+    {
+        Pause();
+        second = 0.0f;
+    }
 }

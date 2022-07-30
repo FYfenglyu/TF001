@@ -81,10 +81,6 @@ public class Lifebody : MonoBehaviour
             healthPoint = Mathf.Max(0, healthPoint - attack);
         }
 
-        //HPbar显示更新
-        GameManager.instance.UpdateDisplayer(gameObject, DIS_HPBAR);
-        //Debug.Log("受击生物血量" + healthPoint.ToString());
-
         if (healthPoint == 0)
         {
             Dead();

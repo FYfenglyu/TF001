@@ -38,7 +38,6 @@ public class LevelManager : MonoBehaviour {
     private void Start() {
         hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
         LoadHunterGenInfoList();
-        hunterProgress.SetTotalHP(maxHunterIndex);
 
     }
 
@@ -63,8 +62,10 @@ public class LevelManager : MonoBehaviour {
         //     Debug.Log(new String("Spawn Hunter: ") + info_i.birthTime.ToString() + new String(" : ") + info_i.hunterID.ToString());
         // }
 
-        // set total hunter number
-        maxHunterIndex = hunterGenInfoList.Count;
+        // change UI
+        maxHunterIndex = hunterGenInfoList.Count;      
+        hunterProgress.SetTotalHP(maxHunterIndex);
+
         isGenerateFinished = false;
     }
     public void LoadHunterGenInfoList()
@@ -90,8 +91,17 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    public void LoadLevel(string levelName)
-    {}
+    public void LoadLevel(int levelIndex)
+    {
+        //get hunter config
+        LoadHunterGenInfoList( GetLevelConfigPath(levelIndex));
+        //get level prefab
+        
+        //set level prefab
+
+        ///reset scores, cost and timemanager
+        GameManager.instance.ResetGameStatus();
+    }
 
     public bool IsGenerateFinished()
     {
