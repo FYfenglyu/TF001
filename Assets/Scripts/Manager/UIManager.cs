@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
     private GameObject costDisplayer;
     private GameObject cardScrollView;    // Scroll View 
 
-
     private UIManager() { }
 
     private void Awake()
@@ -18,11 +17,34 @@ public class UIManager : MonoBehaviour
         instance = this;
         cardScrollView = GameObject.Find("CardScrollView");
         costDisplayer = GameObject.Find("CostDisplayer");
+        AdjustScreeScale();
     }
 
-    private void Start()
+    private void AdjustScreeScale()
     {
+        // to edit
+        float DevelopWidth = 1920f;
+        float DevelopHeigh = 1080f;
+        float DevelopRate = DevelopHeigh / DevelopWidth;
+        int curScreenHeight = Screen.height;
+        int curScreenWidth = Screen.width;
 
+        Debug.Log(curScreenHeight);
+        Debug.Log(curScreenWidth);
+
+        float ScreenRate = (float)Screen.height / (float)Screen.width;
+
+        float cameraRectHeightRate = DevelopHeigh / ((DevelopWidth / Screen.width) * Screen.height);
+        float cameraRectWidthRate = DevelopWidth / ((DevelopHeigh / Screen.height) * Screen.width);
+
+        if (DevelopRate <= ScreenRate)
+        {
+            GameObject.Find("MainCamera").GetComponent<Camera>().rect = new Rect(0, (1 - cameraRectHeightRate) / 2, 1, cameraRectHeightRate);
+        }
+        else
+        {
+            GameObject.Find("MainCamera").GetComponent<Camera>().rect = new Rect((1 - cameraRectWidthRate) / 2, 0, cameraRectWidthRate, 1);
+        }
     }
 
     public void DisplayCurrCost(int currCost)

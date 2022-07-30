@@ -30,15 +30,15 @@ public class ProjectileData : MonoBehaviour
         // singleton
         instance = this;
 
-        LoadProjAttriFromJson();
-        LoadTypeIconInfoFromJson();
+        LoadProjAttriFromJson("Config/Projectiles");
+        LoadTypeIconInfoFromJson("Config/projectilesType");
     }
 
     // load projectile information from json file
-    private void LoadProjAttriFromJson()
+    private void LoadProjAttriFromJson(string jsonFilePath)
     {
-        string jsonFilePath = Application.streamingAssetsPath + "/Config/Projectiles.json";
-        List<ProjAttribute> projectileInfoList = JsonMapper.ToObject<List<ProjAttribute>>(File.ReadAllText(jsonFilePath));
+        string jsonFileContent = TextResourceReader.Read(jsonFilePath);
+        List<ProjAttribute> projectileInfoList = JsonMapper.ToObject<List<ProjAttribute>>(jsonFileContent);
 
         // build dictionary 
         // key : projectile card ID
@@ -50,10 +50,10 @@ public class ProjectileData : MonoBehaviour
     }
 
     // load projectile type icon file from json file
-    private void LoadTypeIconInfoFromJson()
+    private void LoadTypeIconInfoFromJson(string jsonFilePath)
     {
-        string jsonFilePath = Application.streamingAssetsPath + "/Config/projectilesType.json";
-        projTypeIconDict = JsonMapper.ToObject<Dictionary<string, string>>(File.ReadAllText(jsonFilePath));
+        string jsonFileContent = TextResourceReader.Read(jsonFilePath);
+        projTypeIconDict = JsonMapper.ToObject<Dictionary<string, string>>(jsonFileContent);
     }
 
     // get projectile information by card id

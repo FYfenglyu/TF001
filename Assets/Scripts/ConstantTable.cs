@@ -23,21 +23,22 @@ public class ConstantTable
     public const int PERS_TIME = 1;
     public const int PERS_NO = 0;
 
-    //地址文件夹
-    private const string _PREFIX_CONFIG = "/Config/";
+    // 地址文件夹
+    // paths of file load by function Rescource.Load() should not contain suffix "json"
+    private const string _PREFIX_CONFIG = "Config/";
 
     //地址
     public const string PATH_PROJECTILECARD = "Prefabs/UI/ProjectileCard";
-    public const string PATH_LEVELCONFIG_TEST =_PREFIX_CONFIG + "HunterSpawn_L1.json";
-    public const string PATH_CONFIG_CARD = _PREFIX_CONFIG + "projectiles.json";
-    public const string PATH_CONFIG_CARDTYPE = _PREFIX_CONFIG + "projectilesType.json";
+    public const string PATH_LEVELCONFIG_TEST = _PREFIX_CONFIG + "HunterSpawn_L1";
+    public const string PATH_CONFIG_CARD = _PREFIX_CONFIG + "projectiles";
+    public const string PATH_CONFIG_CARDTYPE = _PREFIX_CONFIG + "projectilesType";
 
     private const string _PREFIX_CONFIG_LEVEL = _PREFIX_CONFIG + "LevelConfig_L";
     private const string _PREFIX_CONFIG_LEVEL_HUNTERS = _PREFIX_CONFIG + "HunterSpawn_L";
 
     public static string GetLevelHuntersConfigPath(int i)
     {
-        return new string(_PREFIX_CONFIG_LEVEL_HUNTERS + i.ToString() + ".json");
+        return new string(_PREFIX_CONFIG_LEVEL_HUNTERS + i.ToString());
     }
     public static string GetLevelConfigPath(int i)
     {

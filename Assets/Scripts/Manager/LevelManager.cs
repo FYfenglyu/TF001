@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System.IO;
 using System;
-using System.Text;
+using UnityEngine;
 using LitJson;
 
 using static ConstantTable;
@@ -57,11 +55,12 @@ public class LevelManager : MonoBehaviour
         hunterProgress.SetCurrHP(maxHunterIndex - currHunterIndex + HunterManager.instance.hunters.Count);
     }
 
-    public void LoadHunterGenInfoList(string path)
+    public void LoadHunterGenInfoList(string jsonFilePath)
     {
         // load hunter spawn information list from json file
-        string jsonFilePath = Application.streamingAssetsPath + path;
-        hunterGenInfoList = JsonMapper.ToObject<List<HunterGenInfo>>(File.ReadAllText(jsonFilePath));
+        string jsonFileContent = TextResourceReader.Read(jsonFilePath);
+        if (jsonFileContent == null) Debug.Log(jsonFilePath);
+        hunterGenInfoList = JsonMapper.ToObject<List<HunterGenInfo>>(jsonFileContent);
 
         // sort hunter generation information by spawn time 
         hunterGenInfoList.Sort();
@@ -82,10 +81,10 @@ public class LevelManager : MonoBehaviour
         LoadHunterGenInfoList(PATH_LEVELCONFIG_TEST);
     }
 
-    public void LoadLevelConfig(string path)
+    public void LoadLevelJsonConfig(string jsonFilePath)
     {
-        string jsonFilePath = Application.streamingAssetsPath + path;
-        config = JsonMapper.ToObject<LevelConfig>(File.ReadAllText(jsonFilePath));
+        string jsonFileContent = TextResourceReader.Read(jsonFilePath);
+        config = JsonMapper.ToObject<LevelConfig>(jsonFileContent);
 
         Debug.Log("新生成卡牌id" + config.cardIDList.ToString());
 
@@ -113,9 +112,9 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel(int levelIndex)
     {
         //load hunters generate config
-        LoadHunterGenInfoList( GetLevelHuntersConfigPath(levelIndex));
+        LoadHunterGenInfoList(GetLevelHuntersConfigPath(levelIndex));
         //load card config
-        LoadLevelConfig( GetLevelConfigPath(levelIndex));
+        LoadLevelJsonConfig(GetLevelConfigPath(levelIndex));
         //get level prefab
 
         //set level prefab
