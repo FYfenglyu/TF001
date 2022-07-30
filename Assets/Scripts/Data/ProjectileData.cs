@@ -37,11 +37,7 @@ public class ProjectileData : MonoBehaviour
     // load projectile information from json file
     private void LoadProjAttriFromJson()
     {
-#if UNITY_EDITOR
         string jsonFilePath = Application.streamingAssetsPath + "/Config/Projectiles.json";
-#else
-        string jsonFilePath = Application.streamingAssetsPath + "/Config/Projectiles.json";
-#endif
         List<ProjAttribute> projectileInfoList = JsonMapper.ToObject<List<ProjAttribute>>(File.ReadAllText(jsonFilePath));
 
         // build dictionary 
@@ -56,11 +52,7 @@ public class ProjectileData : MonoBehaviour
     // load projectile type icon file from json file
     private void LoadTypeIconInfoFromJson()
     {
-#if UNITY_EDITOR
         string jsonFilePath = Application.streamingAssetsPath + "/Config/projectilesType.json";
-#else
-        string jsonFilePath = Application.streamingAssetsPath + "/Config/projectilesType.json";
-#endif
         projTypeIconDict = JsonMapper.ToObject<Dictionary<string, string>>(File.ReadAllText(jsonFilePath));
     }
 

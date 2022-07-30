@@ -79,12 +79,7 @@ public class LevelManager : MonoBehaviour
     }
     public void LoadHunterGenInfoList()
     {
-#if UNITY_EDITOR
-        string genInfoPath = new String("/../../") + new String(PATH_LEVELCONFIG_TEST);
-#else
-        string genInfoPath = new String(PATH_LEVELCONFIG_TEST);
-#endif
-        LoadHunterGenInfoList(genInfoPath);
+        LoadHunterGenInfoList(PATH_LEVELCONFIG_TEST);
     }
 
     public void LoadLevelConfig(string path)
