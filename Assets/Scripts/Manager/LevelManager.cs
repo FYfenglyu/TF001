@@ -22,34 +22,35 @@ public class HunterGenInfo : IComparable<HunterGenInfo>
 
 }
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
     public static LevelManager instance;
     private List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();    // hunter spawn information list (spawn time, hunter ID)
-    private ProgressBar gameProgress;
+    private ProgressBar hunterProgress;
     private int currHunterIndex = 0;    // hunter index which is the next one to be spawned
     private int maxHunterIndex;     // total hunter number
     private bool isGenerateFinished = false;
-
-
-    private void Start() {
-        hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
-        LoadHunterGenInfoList();
-        gameProgress.SetTotalHP(maxHunterIndex);
-
-    }
-
+    
     private void Awake()
     {
         instance = this;
     }
+    private void Start()
+    {
+        hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
+        LoadHunterGenInfoList();
+        hunterProgress.SetTotalHP(maxHunterIndex);
+    }
+
+
 
     // Update is called once per frame
     private void Update()
     {
         GenerateHunterOnConfig();
-        gameProgress.SetCurrHP(maxHunterIndex - currHunterIndex);
+        hunterProgress.SetCurrHP(maxHunterIndex - currHunterIndex);
     }
-    
+
     public void LoadHunterGenInfoList(string path)
     {
         // load hunter spawn information list from json file
@@ -92,11 +93,11 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void LoadLevel(string levelName)
-    {}
+    { }
 
     public bool IsGenerateFinished()
     {
-        if(currHunterIndex == maxHunterIndex)
+        if (currHunterIndex == maxHunterIndex)
             isGenerateFinished = true;
         return isGenerateFinished;
     }
