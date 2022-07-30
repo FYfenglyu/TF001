@@ -6,20 +6,23 @@ using static ConstantTable;
 public class GuardianManager : MonoBehaviour
 {
     public static GuardianManager instance;
+    private GameObject guardians;
 
 
     void Awake()
     {
         instance = this;
+        guardians = GameObject.Find("Guardians");
     }
 
-    void Start() {
+    void Start()
+    {
     }
 
     public Guardian GetGuardian(int gid)
     {
         Guardian aG = null;
-        switch(gid)
+        switch (gid)
         {
             case 101:
                 aG = Resources.Load<Guardian>(PREFAB_MONKEY_GUA);
@@ -40,9 +43,12 @@ public class GuardianManager : MonoBehaviour
     public void GenerateGuardian(int id, Vector3 position, Quaternion rotation)
     {
         Guardian aG = GetGuardian(id);
-        Debug.Log("生成守卫者"+ id.ToString());
+        Debug.Log("生成守卫者" + id.ToString());
 
-        if(aG)
-            GameObject.Instantiate(aG , position, rotation);       
+        if (aG)
+        {
+            Guardian guardian = GameObject.Instantiate(aG, position, rotation);
+            guardian.transform.SetParent(guardians.transform);
+        }
     }
 }

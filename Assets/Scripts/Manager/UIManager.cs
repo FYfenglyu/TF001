@@ -11,13 +11,13 @@ public class UIManager : MonoBehaviour
     private GameObject cardScrollView;    // Scroll View 
 
 
-    private UIManager() {}
+    private UIManager() { }
 
     private void Awake()
     {
         instance = this;
         cardScrollView = GameObject.Find("CardScrollView");
-        costDisplayer = GameObject.Find("CostDisplayer");        
+        costDisplayer = GameObject.Find("CostDisplayer");
     }
 
     private void Start()
@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
     {
         cardScrollView.GetComponent<CardScrollView>().Display();
     }
-    
+
     public void StartGame()
     {
         SceneManager.LoadSceneAsync("SampleScene");
@@ -63,5 +63,12 @@ public class UIManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void SetObjectInFront(Transform focus)
+    {
+        Transform parentGameObject = focus.parent;
+        int siblingNum = parentGameObject.childCount;
+        focus.SetSiblingIndex(siblingNum - 1);
     }
 }
