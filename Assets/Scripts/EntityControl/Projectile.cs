@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour
     private bool isProjected = false;
     private Vector3 originalPos;
 
+    private LineRenderer leftBranch;
+    private LineRenderer rightBranch;
     private bool test = false;
     private GameObject anchorPoint;
 
@@ -36,6 +38,9 @@ public class Projectile : MonoBehaviour
         anchorPoint = GameObject.Find("AnchorPoint");
         sj.connectedBody = anchorPoint.GetComponent<Rigidbody2D>();
         anchor = anchorPoint.transform;
+        rightBranch = GameObject.Find("Rightbranch").GetComponent<LineRenderer>();
+        leftBranch = GameObject.Find("Leftbranch").GetComponent<LineRenderer>();
+
     }
 
     // Update is called once per frame
@@ -63,6 +68,8 @@ public class Projectile : MonoBehaviour
             {
                 transform.position = anchor.position + (transform.position - anchor.position).normalized * maxDis;
             }
+            DrawLine();
+
         }
     }
     private void OnMouseDown()
@@ -76,6 +83,7 @@ public class Projectile : MonoBehaviour
         isClicked = true;
 
         rb.isKinematic = true;
+        
     }
 
     private void OnMouseUp()
@@ -83,7 +91,7 @@ public class Projectile : MonoBehaviour
         isClicked = false;
         rb.isKinematic = false;
         UIManager.instance.EnableCardScrollView();
-        if (false && Vector2.Distance(transform.position, anchor.position) <= minDis)
+        if (Vector2.Distance(transform.position, anchor.position) <= minDis)
         {
             transform.position = originalPos;
         }
@@ -93,6 +101,8 @@ public class Projectile : MonoBehaviour
             ProjectileManager.instance.SetCurrCard(null);
             Invoke(nameof(Project), 0.12f);
         }
+        DeleteLine();
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -109,5 +119,18 @@ public class Projectile : MonoBehaviour
 
     }
 
+    private void DrawLine()
+    {
+        leftBranch.SetPosition(0, leftBranch.transform.position);
+        leftBranch.SetPosition(1, transform.position);
 
+        rightBranch.SetPosition(0, rightBranch.transform.position);
+        rightBranch.SetPosition(1, transform.position);
+
+    }
+    private void DeleteLine()
+    {
+        leftBranch.SetPosition(1, leftBranch.transform.position);
+        rightBranch.SetPosition(1, rightBranch.transform.position);
+    }
 }
