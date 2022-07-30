@@ -68,7 +68,27 @@ public class Missile : MissileBase
             }
         }
         //对普通攻击的导弹和守护者发出的导弹
-        else if (missileType.Equals(TYPE_MISSILE))
+        else if (missileType.Equals(TYPE_GUARDIANMISSILE))
+        {
+            if (go.tag.Equals(TYPE_HUNTER))
+            {
+                if (isAttacked) return;
+
+                Lifebody lb = go.GetComponent<Lifebody>();
+
+                if (lb)
+                {
+                    Emit e = gameObject.GetComponent<Emit>();
+                    if (e)
+                    {
+                        e.AnimationEndOn();
+                        lb.CutHealthPoint(attack);
+                        isAttacked = true;
+                    }
+                }
+            }
+        }
+        else
         {
             if (go.tag.Equals(TYPE_HUNTER))
             {
@@ -76,21 +96,11 @@ public class Missile : MissileBase
                 Lifebody lb = go.GetComponent<Lifebody>();
                 if (lb && !lbs.Contains(lb))
                 {
-                    Emit e = gameObject.GetComponent<Emit>();
-                    if (e)
-                    {
-                        e.AnimationEndOn();
-                        lb.CutHealthPoint(attack);
-                    }
-                    else
-                    {
-                        if(boomAttack) boomAttack.Attack();
-                    }
+                    if (boomAttack) boomAttack.Attack();
                     lbs.Add(lb);
                     isAttacked = true;
                 }
             }
-
         }
         isCollisied = true;
     }

@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5733125044682200313, guid: ff5d84ef0f31d0a44923b5f926fa4b56, type: 3}
       propertyPath: moveSpeed
-      value: 0.4
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5733125044682200313, guid: ff5d84ef0f31d0a44923b5f926fa4b56, type: 3}
       propertyPath: healthPoint

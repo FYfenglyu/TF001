@@ -5,8 +5,13 @@ using static ConstantTable;
 
 public class RangeAttack : MonoBehaviour
 {
+    [Header("是否为群体攻击(AOE)")]
+    public bool isAOE = false;
 
     private string identity;
+
+    private GameObject currEnemy;
+
     //攻速转换为时间间隔
 
     // Start is called before the first frame update
@@ -50,14 +55,29 @@ public class RangeAttack : MonoBehaviour
             //对方为猎人
             if (go.tag.Equals(TYPE_HUNTER))
             {
-                gameObject.GetComponentInParent<Guardian>().EmitMissile();
+                if (isAOE)
+                {
+                    gameObject.GetComponentInParent<Guardian>().EmitMissile();
+                }
+                else
+                {
+                    if (currEnemy)
+                    {
+                        Debug.Log("Target is still there");
+                        if (currEnemy != other.gameObject) return;
+                    }
+                    else
+                    {
+                        currEnemy = other.gameObject;
+                        Debug.Log("Change Target.");
+                    }
+                    gameObject.gameObject.GetComponentInParent<Guardian>().EmitMissile();
+                }
             }
             else if (go.tag.Equals(TYPE_EMITMISSILE))
             {
             }
         }
-
-
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -78,7 +98,7 @@ public class RangeAttack : MonoBehaviour
         {
             if (go.tag.Equals(TYPE_EMITMISSILE))
             {
-                if(go.transform.parent == gameObject.transform.parent)
+                if (go.transform.parent == gameObject.transform.parent)
                 {
                     //暂时使用了missileBase而不是EmitMissile或者missile
                     go.GetComponent<MissileBase>().DestroySelf();

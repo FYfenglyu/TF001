@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour {
 
 
     private void Start() {
-        gameProgress = GameObject.Find("GameProgress").GetComponent<ProgressBar>();
+        hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
         LoadHunterGenInfoList();
         gameProgress.SetTotalHP(maxHunterIndex);
 

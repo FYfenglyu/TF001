@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67bf30167b23224a945b8d5b755a793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missileType: Missile
+  missileType: GuardianMissile
   id: 206
   attack: 15
   attackRange: 0

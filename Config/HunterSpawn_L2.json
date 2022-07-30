@@ -4,11 +4,19 @@
         "hunterID": 301
     },
     {
-        "birthTime": 0.2,
+        "birthTime": 2,
         "hunterID": 301
     },
     {
-        "birthTime": 0.4,
+        "birthTime": 4,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 6,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 8,
         "hunterID": 301
     },
     {
@@ -16,23 +24,19 @@
         "hunterID": 301
     },
     {
-        "birthTime": 10.2,
+        "birthTime": 15,
         "hunterID": 301
     },
     {
-        "birthTime": 10.4,
+        "birthTime": 16,
         "hunterID": 301
     },
     {
-        "birthTime": 30,
+        "birthTime": 17,
         "hunterID": 301
     },
     {
-        "birthTime": 32,
-        "hunterID": 301
-    },
-    {
-        "birthTime": 34,
+        "birthTime": 18,
         "hunterID": 301
     }
 ]

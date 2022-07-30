@@ -51,8 +51,6 @@ public class HunterManager : MonoBehaviour
             newHunter.transform.SetParent(hunterContainer.transform, false);
 
             hunters.Add(newHunter);
-            Debug.Log("Hunter count : "+ hunters.Count.ToString());
-
             return true;
         }
         return false;
