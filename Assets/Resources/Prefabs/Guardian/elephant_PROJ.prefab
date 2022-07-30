@@ -178,4 +178,4 @@ MonoBehaviour:
   attackRange: 0
   disapearVelocity: 0
   persistency: 0
-  cost: 15
+  cost: 25
