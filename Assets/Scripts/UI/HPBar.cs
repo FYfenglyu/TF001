@@ -69,7 +69,6 @@ public class HPBar : MonoBehaviour
         float fillAmount = (float)currHP / totalHP;
         HPBarContImg.fillAmount = fillAmount > 1 ? 1 : (fillAmount < 0 ? 0 : fillAmount);
 
-
         // show HP bar in the front
         int siblingCount = HPBars.transform.childCount;
         transform.SetSiblingIndex(siblingCount - 1);
