@@ -41,7 +41,8 @@ public class ProjectileManager : MonoBehaviour
         cardList = GameObject.Find("CardList");
 
         // get image material
-        highLight = new Material(Shader.Find("EdgeLighting"));
+        // highLight = new Material(Shader.Find("EdgeLighting"));
+        highLight = null;
         // spriteDefault = new Material(Shader.Find("Sprites-Default"));
         spriteDefault = null;
 

@@ -6,7 +6,7 @@ using System.Text;
 using LitJson;
 
 // Flyweight Pattern
-public class ProjectileData : MonoBehaviour 
+public class ProjectileData : MonoBehaviour
 {
     public static ProjectileData instance;   // singleton
 
@@ -14,20 +14,24 @@ public class ProjectileData : MonoBehaviour
 
     private Dictionary<string, string> projTypeIconDict;  // match projectile type with corresponding icon
 
-    
+
     private void Awake()
     {
         // singleton
         instance = this;
 
         LoadProjAttriFromJson();
-		LoadTypeIconInfoFromJson();
+        LoadTypeIconInfoFromJson();
     }
 
     // load projectile information from json file
     private void LoadProjAttriFromJson()
     {
-        string jsonFilePath = Application.streamingAssetsPath + "/../../Config/Projectiles.json";
+#if UNITY_EDITOR
+        string jsonFilePath = Application.streamingAssetsPath + "/Config/Projectiles.json";
+#else
+        string jsonFilePath = Application.streamingAssetsPath + "/Config/Projectiles.json";
+#endif
         List<ProjAttribute> projectileInfoList = JsonMapper.ToObject<List<ProjAttribute>>(File.ReadAllText(jsonFilePath));
 
         // build dictionary 
@@ -42,7 +46,11 @@ public class ProjectileData : MonoBehaviour
     // load projectile type icon file from json file
     private void LoadTypeIconInfoFromJson()
     {
-        string jsonFilePath = Application.streamingAssetsPath + "/../../Config/projectilesType.json";
+#if UNITY_EDITOR
+        string jsonFilePath = Application.streamingAssetsPath + "/Config/projectilesType.json";
+#else
+        string jsonFilePath = Application.streamingAssetsPath + "/Config/projectilesType.json";
+#endif
         projTypeIconDict = JsonMapper.ToObject<Dictionary<string, string>>(File.ReadAllText(jsonFilePath));
     }
 

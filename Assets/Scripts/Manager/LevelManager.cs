@@ -39,7 +39,6 @@ public class LevelManager : MonoBehaviour
     {
         hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
         LoadHunterGenInfoList();
-
     }
 
     // Update is called once per frame
@@ -71,7 +70,12 @@ public class LevelManager : MonoBehaviour
     }
     public void LoadHunterGenInfoList()
     {
-        LoadHunterGenInfoList(PATH_LEVELCONFIG_TEST);
+#if UNITY_EDITOR
+        string genInfoPath = new String("/../../") + new String(PATH_LEVELCONFIG_TEST);
+#else
+        string genInfoPath = new String(PATH_LEVELCONFIG_TEST);
+#endif
+        LoadHunterGenInfoList(genInfoPath);
     }
 
     public void GenerateHunterOnConfig()

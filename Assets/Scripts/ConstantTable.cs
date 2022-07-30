@@ -25,7 +25,7 @@ public class ConstantTable
 
     //地址
     public const string PATH_PROJECTILECARD = "Prefabs/UI/ProjectileCard";
-    public const string PATH_LEVELCONFIG_TEST = "/../../Config/HunterSpawn_L1.json";
+    public const string PATH_LEVELCONFIG_TEST = "/Config/HunterSpawn_L1.json";
 
     private const string _PREFIX_CONFIG_LEVEL = "/../../Config/HunterSpawn_L";
 
