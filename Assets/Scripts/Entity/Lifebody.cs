@@ -132,6 +132,7 @@ public class Lifebody : MonoBehaviour
 
     public virtual void Stand()
     {
+        transform.rotation = Quaternion.identity;
     }
     protected virtual void AnimateAttackOn() 
     {

@@ -15,8 +15,13 @@ public class ProgressBar : MonoBehaviour
     private void Awake()
     {
         // get component
-        HPBarContImg = transform.Find("HPBarContent").GetComponent<Image>();
-        progressText = transform.Find("ProgressText").GetComponent<Text>();
+        // content image
+        Transform content = transform.Find("BarContent");
+        if (content) HPBarContImg = content.GetComponent<Image>();
+
+        // progress text
+        Transform text = transform.Find("ProgressText");
+        progressText = text.GetComponent<Text>();
     }
 
     // Start is called before the first frame update
@@ -43,10 +48,10 @@ public class ProgressBar : MonoBehaviour
     {
         // set the fill amount of HP bar content
         float fillAmount = (float)currHP / totalHP;
-        HPBarContImg.fillAmount = fillAmount > 1 ? 1 : (fillAmount < 0 ? 0 : fillAmount);
+        if (HPBarContImg) HPBarContImg.fillAmount = fillAmount > 1 ? 1 : (fillAmount < 0 ? 0 : fillAmount);
 
         // set health point text
         string text = currHP.ToString() + new string("/") + totalHP.ToString();
-        progressText.text = text;
+        if (progressText) progressText.text = text;
     }
 }

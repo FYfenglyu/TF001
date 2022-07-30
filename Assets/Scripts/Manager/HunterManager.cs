@@ -27,7 +27,7 @@ public class HunterManager : MonoBehaviour
     protected Hunter hunter03;
 
     private GameObject hunterContainer;     // UI : hunter list
-    private ProgressBar gameProgress;
+    private ProgressBar hunterProgress;
 
     private List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();    // hunter spawn information list (spawn time, hunter ID)
     private int currHunterIndex = 0;    // hunter index which is the next one to be spawned
@@ -45,12 +45,12 @@ public class HunterManager : MonoBehaviour
         hunter03 = Resources.Load<Hunter>("Prefabs/Hunters/hunter_03");
 
         hunterContainer = GameObject.Find("Hunters");
-        gameProgress = GameObject.Find("GameProgress").GetComponent<ProgressBar>();
+        hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
 
 
         LoadHunterGenInfoList();
 
-        gameProgress.SetTotalHP(maxHunterIndex);
+        hunterProgress.SetTotalHP(maxHunterIndex);
     }
 
     private void FixedUpdate()
@@ -65,7 +65,7 @@ public class HunterManager : MonoBehaviour
     private void Update()
     {
         GenerateHunterOnConfig();
-        gameProgress.SetCurrHP(maxHunterIndex - currHunterIndex + hunters.Count);
+        hunterProgress.SetCurrHP(maxHunterIndex - currHunterIndex + hunters.Count);
     }
 
     public bool GenerateHunter(int hid, Vector3 birthPosition)
