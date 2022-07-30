@@ -3442,7 +3442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalCost: 1000
   costIncPerS: 1
-  initCost: 50
+  initCost: 60
   totalScore: 3
   birthDoor: {fileID: 1330627269}
   deadDoor: {fileID: 1715819660}

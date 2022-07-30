@@ -1,5 +1,5 @@
 {
-    "initCost" : 50,
-    "cardIDList" : [201, 202, 101, 102, 103]
+    "initCost" : 120,
+    "cardIDList" : [201]
     
 }
