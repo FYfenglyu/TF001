@@ -4,51 +4,51 @@
         "hunterID": 301
     },
     {
+        "birthTime": 2,
+        "hunterID": 301
+    },
+    {
         "birthTime": 4,
         "hunterID": 302
     },
     {
+        "birthTime": 7,
+        "hunterID": 303
+    },
+    {
         "birthTime": 10,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 15,
         "hunterID": 302
     },
     {
-        "birthTime": 18,
-        "hunterID": 303
-    },
-    {
-        "birthTime": 24,
+        "birthTime": 17,
         "hunterID": 301
     },
     {
-        "birthTime": 27,
-        "hunterID": 303
-    },
-    {
-        "birthTime": 30,
+        "birthTime": 26,
         "hunterID": 301
     },
     {
-        "birthTime": 32,
-        "hunterID": 301
-    },
-    {
-        "birthTime": 33,
-        "hunterID": 302
-    },
-    {
-        "birthTime": 34,
+        "birthTime": 35,
         "hunterID": 302
     },
     {
         "birthTime": 60,
+        "hunterID": 302
+    },
+    {
+        "birthTime": 62,
         "hunterID": 301
     },
     {
-        "birthTime": 61,
+        "birthTime": 65,
         "hunterID": 303
     },
     {
-        "birthTime": 63,
+        "birthTime": 66,
         "hunterID": 303
     },
     {
