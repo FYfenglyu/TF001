@@ -22,6 +22,13 @@ public class HunterGenInfo : IComparable<HunterGenInfo>
 
 }
 
+public struct LevelConfig
+{
+    public int initCost;
+    public List<int> cardIDList;
+
+}
+
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
@@ -30,6 +37,8 @@ public class LevelManager : MonoBehaviour
     private int currHunterIndex = 0;    // hunter index which is the next one to be spawned
     private int maxHunterIndex = 1;     // total hunter number
     private bool isGenerateFinished = false;
+
+    private LevelConfig config;
     private void Awake()
     {
         instance = this;
@@ -78,6 +87,16 @@ public class LevelManager : MonoBehaviour
         LoadHunterGenInfoList(genInfoPath);
     }
 
+    public void LoadLevelConfig(string path)
+    {
+        string jsonFilePath = Application.streamingAssetsPath + path;
+        config = JsonMapper.ToObject<LevelConfig>(File.ReadAllText(jsonFilePath));
+
+        Debug.Log("新生成卡牌id" + config.cardIDList.ToString());
+
+        ProjectileManager.instance.SetCardsList(config.cardIDList);
+    }
+
     public void GenerateHunterOnConfig()
     {
         for (; currHunterIndex < maxHunterIndex; ++currHunterIndex)
@@ -98,13 +117,16 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel(int levelIndex)
     {
-        //get hunter config
-        LoadHunterGenInfoList(GetLevelConfigPath(levelIndex));
+        //load hunters generate config
+        LoadHunterGenInfoList( GetLevelHuntersConfigPath(levelIndex));
+        //load card config
+        LoadLevelConfig( GetLevelConfigPath(levelIndex));
         //get level prefab
 
         //set level prefab
 
         ///reset scores, cost and timemanager
+        currHunterIndex = 0;
         GameManager.instance.ResetGameStatus();
     }
 

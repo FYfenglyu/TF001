@@ -4,6 +4,16 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using LitJson;
+using static ConstantTable;
+
+public struct ProjAttribute
+{
+    public int cardID;
+    public string iconPath;
+    public string type;
+    public string prefabPath;
+    public int cost;
+}
 
 // Flyweight Pattern
 public class ProjectileData : MonoBehaviour

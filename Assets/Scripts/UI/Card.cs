@@ -7,7 +7,7 @@ using UnityEngine.EventSystems; // IPointerClickHandler
 public class Card : MonoBehaviour, IPointerClickHandler
 {
     [Header("投掷物卡牌ID")]
-    public int projCardID;
+    public int cardID;
 
     private ProjAttribute corrProjAttr;  // corresponding projectile information
 
@@ -18,7 +18,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         // load corresponding projectile information
-        corrProjAttr = ProjectileData.instance.GetProjAttr(projCardID);
+        corrProjAttr = ProjectileData.instance.GetProjAttr(cardID);
 
         // get icon image
         iconImg = transform.Find("Icon").GetComponent<Image>();

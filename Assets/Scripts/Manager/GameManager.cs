@@ -125,16 +125,25 @@ public class GameManager : MonoBehaviour
 
     public void ResetGameStatus()
     {
+
         // 费用重置
         currCost = initCost;
         SetCurrCost(initCost);
         
         // 分数重置
         totalScore = 3;
+        playerScore = totalScore;
         scoreProgress.SetTotalHP(totalScore);
+        scoreProgress.SetCurrHP(playerScore);
 
         // 时间重置
         TimeManager.instance.ResetTime();
         lastCostIncTime = 0f;
+
+        //清空猎人
+        HunterManager.instance.ClearHunters();
+
+        //重新开始游戏
+        TimeManager.instance.Continue();
     }
 }

@@ -19,14 +19,6 @@ public class HunterManager : MonoBehaviour
         hunterContainer = GameObject.Find("Hunters");
     }
 
-    private void FixedUpdate()
-    {
-        foreach (Hunter m in hunters)
-        {
-            MoveHunter(m, true);
-        }
-    }
-
     public Hunter GenerateHunter(int hid, Vector3 birthPosition)
     {
         Hunter prototype = GetHunter(hid);
@@ -74,17 +66,21 @@ public class HunterManager : MonoBehaviour
         return aH;
     }
 
-    public void MoveHunter(Hunter m, bool goLeft)
+    public void MoveHunter(Hunter h, Vector3 displacement)
     {
-        m.Move(goLeft);
+        h.Move(displacement);
     }
-    public void DestoryHunter(Hunter m)
+    public void DestoryHunter(Hunter h)
     {
-        m.Dead();
+        h.Dead();
     }
 
-    public void ClearHunter(Hunter hunter)
+    public void ClearHunters()
     {
+        while(hunters.Count > 0)
+        {
+            hunters[0].Dead();
+        }
     }
 
     public bool AreHuntersAllDead()
