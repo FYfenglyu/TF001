@@ -17,6 +17,7 @@ public class HPBar : MonoBehaviour
     private int currHP;
 
     private Image HPBarContImg;    // HP bar image    
+    private GameObject HPBars;      // HP bars
 
     // Start is called before the first frame update
     private void Start()
@@ -28,13 +29,13 @@ public class HPBar : MonoBehaviour
         owner = transform.parent.gameObject;
         totalHP = GetOwerHP();
 
-        // set total HP as current HP
-        SetCurrHP(totalHP);
-
         // get HP bars 
         // and set it as the parent of HP bar
-        GameObject HPBars = GameObject.Find("HPBars");
+        HPBars = GameObject.Find("HPBars");
         transform.SetParent(HPBars.transform, false);
+
+        // set total HP as current HP
+        SetCurrHP(totalHP);
     }
 
 
@@ -67,12 +68,17 @@ public class HPBar : MonoBehaviour
         // set the fill amount of HP bar content
         float fillAmount = (float)currHP / totalHP;
         HPBarContImg.fillAmount = fillAmount > 1 ? 1 : (fillAmount < 0 ? 0 : fillAmount);
+
+        // show HP bar in the front
+        int siblingCount = HPBars.transform.childCount;
+        transform.SetSiblingIndex(siblingCount - 1);
     }
 
     // set current health point
     public void SetCurrHP(int HP)
     {
+        int pastHP = currHP;
         currHP = (HP > totalHP) ? totalHP : (HP < 0 ? 0 : HP);
-        ShowCurrHP();
+        if (pastHP != currHP) ShowCurrHP();
     }
 }
