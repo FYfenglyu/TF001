@@ -60,10 +60,10 @@ public class ProjectileManager : MonoBehaviour
             ProjAttribute corrProjectileInfo = ProjectileData.instance.GetProjAttr(projCardID);
 
             // load basic projectile card prefab
-            GameObject projectileCardPrefab = Resources.Load(PATH_PROJECTILECARD) as GameObject;
+            GameObject projCardPrefab = Resources.Load(PATH_PROJECTILECARD) as GameObject;
 
             // create projectile card entity
-            GameObject projectileCard = GameObject.Instantiate(projectileCardPrefab);
+            GameObject projectileCard = GameObject.Instantiate(projCardPrefab);
 
             // generate corresponding projectile card prefab
             // - projectile icon

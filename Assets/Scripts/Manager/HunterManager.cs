@@ -89,6 +89,7 @@ public class HunterManager : MonoBehaviour
 
     public bool AreHuntersAllDead()
     {
+        if(LevelManager.instance==null) Debug.Log("what is wrong.");
         return LevelManager.instance.IsGenerateFinished() && hunters.Count == 0;
     }
 }
