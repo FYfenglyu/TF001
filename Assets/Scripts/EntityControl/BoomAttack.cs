@@ -56,8 +56,6 @@ public class BoomAttack : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Boom");
-
         // play animation
 
         GameObject theAttacked = other.gameObject;
@@ -65,16 +63,10 @@ public class BoomAttack : MonoBehaviour
         {
             Hunter injuredHunter = theAttacked.GetComponent<Hunter>();
             injuredHunter.CutHealthPoint(attacker.attack);
-
-            Debug.Log("Boom on Hunter.");
         }
         else if (theAttacked.tag == TYPE_GUARDIAN)
         {
-            Debug.Log("Oh hou.");
-        }
-        else
-        {
-            Debug.Log(new string("Bomm ") + theAttacked.tag);
+            // Debug.Log("Boom on Guardian");
         }
     }
 }

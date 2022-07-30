@@ -65,13 +65,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        IncCostPreS();
-
-        Debug.Log(HunterManager.instance.hunters.Count);
+        IncCostPreSencond();
 
         if (HunterManager.instance.AreHuntersAllDead() && playerScore > 0)
         {
-            Debug.Log("Game Over: Win.");
+            // Debug.Log("Game Over: Win.");
             SceneManager.LoadSceneAsync("Game@Win");
         }
     }
@@ -88,7 +86,6 @@ public class GameManager : MonoBehaviour
 
     public void LoseScore()
     {
-        Debug.Log("Lose Score.......");
         playerScore = (playerScore - 1 > 0) ? playerScore - 1 : 0;
         scoreProgress.SetCurrHP(playerScore);
         if (playerScore == 0) SceneManager.LoadSceneAsync("Game@Lose");
@@ -116,7 +113,7 @@ public class GameManager : MonoBehaviour
         UIManager.instance.DisplayCurrCost(currCost);
     }
 
-    private void IncCostPreS()
+    private void IncCostPreSencond()
     {
         float currTime = TimeManager.instance.GetCurrTime();
         if (TimeManager.instance.GetCurrTime() - lastCostIncTime >= 1.0f)
