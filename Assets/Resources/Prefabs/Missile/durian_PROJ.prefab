@@ -9,15 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6284021589534495349, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_LocalScale.x
-      value: -0.2
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 6284021589534495349, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4166667
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 6284021589534495349, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4166667
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 6284021589534495349, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149168, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: attack
-      value: 45
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149168, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: attackRange
@@ -37,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149168, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: disapearVelocity
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149169, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_RootOrder

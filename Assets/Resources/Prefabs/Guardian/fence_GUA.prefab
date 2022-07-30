@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5265427473467152969, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
       propertyPath: healthPoint
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 5265427473467152971, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
       propertyPath: m_Sprite
