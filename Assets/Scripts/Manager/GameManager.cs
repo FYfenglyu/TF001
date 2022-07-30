@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     [Header("开局初始费用")]
     public int initCost = 50;
 
+    [Header("总分数（最大漏怪个数）")]
+    public int totalScore = 3;
+
     private int currCost;
 
     private float lastCostIncTime = 0f;
@@ -33,7 +36,9 @@ public class GameManager : MonoBehaviour
     public const string TAG_BIRTHDOOR = "Respawn";
     public const string TAG_DEADDOOR = "Finish";
 
-    private int playerScore = 3;
+    public int playerScore;
+
+    private ProgressBar scoreProgress;
 
 
     // Start is called before the first frame update
@@ -46,24 +51,25 @@ public class GameManager : MonoBehaviour
 
         originalPos = birthDoor.transform.position;
         targetPos = deadDoor.transform.position;
+
+        scoreProgress = GameObject.Find("ScoreProgress").GetComponent<ProgressBar>();
     }
 
     void Start()
     {
-        playerScore = 3;
+        playerScore = totalScore;
+        scoreProgress.SetTotalHP(totalScore);
         SetCurrCost(initCost);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        IncCostPreS();
+        IncCostPreSencond();
 
-        Debug.Log(HunterManager.instance.hunters.Count);
-
-        if (HunterManager.instance.areHuntersAllDead() && playerScore > 0)
+        if (HunterManager.instance.AreHuntersAllDead() && playerScore > 0)
         {
-            Debug.Log("Game Over: Win.");
+            // Debug.Log("Game Over: Win.");
             SceneManager.LoadSceneAsync("Game@Win");
         }
     }
@@ -80,15 +86,9 @@ public class GameManager : MonoBehaviour
 
     public void LoseScore()
     {
-        if (playerScore > 0)
-        {
-            playerScore -= 1;
-            if (playerScore == 0)
-            {
-                Debug.Log("Game Over: Lose.");
-                SceneManager.LoadSceneAsync("Game@Lose");
-            }
-        }
+        playerScore = (playerScore - 1 > 0) ? playerScore - 1 : 0;
+        scoreProgress.SetCurrHP(playerScore);
+        if (playerScore == 0) SceneManager.LoadSceneAsync("Game@Lose");
     }
 
     public void CutCost(int cost)
@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour
         if (cost <= 0)
             return;
         SetCurrCost(currCost + cost);
-
     }
     public int GetCurrCost() { return currCost; }
 
@@ -114,7 +113,7 @@ public class GameManager : MonoBehaviour
         UIManager.instance.DisplayCurrCost(currCost);
     }
 
-    private void IncCostPreS()
+    private void IncCostPreSencond()
     {
         float currTime = TimeManager.instance.GetCurrTime();
         if (TimeManager.instance.GetCurrTime() - lastCostIncTime >= 1.0f)

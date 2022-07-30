@@ -34,19 +34,20 @@ public class Lifebody : MonoBehaviour
     protected bool isFreezed = false;
     protected float attackInterval;
     protected float lastAttackTime;
-    
+
     void Start()
     {
         InitParam();
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         ResetStatus();
     }
-    
+
     protected virtual void ResetStatus()
     {
-        if(TimeManager.instance.GetCurrTime() - lastAttackTime > 1.1*attackInterval)
+        if (TimeManager.instance.GetCurrTime() - lastAttackTime > 1.1 * attackInterval)
         {
             Unstill();
             AnimateWalkOn();
@@ -60,9 +61,9 @@ public class Lifebody : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ator = GetComponent<Animator>();
         //自动获取种类
-        if(tag == TYPE_GUARDIAN)
+        if (tag == TYPE_GUARDIAN)
             lifebodyType = TYPE_GUARDIAN;
-        else if(tag == TYPE_HUNTER)
+        else if (tag == TYPE_HUNTER)
             lifebodyType = TYPE_HUNTER;
 
 
@@ -75,7 +76,7 @@ public class Lifebody : MonoBehaviour
 
     public virtual void CutHealthPoint(int attack)
     {
-        if(attack > 0)
+        if (attack > 0)
         {
             healthPoint = Mathf.Max(0, healthPoint - attack);
         }
@@ -83,8 +84,8 @@ public class Lifebody : MonoBehaviour
         //HPbar显示更新
         GameManager.instance.UpdateDisplayer(gameObject, DIS_HPBAR);
         //Debug.Log("受击生物血量" + healthPoint.ToString());
-        
-        if(healthPoint == 0)
+
+        if (healthPoint == 0)
         {
             Dead();
         }
@@ -99,19 +100,19 @@ public class Lifebody : MonoBehaviour
             injuredLb.CutHealthPoint(attack);
             lastAttackTime = TimeManager.instance.GetCurrTime();
             Still();
-            if(ator)
+            if (ator)
                 ator.SetBool("attack", true);
         }
     }
 
     public virtual void Move(Vector3 displacement)
     {
-            transform.position += displacement;
+        transform.position += displacement;
     }
 
     public virtual void Dead()
     {
-        if(gameObject)
+        if (gameObject)
             Destroy(gameObject);
     }
 
@@ -132,29 +133,31 @@ public class Lifebody : MonoBehaviour
 
     public virtual void Stand()
     {
+        transform.rotation = Quaternion.identity;
     }
-    protected virtual void AnimateAttackOn() 
+    protected virtual void AnimateAttackOn()
     {
-        if(ator) 
+        if (ator)
             ator.SetBool("attack", false);
     }
     protected virtual void AnimateWalkOn()
     {
-        if(ator) 
+        if (ator)
             ator.SetBool("walk", true);
     }
-    protected virtual void AnimateAttackOff() 
+    protected virtual void AnimateAttackOff()
     {
-        if(ator) 
+        if (ator)
             ator.SetBool("attack", false);
     }
-    protected virtual void AnimateWalkOff() 
+    protected virtual void AnimateWalkOff()
     {
-        if(ator) 
+        if (ator)
             ator.SetBool("walk", false);
     }
 
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
 
     }
 }
