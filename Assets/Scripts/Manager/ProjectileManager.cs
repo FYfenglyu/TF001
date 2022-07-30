@@ -32,8 +32,8 @@ public class ProjectileManager : MonoBehaviour
         cardList = GameObject.Find("CardList");
 
         // get image material
-        // highLight = new Material(Shader.Find("EdgeLighting"));
-        highLight = null;
+        highLight = new Material(Shader.Find("EdgeLighting"));
+
         // spriteDefault = new Material(Shader.Find("Sprites-Default"));
         spriteDefault = null;
 
@@ -85,7 +85,7 @@ public class ProjectileManager : MonoBehaviour
     public void ClearCards()
     {
         SetCurrCard(null);
-        foreach(Transform child in cardList.transform)
+        foreach (Transform child in cardList.transform)
         {
             Destroy(child.gameObject);
         }
@@ -97,19 +97,19 @@ public class ProjectileManager : MonoBehaviour
         if (card == null)
         {
             // chnage the icon image material to sprite default
-            if(currCard)
+            if (currCard)
             {
-            currCard.ChangeIconImgMaterial(spriteDefault);
-            currCard.IsSelected() = false;
-            currCard = null;
+                currCard.ChangeIconImgMaterial(spriteDefault);
+                currCard.IsSelected() = false;
+                currCard = null;
             }
-            
+
             // if current projectile is not null
             if (currProj)
             {
                 // if current projectile is not projected, destroy it
                 if (!currProj.GetComponent<Projectile>().IsProjectiled()) GameObject.Destroy(currProj);
-                currProj = null;                
+                currProj = null;
             }
             return;
         }
