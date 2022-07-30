@@ -24,7 +24,7 @@ public class ConstantTable
     public const int PERS_NO = 0;
 
     //地址文件夹
-    private const string _PREFIX_CONFIG = "/../../Config/";
+    private const string _PREFIX_CONFIG = "/Config/";
 
     //地址
     public const string PATH_PROJECTILECARD = "Prefabs/UI/ProjectileCard";
