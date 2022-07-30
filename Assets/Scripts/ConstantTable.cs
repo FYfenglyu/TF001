@@ -25,14 +25,26 @@ public class ConstantTable
 
     //地址
     public const string PATH_PROJECTILECARD = "Prefabs/UI/ProjectileCard";
-    public const string PREFAB_MONKEY_PROJ = "Prefabs/Guardian/monkey_PROJ";
-    public const string PREFAB_ELEPHANT_PROJ = "Prefabs/Guardian/elephant_PROJ";
-    public const string PREFAB_FENCE_PROJ = "Prefabs/Guardian/fence_PROJ";
-    public const string PREFAB_BAMBOO_PROJ = "Prefabs/Guardian/bamboo_PROJ";
-    public const string PREFAB_ELEPHANT_GUA = "Prefabs/Guardian/elephant_GUA";
-    public const string PREFAB_MONKEY_GUA = "Prefabs/Guardian/monkey_GUA";
-    public const string PREFAB_FENCE_GUA = "Prefabs/Guardian/fence_GUA";
-    public const string PREFAB_BAMBOO_GUA = "Prefabs/Guardian/bamboo_GUA";
+    public const string PATH_LEVELCONFIG_TEST = "/../../Config/HunterSpawn_L1.json";
 
+
+
+    //prefab地址-守护者
+    private const string _PREFIX_PREFAB_GUARDIAN = "Prefabs/Guardian/";
+    public const string PREFAB_MONKEY_PROJ = _PREFIX_PREFAB_GUARDIAN + "monkey_PROJ";
+    public const string PREFAB_ELEPHANT_PROJ = _PREFIX_PREFAB_GUARDIAN + "elephant_PROJ";
+    public const string PREFAB_FENCE_PROJ = _PREFIX_PREFAB_GUARDIAN + "fence_PROJ";
+    public const string PREFAB_BAMBOO_PROJ = _PREFIX_PREFAB_GUARDIAN + "bamboo_PROJ";
+
+    public const string PREFAB_ELEPHANT_GUA = _PREFIX_PREFAB_GUARDIAN + "elephant_GUA";
+    public const string PREFAB_MONKEY_GUA = _PREFIX_PREFAB_GUARDIAN + "monkey_GUA";
+    public const string PREFAB_FENCE_GUA = _PREFIX_PREFAB_GUARDIAN + "fence_GUA";
+    public const string PREFAB_BAMBOO_GUA = _PREFIX_PREFAB_GUARDIAN + "bamboo_GUA";
+
+    //prefab地址-猎人
+    private const string _PREFIX_PREFAB_HUNTER = "Prefabs/Hunters/hunter_";
+    public const string PREFAB_HUNTER_01 = _PREFIX_PREFAB_HUNTER + "01";
+    public const string PREFAB_HUNTER_02 = _PREFIX_PREFAB_HUNTER + "02";
+    public const string PREFAB_HUNTER_03 = _PREFIX_PREFAB_HUNTER + "03";
 
 }
