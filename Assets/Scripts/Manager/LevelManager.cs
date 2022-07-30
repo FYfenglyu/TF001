@@ -35,7 +35,8 @@ public class LevelManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start() {
+    private void Start()
+    {
         hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
         LoadHunterGenInfoList();
 
@@ -45,7 +46,7 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         GenerateHunterOnConfig();
-        hunterProgress.SetCurrHP(maxHunterIndex - currHunterIndex);
+        hunterProgress.SetCurrHP(maxHunterIndex - currHunterIndex + HunterManager.instance.hunters.Count);
     }
 
     public void LoadHunterGenInfoList(string path)
@@ -63,7 +64,7 @@ public class LevelManager : MonoBehaviour
         // }
 
         // change UI
-        maxHunterIndex = hunterGenInfoList.Count;      
+        maxHunterIndex = hunterGenInfoList.Count;
         hunterProgress.SetTotalHP(maxHunterIndex);
 
         isGenerateFinished = false;
@@ -94,9 +95,9 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel(int levelIndex)
     {
         //get hunter config
-        LoadHunterGenInfoList( GetLevelConfigPath(levelIndex));
+        LoadHunterGenInfoList(GetLevelConfigPath(levelIndex));
         //get level prefab
-        
+
         //set level prefab
 
         ///reset scores, cost and timemanager

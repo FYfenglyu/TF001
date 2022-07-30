@@ -79,6 +79,9 @@ public class Lifebody : MonoBehaviour
         if (attack > 0)
         {
             healthPoint = Mathf.Max(0, healthPoint - attack);
+
+            // show it in focus
+            UIManager.instance.SetObjectInFront(transform);
         }
 
         if (healthPoint == 0)

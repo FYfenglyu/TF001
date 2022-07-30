@@ -522,7 +522,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1775275653}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 1775275654}
   - component: {fileID: 1775275653}
   m_Layer: 0
-  m_Name: ButtonManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,7 +838,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1775275652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729fd042321d2d840ba9ca4ad2454541, type: 3}
+  m_Script: {fileID: 11500000, guid: a8ccde81ace520349a2be9f3ece69da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1775275654

@@ -4356,7 +4356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289859729}
   m_Layer: 0
-  m_Name: Guardian
+  m_Name: Guardians
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
