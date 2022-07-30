@@ -93,15 +93,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149172, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149172, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7819443297205149172, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819443297205149172, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
+      propertyPath: m_SleepingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819443297205149172, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819443297205149172, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149174, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_Radius
       value: 0.7903963
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819443297205149174, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149179, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_Sprite

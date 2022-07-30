@@ -68,7 +68,7 @@ public class Missile : MissileBase
             }
         }
         //对普通攻击的导弹和守护者发出的导弹
-        else if (missileType.Equals(TYPE_MISSILE))
+        else
         {
             if (go.tag.Equals(TYPE_HUNTER))
             {
@@ -90,7 +90,6 @@ public class Missile : MissileBase
                     isAttacked = true;
                 }
             }
-
         }
         isCollisied = true;
     }

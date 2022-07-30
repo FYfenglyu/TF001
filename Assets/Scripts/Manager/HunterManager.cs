@@ -65,7 +65,7 @@ public class HunterManager : MonoBehaviour
     private void Update()
     {
         GenerateHunterOnConfig();
-        gameProgress.SetCurrHP(maxHunterIndex - currHunterIndex);
+        gameProgress.SetCurrHP(maxHunterIndex - currHunterIndex + hunters.Count);
     }
 
     public bool GenerateHunter(int hid, Vector3 birthPosition)
