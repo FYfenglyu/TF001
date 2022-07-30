@@ -29,9 +29,6 @@ public class UIManager : MonoBehaviour
         int curScreenHeight = Screen.height;
         int curScreenWidth = Screen.width;
 
-        Debug.Log(curScreenHeight);
-        Debug.Log(curScreenWidth);
-
         float ScreenRate = (float)Screen.height / (float)Screen.width;
 
         float cameraRectHeightRate = DevelopHeigh / ((DevelopWidth / Screen.width) * Screen.height);
@@ -39,11 +36,11 @@ public class UIManager : MonoBehaviour
 
         if (DevelopRate <= ScreenRate)
         {
-            GameObject.Find("MainCamera").GetComponent<Camera>().rect = new Rect(0, (1 - cameraRectHeightRate) / 2, 1, cameraRectHeightRate);
+            GameObject.Find("Main Camera").GetComponent<Camera>().rect = new Rect(0, (1 - cameraRectHeightRate) / 2, 1, cameraRectHeightRate);
         }
         else
         {
-            GameObject.Find("MainCamera").GetComponent<Camera>().rect = new Rect((1 - cameraRectWidthRate) / 2, 0, cameraRectWidthRate, 1);
+            GameObject.Find("Main Camera").GetComponent<Camera>().rect = new Rect((1 - cameraRectWidthRate) / 2, 0, cameraRectWidthRate, 1);
         }
     }
 
