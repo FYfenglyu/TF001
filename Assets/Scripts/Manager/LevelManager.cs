@@ -28,21 +28,19 @@ public class LevelManager : MonoBehaviour
     private List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();    // hunter spawn information list (spawn time, hunter ID)
     private ProgressBar hunterProgress;
     private int currHunterIndex = 0;    // hunter index which is the next one to be spawned
-    private int maxHunterIndex;     // total hunter number
+    private int maxHunterIndex = 1;     // total hunter number
     private bool isGenerateFinished = false;
-    
     private void Awake()
     {
         instance = this;
     }
-    private void Start()
-    {
+
+    private void Start() {
         hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
         LoadHunterGenInfoList();
         hunterProgress.SetTotalHP(maxHunterIndex);
+
     }
-
-
 
     // Update is called once per frame
     private void Update()

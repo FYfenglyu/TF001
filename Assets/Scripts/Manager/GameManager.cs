@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     {
         IncCostPreSencond();
 
-        if (HunterManager.instance.areHuntersAllDead() && playerScore > 0)
+        if (HunterManager.instance.AreHuntersAllDead() && playerScore > 0)
         {
             // Debug.Log("Game Over: Win.");
             SceneManager.LoadSceneAsync("Game@Win");

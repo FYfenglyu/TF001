@@ -35,6 +35,20 @@
         "cost": 15
     },
     {
+        "cardID": 101,
+        "iconPath": "Image/Cards/Guardian/kp_hz",
+        "type": "Guardian",
+        "prefabPath": "Prefabs/Guardian/monkey_PROJ",
+        "cost": 15
+    },
+    {
+        "cardID": 102,
+        "iconPath": "Image/Cards/Guardian/kp_zl",
+        "type": "Guardian",
+        "prefabPath": "Prefabs/Guardian/fence_PROJ",
+        "cost": 15
+    },
+    {
         "cardID": 103,
         "iconPath": "Image/Cards/Guardian/kp_dx",
         "type": "Guardian",

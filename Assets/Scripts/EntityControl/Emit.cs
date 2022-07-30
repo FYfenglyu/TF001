@@ -33,15 +33,17 @@ public class Emit : MonoBehaviour
     void FixedUpdate() {
         checkBeginFinish();
     }
-    public bool checkBeginFinish()
+    public void checkBeginFinish()
     {
-        if(ator.GetCurrentAnimatorStateInfo(0).IsName("forward"))
+        if(ator && ator.GetCurrentAnimatorStateInfo(0).IsName("forward"))
         {
             isEmited = true;
             MoveForward();  
-            return true;
         }
-        return false;
+        else
+        {
+            MoveForward();  
+        }
     }
     public void AnimationBeginOn()
     {
