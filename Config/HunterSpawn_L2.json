@@ -16,19 +16,7 @@
         "hunterID": 301
     },
     {
-        "birthTime": 8,
-        "hunterID": 301
-    },
-    {
         "birthTime": 10,
-        "hunterID": 301
-    },
-    {
-        "birthTime": 15,
-        "hunterID": 301
-    },
-    {
-        "birthTime": 16,
         "hunterID": 301
     },
     {
@@ -36,7 +24,15 @@
         "hunterID": 301
     },
     {
-        "birthTime": 18,
+        "birthTime": 19,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 21,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 24,
         "hunterID": 301
     }
 ]
