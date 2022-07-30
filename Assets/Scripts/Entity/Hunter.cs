@@ -27,8 +27,8 @@ public class Hunter : Lifebody
 
     private void FixedUpdate()
     {
-        if(isMoving)
-            Move(true);   
+        Move(true);   
+        ResetStatus();
     }
 
     public void Move(bool goLeft)
