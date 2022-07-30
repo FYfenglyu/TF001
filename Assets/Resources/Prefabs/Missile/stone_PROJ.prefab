@@ -239,6 +239,6 @@ MonoBehaviour:
   id: 201
   attack: 35
   attackRange: 0.5
-  disapearVelocity: 0.5
+  disapearVelocity: 0.3
   persistency: 2
   cost: 10

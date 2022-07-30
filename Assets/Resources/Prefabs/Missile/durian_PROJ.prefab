@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149168, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: attackRange
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149168, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: disapearVelocity
