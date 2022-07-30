@@ -508,7 +508,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1775275655}
+      - m_Target: {fileID: 1775275653}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -797,12 +797,31 @@ GameObject:
   - component: {fileID: 1775275654}
   - component: {fileID: 1775275655}
   m_Layer: 0
+<<<<<<< HEAD
+  m_Name: GameManager
+=======
   m_Name: UIManager
+>>>>>>> bc072fce4a158538eaa4791260b21b526e0495a5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+--- !u!114 &1775275653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775275652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ccde81ace520349a2be9f3ece69da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+=======
+>>>>>>> bc072fce4a158538eaa4791260b21b526e0495a5
 --- !u!4 &1775275654
 Transform:
   m_ObjectHideFlags: 0

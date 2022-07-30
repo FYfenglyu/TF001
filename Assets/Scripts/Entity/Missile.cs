@@ -58,8 +58,7 @@ public class Missile : MissileBase
             if (go.tag.Equals(TYPE_ROAD))
             {
                 //之后要能通过id指定生成的守护者
-                Debug.Log("即将生成守卫者");
-                GuardianManager.instance.GenerateGuardian(id, gameObject.transform.position, Quaternion.identity);
+                GuardianManager.instance.GenerateGuardian(id, transform.position, Quaternion.identity);
                 DestroySelf();
             }
             else if (go.tag.Equals(TYPE_GUARDIAN))

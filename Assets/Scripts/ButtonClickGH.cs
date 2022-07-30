@@ -22,4 +22,8 @@ public class ButtonClickGH : MonoBehaviour {
     {
         GameManager.instance.AddCost(100);
     }
+
+    public void SetLevel(int i){
+        LevelManager.instance.LoadLevel(i);
+    }
 }

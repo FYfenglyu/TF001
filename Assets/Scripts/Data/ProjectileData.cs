@@ -4,6 +4,16 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using LitJson;
+using static ConstantTable;
+
+public struct ProjAttribute
+{
+    public int cardID;
+    public string iconPath;
+    public string type;
+    public string prefabPath;
+    public int cost;
+}
 
 // Flyweight Pattern
 public class ProjectileData : MonoBehaviour 
@@ -27,7 +37,7 @@ public class ProjectileData : MonoBehaviour
     // load projectile information from json file
     private void LoadProjAttriFromJson()
     {
-        string jsonFilePath = Application.streamingAssetsPath + "/../../Config/Projectiles.json";
+        string jsonFilePath = Application.streamingAssetsPath + PATH_CONFIG_CARD;
         List<ProjAttribute> projectileInfoList = JsonMapper.ToObject<List<ProjAttribute>>(File.ReadAllText(jsonFilePath));
 
         // build dictionary 
@@ -42,7 +52,7 @@ public class ProjectileData : MonoBehaviour
     // load projectile type icon file from json file
     private void LoadTypeIconInfoFromJson()
     {
-        string jsonFilePath = Application.streamingAssetsPath + "/../../Config/projectilesType.json";
+        string jsonFilePath = Application.streamingAssetsPath + PATH_CONFIG_CARDTYPE;
         projTypeIconDict = JsonMapper.ToObject<Dictionary<string, string>>(File.ReadAllText(jsonFilePath));
     }
 
