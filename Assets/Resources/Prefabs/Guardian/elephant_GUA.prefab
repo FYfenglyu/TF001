@@ -134,7 +134,7 @@ MonoBehaviour:
   attack: 15
   attackSpeed: 1
   attackRange: 1
-  cost: 15
+  cost: 25
   gid: 103
   missilePrefab: {fileID: 1681039920773119129, guid: 9e79e4ab9b728074f937824511a76ead, type: 3}
 --- !u!50 &5265427473467152974
@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9a9e24ab4cca547ac5f2a2b6bcef10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAOE: 0
 --- !u!1001 &7198448718935521698
 PrefabInstance:
   m_ObjectHideFlags: 0
