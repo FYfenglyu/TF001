@@ -19,10 +19,10 @@ public class PlayUI : MonoBehaviour
         instance = this;
         cardScrollView = GameObject.Find("CardScrollView");
         costDisplayer = GameObject.Find("CostDisplayer");
-        AdjustScreeScale();
+        AdjustScreenScale();
     }
 
-    private void AdjustScreeScale()
+    private void AdjustScreenScale()
     {
         // to edit
         float DevelopWidth = 1920f;

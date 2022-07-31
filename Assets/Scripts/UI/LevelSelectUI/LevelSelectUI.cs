@@ -24,7 +24,6 @@ public class LevelSelectUI : MonoBehaviour
         // Find button parent-object in scene
         buttonsOn = GameObject.Find("button_on");
         buttonsOff = GameObject.Find("button_off");
-
     }
 
     void Start()
