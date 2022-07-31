@@ -39,6 +39,9 @@ public class PlayManager : MonoBehaviour
     private ProgressBar scoreProgress;
     private ProgressBar hunterProgress;
 
+    // private GameObject successprompt;
+    // private GameObject failprompt;
+
     // 生命周期函数
     // Start is called before the first frame update
     private void Awake()
@@ -60,6 +63,9 @@ public class PlayManager : MonoBehaviour
 
         scoreProgress = GameObject.Find("ScoreProgress").GetComponent<ProgressBar>();
         hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
+
+
+
     }
 
     void Start()
@@ -70,6 +76,11 @@ public class PlayManager : MonoBehaviour
         LevelConfig levelConfig = GameManager.instance.GetLevelConfig();
         ResetGameStatus(levelConfig);
         ProjectileManager.instance.SetCardsList(levelConfig.cardIDList);
+
+        // successprompt = GameObject.Find("SuccessPrompt");
+        // failprompt = GameObject.Find("FailedPrompt");
+        // successprompt.SetActive(false);
+        // failprompt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -80,10 +91,19 @@ public class PlayManager : MonoBehaviour
 
         hunterProgress.SetCurrHP(HunterManager.instance.GetRestHunterNum());
 
+        //检查胜利
+        checkSuccess();
+    }
+
+    public void checkSuccess()
+    {
         if (HunterManager.instance.AreHuntersAllDead() && playerScore > 0)
         {
             // Debug.Log("Game Over: Win.");
             SceneManager.LoadSceneAsync("Game@Win");
+            // GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
+            // successprompt.SetActive(true);
+            // successprompt.GetComponent<CanvasGroup>().interactable = true;
         }
     }
 
@@ -123,7 +143,13 @@ public class PlayManager : MonoBehaviour
     {
         playerScore = (playerScore - 1 > 0) ? playerScore - 1 : 0;
         scoreProgress.SetCurrHP(playerScore);
-        if (playerScore == 0) SceneManager.LoadSceneAsync("Game@Lose");
+        if (playerScore == 0) 
+        {
+            SceneManager.LoadSceneAsync("Game@Lose");
+            // GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
+            // failprompt.GetComponent<CanvasGroup>().interactable = true;
+            // failprompt.SetActive(true);
+        }
     }
 
     // 费用相关函数

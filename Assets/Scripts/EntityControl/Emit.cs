@@ -28,11 +28,13 @@ public class Emit : MonoBehaviour
     void Start() {
         moveDirection = new Vector3(1f, -0.1f, 0f);
         AnimationBeginOn();
+        PlayUI.instance.PlayAudio("emit");
     }
     
     void FixedUpdate() {
         checkBeginFinish();
     }
+
     public void checkBeginFinish()
     {
         if(ator && ator.GetCurrentAnimatorStateInfo(0).IsName("forward"))

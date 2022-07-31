@@ -7,6 +7,10 @@ using static ConstantTable;
 public class LevelSelectUI : MonoBehaviour
 {
     public static LevelSelectUI instance;
+    private AudioSource audioSource;
+    private AudioClip buttonClick_Audio;
+    private AudioClip UI_Audio;
+
     private int currLevel = 1;
 
     private Sprite LevelButton_HightlightImage;
@@ -30,7 +34,14 @@ public class LevelSelectUI : MonoBehaviour
         buttonsOff = GameObject.Find("button_off");
         
         track = GameObject.Find("Track");
+
         trackSpriteRenderer = track.GetComponent<SpriteRenderer>(); 
+
+        audioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        UI_Audio = Resources.Load<AudioClip>(AUDIO_SELECTCARD);
+        buttonClick_Audio = Resources.Load<AudioClip>(AUDIO_CLICKBUTTON);
+        // Debug.Log(buttonClick_Audio);
+        // Debug.Log(UI_Audio);
     }
 
     void Start()
@@ -114,15 +125,23 @@ public class LevelSelectUI : MonoBehaviour
 
     public void AddListenerSelectLevel(Button b, int i)
     {
-        b.onClick.AddListener( delegate{SelectLevel(i + 1);} );
+        b.onClick.AddListener( 
+            delegate{
+                //audioSource.clip = UI_Audio;
+                audioSource.PlayOneShot(UI_Audio);
+                SelectLevel(i + 1);
+            } 
+            );
     }
     public void SelectLevel(int i)
     {
         GameManager.instance.LoadLevel(i);
     }
 
+    // 返回按钮使用
     public void SelectBack()
     {
+        audioSource.PlayOneShot(buttonClick_Audio);
         GameManager.instance.LoadScene(SCENE_START);
     }
 

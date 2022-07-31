@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1873059472308014231, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6284021589534495349, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_LocalScale.x
       value: -0.41
@@ -37,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149168, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: disapearVelocity
-      value: 0.4
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7819443297205149169, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
       propertyPath: m_RootOrder
@@ -99,6 +103,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 5d53d81b8b12cec42a56af0ea8962a49, type: 3}
+    - target: {fileID: 8607476680139544462, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
+      propertyPath: maxAttakTimes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607476680139544462, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
+      propertyPath: attackDuration
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faa3252fd1618e44ca537a3de7b61094, type: 3}
 --- !u!1 &8132706368010639100 stripped
@@ -121,3 +133,4 @@ MonoBehaviour:
   duration: 5
   interval: 1
   maxPerformTimes: 100
+  costInc: 1
