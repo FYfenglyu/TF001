@@ -49,4 +49,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(name);
     }
+
+    public void TestLevelUP()
+    {
+        LevelUp();
+        LevelSelectUI.instance.CheckLevelButton();    
+
+    }
 }

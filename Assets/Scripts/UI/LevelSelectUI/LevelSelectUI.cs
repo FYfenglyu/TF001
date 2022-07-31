@@ -6,6 +6,7 @@ using static ConstantTable;
 
 public class LevelSelectUI : MonoBehaviour
 {
+    public static LevelSelectUI instance;
     private int currLevel = 1;
 
     private Sprite LevelButton_HightlightImage;
@@ -13,8 +14,12 @@ public class LevelSelectUI : MonoBehaviour
     private Sprite LevelButton_OffImage;
     private GameObject buttonsOn;
     private GameObject buttonsOff;
+    private GameObject track;
+    private SpriteRenderer trackSpriteRenderer;
 
     void Awake() {
+        instance = this;
+
         // Load image of button icon
         LevelButton_HightlightImage = Resources.Load<Sprite>(GetLevelUIButtonImagePath("highlight"));
         LevelButton_OnImage = Resources.Load<Sprite>(GetLevelUIButtonImagePath("on"));
@@ -24,6 +29,8 @@ public class LevelSelectUI : MonoBehaviour
         buttonsOn = GameObject.Find("button_on");
         buttonsOff = GameObject.Find("button_off");
         
+        track = GameObject.Find("Track");
+        trackSpriteRenderer = track.GetComponent<SpriteRenderer>(); 
     }
 
     void Start() {
@@ -38,7 +45,7 @@ public class LevelSelectUI : MonoBehaviour
             Transform buttonOff_i = buttonsOff.transform.GetChild(i);
             GameObject buttonOn_i_go =buttonOn_i.gameObject;
             GameObject buttonOff_i_go =buttonOff_i.gameObject;
-            buttonOn_i.GetComponent<Button>().onClick.AddListener( delegate{SelectLevel(currLevel);} );
+            AddListenerSelectLevel(buttonOn_i.GetComponent<Button>(), i);
             if(i < currLevel-1)
             {
                 buttonOn_i_go.SetActive(true);
@@ -86,12 +93,28 @@ public class LevelSelectUI : MonoBehaviour
         thisButton.GetComponent<Image>().sprite = LevelButton_OffImage;
     }
 
-    public void ShowTrack(int i)
-    {}
+    public void ShowTrack(int level)
+    {
+        if(level > 1 && level <= NUM_MAXLEVEL)
+        {
+            track.SetActive(true);
+            string path = GetLevelTrackImagePath(level);
+            Sprite newTrack = Resources.Load<Sprite>(path);
+            trackSpriteRenderer.sprite = newTrack;
+        }
+        else if (level <= 1)
+        {
+            track.SetActive(false);
+        }
 
+    }
     public void DarkCurrLevel()
     {}
 
+    public void AddListenerSelectLevel(Button b, int i)
+    {
+        b.onClick.AddListener( delegate{SelectLevel(i + 1);} );
+    }
     public void SelectLevel(int i)
     {
         GameManager.instance.LoadLevel(i);
@@ -101,4 +124,6 @@ public class LevelSelectUI : MonoBehaviour
     {
         GameManager.instance.LoadScene(SCENE_START);
     }
+
+    
 }
