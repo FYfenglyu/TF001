@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour
         return currLevel;
     }
 
+    public void ReloadLevel()
+    {
+        LoadScene("SampleScene");
+    }
+
+    //TODO
     public void LoadLevel(int i)
     {
         levelConfig = LevelData.GetLevelConfig(i);

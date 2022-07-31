@@ -145,4 +145,14 @@ public class PlayUI : MonoBehaviour
         }
     }
 
+    public void NextLevel()
+    {
+        GameManager.instance.LevelUp();
+        GameManager.instance.ReloadLevel();
+    }
+
+    public void RetryThisLevel()
+    {
+        GameManager.instance.ReloadLevel();
+    }
 }
