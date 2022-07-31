@@ -8,15 +8,12 @@ public class Missile : MissileBase
     [Header("其他属性")]
     public int cost;
 
-    private BoomAttack boomAttack;
+    // delegation
+    public delegate void AttackAction();
+    public AttackAction Attack;
 
     private void Awake()
     {
-        Transform attackBox = transform.Find("BoomRangeBox");
-        if (attackBox)
-        {
-            boomAttack = attackBox.GetComponent<BoomAttack>();
-        }
     }
 
     // Start is called before the first frame update
@@ -95,7 +92,7 @@ public class Missile : MissileBase
                 Lifebody lb = go.GetComponent<Lifebody>();
                 if (lb && !lbs.Contains(lb))
                 {
-                    if (boomAttack) boomAttack.Attack();
+                    Attack();
                     lbs.Add(lb);
                     isAttacked = true;
                 }

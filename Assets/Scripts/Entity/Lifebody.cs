@@ -35,6 +35,8 @@ public class Lifebody : MonoBehaviour
     protected float attackInterval;
     protected float lastAttackTime;
 
+    public List<BuffBase> buffs;
+
     void Start()
     {
         InitParam();
