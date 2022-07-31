@@ -14,11 +14,11 @@ public class GameBuff : ScheduledBuff
 
     public override void OnBuffStart()
     {
-        GameManager.instance.costIncPerS += costInc;
+        PlayManager.instance.costIncPerS += costInc;
     }
 
     public override void OnBuffDestroy()
     {
-        GameManager.instance.costIncPerS -= costInc;
+        PlayManager.instance.costIncPerS -= costInc;
     }
 }

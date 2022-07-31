@@ -21,6 +21,6 @@ public class ScheduleTagedBuff : ScheduledBuff
     protected bool isEffectiveTo(GameObject owner)
     {
         Debug.Log(new string("Their Tag: ")+ owner.tag);
-        return immuTags.Contains(owner.tag);
+        return targetTags.Contains(owner.tag);
     }
 }
