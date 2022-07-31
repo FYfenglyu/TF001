@@ -15,7 +15,6 @@ public class PlayManager : MonoBehaviour
     public int costIncPerS = 1;
 
     [Header("开局初始费用")]
-    public int initCost = 50;
     private int currCost;
     private float lastCostIncTime = 0f;
 
@@ -67,7 +66,6 @@ public class PlayManager : MonoBehaviour
     {
         playerScore = totalScore;
         scoreProgress.SetTotalHP(totalScore);
-        SetCurrCost(initCost);
 
         LevelConfig levelConfig = GameManager.instance.GetLevelConfig();
         ResetGameStatus(levelConfig);
@@ -92,8 +90,8 @@ public class PlayManager : MonoBehaviour
     public void ResetGameStatus(LevelConfig config)
     {
         // 费用重置
-        currCost = initCost;  //config.initCost
-        SetCurrCost(initCost);
+        currCost = config.initCost;
+        SetCurrCost(currCost);
 
         // 分数重置
         totalScore = 3;

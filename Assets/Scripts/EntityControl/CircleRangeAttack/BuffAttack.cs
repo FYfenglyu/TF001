@@ -7,8 +7,7 @@ using static ConstantTable;
 public class BuffAttack : CircleRangeAttack
 {
     [Header("攻击带有的Buff")]
-    [SerializeField]
-    // public List<BuffBase> buffBase = new List<BuffBase>();
+    public List<BuffBase> buffBase = new List<BuffBase>();
 
     private BuffBase buffPattern;
 
