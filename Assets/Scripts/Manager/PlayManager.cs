@@ -70,7 +70,6 @@ public class PlayManager : MonoBehaviour
         SetCurrCost(initCost);
 
         LevelConfig levelConfig = GameManager.instance.GetLevelConfig();
-        // if(levelConfig) Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         ResetGameStatus(levelConfig);
         HunterManager.instance.GenerateHunter(levelConfig);
         ProjectileManager.instance.SetCardsList(levelConfig.cardIDList);
@@ -80,6 +79,8 @@ public class PlayManager : MonoBehaviour
     private void Update()
     {
         IncCostPreSencond();
+
+        hunterProgress.SetCurrHP(HunterManager.instance.GetRestHunterNum());
 
         if (HunterManager.instance.AreHuntersAllDead() && playerScore > 0)
         {
@@ -98,15 +99,15 @@ public class PlayManager : MonoBehaviour
         totalScore = 3;
         playerScore = totalScore;
 
-        // 初始化游戏进度条
-        InitGameProgressBar();
-
         // 时间重置
         TimeManager.instance.ResetTime();
         lastCostIncTime = 0f;
 
         //清空猎人配置
         HunterManager.instance.ResetParam(config);
+
+        // 初始化游戏进度条
+        InitGameProgressBar();
 
         //开始游戏计时
         TimeManager.instance.Continue();

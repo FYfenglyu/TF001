@@ -30,17 +30,13 @@ public class HunterManager : MonoBehaviour
     {
         totalHunterNum = config.hunterNum;
         hunterGenInfoList = config.hunterGenInfoList;
-        deadHunterNum = 0;
         genHunterNum = 0;
         isGenerateFinished = false;
     }
-    public int GetCurrHunterNum()
+
+    public int GetRestHunterNum()
     {
-        return genHunterNum - deadHunterNum;
-    }
-    public int GetLeaveHunterNum()
-    {
-        return totalHunterNum - deadHunterNum;
+        return totalHunterNum - genHunterNum + hunters.Count;
     }
     public int GetTotalHunterNum()
     {

@@ -19,7 +19,7 @@ public class Hunter : Lifebody
     {
         InitParam();
         TargetPos = PlayManager.instance.deadDoor.transform.position;
-        if(moveSpeed <= 0.0f)
+        if (moveSpeed <= 0.0f)
             moveSpeed = 1.0f;
         //最多存活90s
         Invoke(nameof(Dead), 90f);
@@ -27,7 +27,7 @@ public class Hunter : Lifebody
 
     private void FixedUpdate()
     {
-        Move(true);   
+        Move(true);
         ResetStatus();
     }
 
@@ -36,7 +36,7 @@ public class Hunter : Lifebody
         if (!isFreezed)
         {
             AnimateWalkOn();
-            Move(new Vector3(moveSpeed* Time.deltaTime * (goLeft?-1:1), 0));
+            Move(new Vector3(moveSpeed * Time.deltaTime * (goLeft ? -1 : 1), 0));
             //清理屏外多余怪物
             if (transform.position.x < -20)
                 Dead();
@@ -66,6 +66,7 @@ public class Hunter : Lifebody
     {
         isMoving = true;
     }
+
     public override void Dead()
     {
         //清除Manager内列表信息
