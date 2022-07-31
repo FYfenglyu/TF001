@@ -1,8 +1,10 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
+using UnityEngine.SceneManagement;
 using System;
+using System.IO;
 using System.Text;
 using LitJson;
 
@@ -22,23 +24,26 @@ public class HunterGenInfo : IComparable<HunterGenInfo>
 
 }
 
-public struct LevelConfig
+public struct LevelConfigEle
 {
     public int initCost;
     public List<int> cardIDList;
 
 }
 
+public struct LevelConfig
+{
+    public int initCost;
+    public List<int> cardIDList;
+    public List<HunterGenInfo> hunterGenInfoList;
+
+    public int hunterNum;
+}
+
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager instance;
     private List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();    // hunter spawn information list (spawn time, hunter ID)
-    private ProgressBar hunterProgress;
-    private int currHunterIndex = 0;    // hunter index which is the next one to be spawned
-    private int maxHunterIndex = 1;     // total hunter number
-    private bool isGenerateFinished = false;
-
-    private LevelConfig config;
+    private LevelConfigEle config;
     private void Awake()
     {
         instance = this;
@@ -46,15 +51,12 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
         LoadHunterGenInfoList();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        GenerateHunterOnConfig();
-        hunterProgress.SetCurrHP(maxHunterIndex - currHunterIndex + HunterManager.instance.hunters.Count);
     }
 
     public void LoadHunterGenInfoList(string path)
@@ -70,12 +72,6 @@ public class LevelManager : MonoBehaviour
         // {
         //     Debug.Log(new String("Spawn Hunter: ") + info_i.birthTime.ToString() + new String(" : ") + info_i.hunterID.ToString());
         // }
-
-        // change UI
-        maxHunterIndex = hunterGenInfoList.Count;
-        hunterProgress.SetTotalHP(maxHunterIndex);
-
-        isGenerateFinished = false;
     }
     public void LoadHunterGenInfoList()
     {
@@ -90,50 +86,40 @@ public class LevelManager : MonoBehaviour
     public void LoadLevelConfig(string path)
     {
         string jsonFilePath = Application.streamingAssetsPath + path;
-        config = JsonMapper.ToObject<LevelConfig>(File.ReadAllText(jsonFilePath));
+        config = JsonMapper.ToObject<LevelConfigEle>(File.ReadAllText(jsonFilePath));
 
-        Debug.Log("新生成卡牌id" + config.cardIDList.ToString());
+        // Debug.Log("新生成卡牌id" + config.cardIDList.ToString());
 
         ProjectileManager.instance.SetCardsList(config.cardIDList);
     }
 
-    public void GenerateHunterOnConfig()
+    public static void GetLevelConfig(int levelIndex)
     {
-        for (; currHunterIndex < maxHunterIndex; ++currHunterIndex)
-        {
-            if (TimeManager.instance.GetCurrTime() >= hunterGenInfoList[currHunterIndex].birthTime)
-            {
-                if (!HunterManager.instance.GenerateHunter(hunterGenInfoList[currHunterIndex].hunterID, GameManager.instance.originalPos))
-                {
-                    Debug.Log("Fali to generate hunter. Hunter ID : " + hunterGenInfoList[currHunterIndex].hunterID.ToString());
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
-    }
+        LevelConfig levelconfig = new();
 
-    public void LoadLevel(int levelIndex)
-    {
         //load hunters generate config
         LoadHunterGenInfoList( GetLevelHuntersConfigPath(levelIndex));
         //load card config
         LoadLevelConfig( GetLevelConfigPath(levelIndex));
-        //get level prefab
 
-        //set level prefab
+        levelconfig.initCost = config.initCost;
+        levelconfig.cardIDList = config.cardIDList;
+        levelconfig.hunterGenInfoList = hunterGenInfoList;
+        levelconfig.hunterNum = hunterGenInfoList.Count;
 
-        ///reset scores, cost and timemanager
-        currHunterIndex = 0;
-        GameManager.instance.ResetGameStatus();
+        // PlayManager.instance.ResetGameStatus();
+        // SceneManager.LoadSceneAsync("SampleScene");
+
+        return levelconfig;
     }
 
-    public bool IsGenerateFinished()
-    {
-        if (currHunterIndex == maxHunterIndex)
-            isGenerateFinished = true;
-        return isGenerateFinished;
-    }
+
+
+    // public bool IsGenerateFinished()
+    // {
+    //     if (currHunterIndex == maxHunterIndex)
+    //         isGenerateFinished = true;
+    //     return isGenerateFinished;
+    // }
 }
+*/

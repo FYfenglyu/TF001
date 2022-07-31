@@ -1,4 +1,4 @@
-public class ConstantTable
+public static class ConstantTable
 {
     //种类
     public const string TYPE_MISSILE = "Missile";
@@ -62,4 +62,34 @@ public class ConstantTable
     public const string PREFAB_HUNTER_02 = _PREFIX_PREFAB_HUNTER + "02";
     public const string PREFAB_HUNTER_03 = _PREFIX_PREFAB_HUNTER + "03";
 
+    //图片地址
+    private const string _PREFIX_IMAGE_LEVELUI = "Image/UI/Level/";
+    private const string _PREFIX_IMAGE_LEVELUI_NUMBER = _PREFIX_IMAGE_LEVELUI + "/Numbers/";
+
+    public static string GetLevelUIButtonImagePath(string name)
+    {
+        string path = _PREFIX_IMAGE_LEVELUI;
+        switch(name)
+        {
+            case "highlight": 
+                path += "gq_xz";
+                break;
+            case "on":
+                path += "gq_ywc";
+                break;
+            case "off":
+                path += "gq_wjs";
+                break;
+        }
+        return path;    
+    }
+
+    //场景地址
+    public const string SCENE_START = "Game@Start";
+    public const string SCENE_LEVELSELECT = "Game@LevelSelect";
+
+
+    //参数设置
+
+    public const int NUM_MAXLEVEL = 16;
 }

@@ -6,8 +6,15 @@ using static ConstantTable;
 public class HunterManager : MonoBehaviour
 {
     public static HunterManager instance;
+    private List<HunterGenInfo> hunterGenInfoList;
     public List<Hunter> hunters;
     private GameObject hunterContainer;     // UI : hunter list
+
+    [Header("怪物数量相关")]
+    private int totalHunterNum = 10;
+    private int deadHunterNum = 0;
+    private int genHunterNum = 0;
+    private bool isGenerateFinished = false;
 
     private void Awake()
     {
@@ -17,6 +24,45 @@ public class HunterManager : MonoBehaviour
     void Start()
     {
         hunterContainer = GameObject.Find("Hunters");
+    }
+
+    public void ResetParam(LevelConfig config)
+    { 
+        totalHunterNum = config.hunterNum;
+        hunterGenInfoList = config.hunterGenInfoList;
+        Debug.Log(hunterGenInfoList);
+        deadHunterNum = 0;
+        genHunterNum = 0;
+        isGenerateFinished = false;
+    }
+    public int GetCurrHunterNum()
+    {
+        return genHunterNum - deadHunterNum;
+    }
+    public int GetLeaveHunterNum()
+    {
+        return totalHunterNum - deadHunterNum;
+    }
+    public int GetTotalHunterNum()
+    {
+        return totalHunterNum;
+    }
+    public void GenerateHunter(LevelConfig config)
+    {
+        for (; genHunterNum < totalHunterNum; ++genHunterNum)
+        {
+            if (TimeManager.instance.GetCurrTime() >= hunterGenInfoList[genHunterNum].birthTime)
+            {
+                if (!GenerateHunter(hunterGenInfoList[genHunterNum].hunterID, PlayManager.instance.originalPos))
+                {
+                    Debug.Log("Fali to generate hunter. Hunter ID : " + hunterGenInfoList[genHunterNum].hunterID.ToString());
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 
     public Hunter GenerateHunter(int hid, Vector3 birthPosition)
@@ -74,7 +120,6 @@ public class HunterManager : MonoBehaviour
     {
         h.Dead();
     }
-
     public void ClearHunters()
     {
         while(hunters.Count > 0)
@@ -85,7 +130,13 @@ public class HunterManager : MonoBehaviour
 
     public bool AreHuntersAllDead()
     {
-        if(LevelManager.instance==null) Debug.Log("what is wrong.");
-        return LevelManager.instance.IsGenerateFinished() && hunters.Count == 0;
+        return IsGenerateFinished() && hunters.Count == 0;
+    }
+
+    public bool IsGenerateFinished()
+    {
+        if (genHunterNum == totalHunterNum)
+            isGenerateFinished = true;
+        return isGenerateFinished;
     }
 }

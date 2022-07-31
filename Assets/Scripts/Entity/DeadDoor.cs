@@ -5,6 +5,10 @@ using UnityEngine;
 public class DeadDoor : MonoBehaviour
 {
     // Start is called before the first frame update
+    void Awake() {
+        PlayManager.instance.deadDoor  = gameObject;  
+        PlayManager.instance.targetPos = gameObject.transform.position;
+    }
     //public GameObject hunter;
     void Start()
     {
@@ -21,7 +25,7 @@ public class DeadDoor : MonoBehaviour
         Hunter mon = m.GetComponent<Hunter>();
         if( null != mon )
         {
-            GameManager.instance.LoseScore();
+            PlayManager.instance.LoseScore();
             mon.Dead();
         }
     }
