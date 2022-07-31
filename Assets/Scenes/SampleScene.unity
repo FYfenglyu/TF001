@@ -3376,7 +3376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalCost: 1000
   costIncPerS: 1
-  initCost: 60
+  initCost: 50
   totalScore: 3
   birthDoor: {fileID: 1330627269}
   deadDoor: {fileID: 1715819660}
@@ -3432,7 +3432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8d4d48db312844f938086f76058d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardIDList: cd0000006500000066000000c9000000ca00000067000000cb000000
+  cardIDList: 65000000660000006700000068000000c9000000ca000000
 --- !u!114 &963551129
 MonoBehaviour:
   m_ObjectHideFlags: 0
