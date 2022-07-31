@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static ConstantTable;
 
-public class UIManager : MonoBehaviour
+public class PlayUI : MonoBehaviour
 {
-    public static UIManager instance;
+    public static PlayUI instance;
     private GameObject costDisplayer;
     private GameObject cardScrollView;    // Scroll View 
 
-    private UIManager() { }
+
+    private PlayUI() { }
 
     private void Awake()
     {
@@ -59,13 +61,7 @@ public class UIManager : MonoBehaviour
         cardScrollView.GetComponent<CardScrollView>().Display();
     }
 
-    public void StartGame()
-    {
-        SceneManager.LoadSceneAsync("SampleScene");
-        Debug.Log("Start Game.");
-    }
-
-    public void PauseGame()
+     public void PauseGame()
     {
         TimeManager.instance.Pause();
     }
@@ -73,6 +69,11 @@ public class UIManager : MonoBehaviour
     public void ContinueGame()
     {
         TimeManager.instance.Continue();
+    }
+
+    public void BackLevelSelect()
+    {
+        GameManager.instance.LoadScene(SCENE_LEVELSELECT);
     }
 
     public void ExitGame()
@@ -84,10 +85,6 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
-    public void SetObjectInFront(Transform focus)
-    {
-        Transform parentGameObject = focus.parent;
-        int siblingNum = parentGameObject.childCount;
-        focus.SetSiblingIndex(siblingNum - 1);
-    }
+
+
 }

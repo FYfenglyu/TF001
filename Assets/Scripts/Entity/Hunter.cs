@@ -18,7 +18,7 @@ public class Hunter : Lifebody
     void Start()
     {
         InitParam();
-        TargetPos = GameManager.instance.deadDoor.transform.position;
+        TargetPos = PlayManager.instance.deadDoor.transform.position;
         if(moveSpeed <= 0.0f)
             moveSpeed = 1.0f;
         //最多存活90s
