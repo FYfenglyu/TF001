@@ -68,6 +68,12 @@ public class PlayManager : MonoBehaviour
         playerScore = totalScore;
         scoreProgress.SetTotalHP(totalScore);
         SetCurrCost(initCost);
+
+        LevelConfig levelConfig = GameManager.instance.GetLevelConfig();
+        // if(levelConfig) Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        ResetGameStatus(levelConfig);
+        HunterManager.instance.GenerateHunter(levelConfig);
+        ProjectileManager.instance.SetCardsList(levelConfig.cardIDList);
     }
 
     // Update is called once per frame
