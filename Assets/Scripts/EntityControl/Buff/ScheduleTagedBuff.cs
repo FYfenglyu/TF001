@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScheduleImmuBuff : ScheduledBuff
+public class ScheduleTagedBuff : ScheduledBuff
 {
-    [Header("免疫对象标签")]
-    public List<string> immuTags;
+    [Header("攻击对象标签")]
+    public List<string> targetTags;
 
-    public GameObject buffOwner;
+    private GameObject buffOwner;
 
     public override void Perform()
     {
@@ -20,7 +20,7 @@ public class ScheduleImmuBuff : ScheduledBuff
 
     protected bool isEffectiveTo(GameObject owner)
     {
-        Debug.Log(owner.tag);
+        Debug.Log(new string("Their Tag: ")+ owner.tag);
         return immuTags.Contains(owner.tag);
     }
 }
