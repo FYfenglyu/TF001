@@ -42,7 +42,7 @@ public class HunterManager : MonoBehaviour
     {
         return totalHunterNum;
     }
-    public void GenerateHunter(LevelConfig config)
+    public void GenerateHunter()
     {
         for (; genHunterNum < totalHunterNum; ++genHunterNum)
         {

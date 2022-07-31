@@ -71,7 +71,6 @@ public class PlayManager : MonoBehaviour
 
         LevelConfig levelConfig = GameManager.instance.GetLevelConfig();
         ResetGameStatus(levelConfig);
-        HunterManager.instance.GenerateHunter(levelConfig);
         ProjectileManager.instance.SetCardsList(levelConfig.cardIDList);
     }
 
@@ -79,6 +78,7 @@ public class PlayManager : MonoBehaviour
     private void Update()
     {
         IncCostPreSencond();
+        HunterManager.instance.GenerateHunter();
 
         hunterProgress.SetCurrHP(HunterManager.instance.GetRestHunterNum());
 
