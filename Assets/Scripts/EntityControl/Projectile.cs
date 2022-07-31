@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using static ConstantTable;
 
 public class Projectile : MonoBehaviour
 {
@@ -53,6 +54,11 @@ public class Projectile : MonoBehaviour
     {
         //通知减费
         PlayManager.instance.CutCost(gameObject.GetComponent<Missile>().GetCost());
+        if(gameObject.GetComponent<Missile>().missileType.Equals(TYPE_GUARDIAN))
+            PlayUI.instance.PlayAudio("project_guardian");
+        else
+            PlayUI.instance.PlayAudio("project_missile");
+
         sj.enabled = false;
     }
 

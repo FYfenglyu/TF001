@@ -96,7 +96,20 @@ public static class ConstantTable
     public const string SCENE_START = "Game@Start";
     public const string SCENE_LEVELSELECT = "Game@LevelSelect";
 
+    //音频地址
 
+    private const string _PREFIX_AUDIO = "Audio/";
+    public const string AUDIO_BGM = _PREFIX_AUDIO + "1_bgm";
+    public const string AUDIO_SELECTCARD = _PREFIX_AUDIO + "2_select_card";
+    public const string AUDIO_PROJECT_MAGIC = _PREFIX_AUDIO + "3_project_magic";
+    public const string AUDIO_PROJECT_LIGHT = _PREFIX_AUDIO + "3_project_light";
+    public const string AUDIO_HITHUNTER = _PREFIX_AUDIO + "4_hit_hunter";
+    public const string AUDIO_CLICKBUTTON = _PREFIX_AUDIO + "5_click_button";
+    public const string AUDIO_HUNTERAPPER = _PREFIX_AUDIO + "6_hunter_appear";
+    public const string AUDIO_EMIT = _PREFIX_AUDIO + "7_emit";
+    public const string AUDIO_SUCCESS = _PREFIX_AUDIO + "8_success";
+    public const string AUDIO_FAILED = _PREFIX_AUDIO + "8_failed";
+    public const string AUDIO_START = _PREFIX_AUDIO + "10_start";
     //参数设置
 
     public const int NUM_MAXLEVEL = 16;

@@ -63,7 +63,7 @@ public class Missile : MissileBase
                 go.GetComponent<Guardian>().Dead();
             }
         }
-        //对普通攻击的导弹和守护者发出的导弹
+        //守护者发出的导弹
         else if (missileType.Equals(TYPE_GUARDIANMISSILE))
         {
             if (go.tag.Equals(TYPE_HUNTER))
@@ -84,6 +84,7 @@ public class Missile : MissileBase
                 }
             }
         }
+        //对普通攻击的导弹
         else
         {
             if (go.tag.Equals(TYPE_HUNTER))

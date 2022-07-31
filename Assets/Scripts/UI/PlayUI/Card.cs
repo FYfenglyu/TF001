@@ -40,6 +40,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
         // if card cost is lower than current cost or equal to current cost,
         // let projectile manager generate corresponding instantiate
         ProjectileManager.instance.SetCurrCard(isSelected ? null : this);
+        PlayUI.instance.PlayAudio("CardSelected");
     }
 
     public void ChangeIconImgMaterial(Material material)

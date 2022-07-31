@@ -11,6 +11,7 @@ public class BoomAttack : CircleRangeAttack
         if (theAttacked.tag == TYPE_HUNTER)
         {
             Hunter injuredHunter = theAttacked.GetComponent<Hunter>();
+            PlayUI.instance.PlayAudio("hit");
             injuredHunter.CutHealthPoint(attacker.attack);
         }
         else if (theAttacked.tag == TYPE_GUARDIAN)
