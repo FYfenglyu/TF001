@@ -44,8 +44,8 @@ public class LevelSelectUI : MonoBehaviour
         {
             Transform buttonOn_i = buttonsOn.transform.GetChild(i);
             Transform buttonOff_i = buttonsOff.transform.GetChild(i);
-            GameObject buttonOn_i_go =buttonOn_i.gameObject;
-            GameObject buttonOff_i_go =buttonOff_i.gameObject;
+            GameObject buttonOn_i_go = buttonOn_i.gameObject;
+            GameObject buttonOff_i_go = buttonOff_i.gameObject;
             AddListenerSelectLevel(buttonOn_i.GetComponent<Button>(), i);
             if(i < currLevel-1)
             {
