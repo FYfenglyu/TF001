@@ -80,7 +80,7 @@ public class PlayManager : MonoBehaviour
     private void Update()
     {
         IncCostPreSencond();
-        RefreshHunterProgress();
+
         if (HunterManager.instance.AreHuntersAllDead() && playerScore > 0)
         {
             // Debug.Log("Game Over: Win.");
@@ -97,8 +97,10 @@ public class PlayManager : MonoBehaviour
         // 分数重置
         totalScore = 3;
         playerScore = totalScore;
-        RefreshHunterProgress();
-        RefreshScoreProgress();
+
+        // 初始化游戏进度条
+        InitGameProgressBar();
+
         // 时间重置
         TimeManager.instance.ResetTime();
         lastCostIncTime = 0f;
@@ -111,15 +113,9 @@ public class PlayManager : MonoBehaviour
     }
 
     // 游戏进度相关函数
-    public void RefreshHunterProgress()
+    private void InitGameProgressBar()
     {
-        hunterProgress.SetCurrHP(HunterManager.instance.GetLeaveHunterNum());
         hunterProgress.SetTotalHP(HunterManager.instance.GetTotalHunterNum());
-    }
-
-    public void RefreshScoreProgress()
-    {
-        scoreProgress.SetTotalHP(totalScore);
         scoreProgress.SetCurrHP(playerScore);
     }
 

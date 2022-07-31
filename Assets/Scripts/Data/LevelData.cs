@@ -58,27 +58,26 @@ public class LevelData
 
     public static LevelConfigEle LoadLevelConfig(string jsonFilePath)
     {
-        LevelConfigEle config;
         string jsonFileContent = TextResourceReader.Read(jsonFilePath);
-        config = JsonMapper.ToObject<LevelConfigEle>(jsonFileContent);
+        LevelConfigEle config = JsonMapper.ToObject<LevelConfigEle>(jsonFileContent);
 
         return config;
     }
 
     public static LevelConfig GetLevelConfig(int levelIndex)
     {
-        LevelConfig levelconfig = new();
+        LevelConfig levelConfig = new LevelConfig();
 
         //load hunters generate config
         List<HunterGenInfo> hunterGenInfoList = LoadHunterGenInfoList(GetLevelHuntersConfigPath(levelIndex));
         //load card config
         LevelConfigEle config = LoadLevelConfig(GetLevelConfigPath(levelIndex));
 
-        levelconfig.initCost = config.initCost;
-        levelconfig.cardIDList = config.cardIDList;
-        levelconfig.hunterGenInfoList = hunterGenInfoList;
-        levelconfig.hunterNum = hunterGenInfoList.Count;
+        levelConfig.initCost = config.initCost;
+        levelConfig.cardIDList = config.cardIDList;
+        levelConfig.hunterGenInfoList = hunterGenInfoList;
+        levelConfig.hunterNum = hunterGenInfoList.Count;
 
-        return levelconfig;
+        return levelConfig;
     }
 }

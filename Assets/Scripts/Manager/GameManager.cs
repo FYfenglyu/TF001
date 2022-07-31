@@ -12,19 +12,20 @@ public class GameManager : MonoBehaviour
     [Header("最大关卡")]
     private int maxLevel = 16;
 
-    private LevelConfig levelconfig;
+    private LevelConfig levelConfig;
     // Start is called before the first frame update
     private void Awake()
     {
         // if there exists an instance, destroy the unnecessary instance 
         if (instance)
         {
-            GameObject.Destroy(gameObject);
+            if (instance != this) GameObject.Destroy(gameObject);
             return;
         }
 
         // create an instance
         instance = this;
+        GameObject.DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(int i)
     {
-        levelconfig = LevelData.GetLevelConfig(i);
+        levelConfig = LevelData.GetLevelConfig(i);
 
         LoadScene("SampleScene");
 
@@ -66,12 +67,11 @@ public class GameManager : MonoBehaviour
 
     public LevelConfig GetLevelConfig()
     {
-        return levelconfig;
+        return levelConfig;
     }
     public void TestLevelUP()
     {
         LevelUp();
         LevelSelectUI.instance.CheckLevelButton();
-
     }
 }

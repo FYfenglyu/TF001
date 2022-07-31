@@ -30,7 +30,6 @@ public class HunterManager : MonoBehaviour
     {
         totalHunterNum = config.hunterNum;
         hunterGenInfoList = config.hunterGenInfoList;
-        Debug.Log(hunterGenInfoList);
         deadHunterNum = 0;
         genHunterNum = 0;
         isGenerateFinished = false;
@@ -57,6 +56,7 @@ public class HunterManager : MonoBehaviour
             {
                 Debug.Log("Fali to generate hunter. Hunter ID : " + hunterGenInfoList[genHunterNum].hunterID.ToString());
             }
+            else Debug.Log("Failed");
         }
     }
 
@@ -111,10 +111,11 @@ public class HunterManager : MonoBehaviour
     {
         h.Move(displacement);
     }
-    public void DestoryHunter(Hunter h)
-    {
-        h.Dead();
-    }
+
+    // public void DestoryHunter(Hunter h)
+    // {
+    //     h.Dead();
+    // }
     public void ClearHunters()
     {
         while (hunters.Count > 0)
