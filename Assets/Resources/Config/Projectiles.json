@@ -54,5 +54,12 @@
         "type": "Guardian",
         "prefabPath": "Prefabs/Guardian/elephant_PROJ",
         "cost": 25
+    },
+    {
+        "cardID": 104,
+        "iconPath": "Image/Cards/Guardian/kp_zz",
+        "type": "Guardian",
+        "prefabPath": "Prefabs/Guardian/bamboo_PROJ",
+        "cost": 10
     }
 ]
