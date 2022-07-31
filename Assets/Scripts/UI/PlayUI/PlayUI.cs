@@ -147,12 +147,13 @@ public class PlayUI : MonoBehaviour
 
     public void NextLevel()
     {
-        GameManager.instance.LevelUp();
+        if(GameManager.instance.canLevelUp())
+            GameManager.instance.LevelUp();
         GameManager.instance.ReloadLevel();
     }
 
     public void RetryThisLevel()
     {
-        GameManager.instance.ReloadLevel();
+        GameManager.instance.ReplayLevel();
     }
 }

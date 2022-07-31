@@ -509,8 +509,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1775275655}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: StartGame
+        m_TargetAssemblyTypeName: PlayUI, Assembly-CSharp
+        m_MethodName: RetryThisLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -642,8 +642,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1775275655}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ExitGame
+        m_TargetAssemblyTypeName: PlayUI, Assembly-CSharp
+        m_MethodName: BackLevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -39,8 +39,8 @@ public class PlayManager : MonoBehaviour
     private ProgressBar scoreProgress;
     private ProgressBar hunterProgress;
 
-    private GameObject successprompt;
-    private GameObject failprompt;
+    // private GameObject successprompt;
+    // private GameObject failprompt;
 
     // 生命周期函数
     // Start is called before the first frame update
@@ -77,10 +77,10 @@ public class PlayManager : MonoBehaviour
         ResetGameStatus(levelConfig);
         ProjectileManager.instance.SetCardsList(levelConfig.cardIDList);
 
-        successprompt = GameObject.Find("SuccessPrompt");
-        failprompt = GameObject.Find("FailedPrompt");
-        successprompt.SetActive(false);
-        failprompt.SetActive(false);
+        // successprompt = GameObject.Find("SuccessPrompt");
+        // failprompt = GameObject.Find("FailedPrompt");
+        // successprompt.SetActive(false);
+        // failprompt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -100,10 +100,10 @@ public class PlayManager : MonoBehaviour
         if (HunterManager.instance.AreHuntersAllDead() && playerScore > 0)
         {
             // Debug.Log("Game Over: Win.");
-            // SceneManager.LoadSceneAsync("Game@Win");
-            GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
-            successprompt.SetActive(true);
-            successprompt.GetComponent<CanvasGroup>().interactable = true;
+            SceneManager.LoadSceneAsync("Game@Win");
+            // GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
+            // successprompt.SetActive(true);
+            // successprompt.GetComponent<CanvasGroup>().interactable = true;
         }
     }
 
@@ -145,9 +145,10 @@ public class PlayManager : MonoBehaviour
         scoreProgress.SetCurrHP(playerScore);
         if (playerScore == 0) 
         {
-            GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
-            failprompt.SetActive(true);
-            failprompt.GetComponent<CanvasGroup>().interactable = true;
+            SceneManager.LoadSceneAsync("Game@Lose");
+            // GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
+            // failprompt.GetComponent<CanvasGroup>().interactable = true;
+            // failprompt.SetActive(true);
         }
     }
 

@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; // singleton
     [Header("当前关卡")]
     public int currLevel = 1;
+    
+    [Header("刚才游玩的关卡")]
+    public int lastLevel = 1;
+
 
     [Header("最大关卡")]
     private int maxLevel = 16;
@@ -43,22 +47,39 @@ public class GameManager : MonoBehaviour
         return currLevel;
     }
 
+    public void ReplayLevel()
+    {
+        levelConfig = LevelData.GetLevelConfig(lastLevel);
+
+        LoadScene("SampleScene");
+
+        SceneManager.sceneLoaded += InitGameScene;
+
+    }
     public void ReloadLevel()
     {
-        LoadScene("SampleScene");
-    }
+        levelConfig = LevelData.GetLevelConfig(currLevel);
 
-    //TODO
+        LoadScene("SampleScene");
+
+        lastLevel = currLevel; 
+        SceneManager.sceneLoaded += InitGameScene;
+
+    }
     public void LoadLevel(int i)
     {
         levelConfig = LevelData.GetLevelConfig(i);
 
         LoadScene("SampleScene");
 
-        // set callback
+        lastLevel = i; 
         SceneManager.sceneLoaded += InitGameScene;
-    }
 
+    }
+    public bool canLevelUp()
+    {
+        return currLevel == lastLevel;
+    }
     // call back
     public void InitGameScene(Scene scene, LoadSceneMode sceneType)
     {
@@ -75,6 +96,7 @@ public class GameManager : MonoBehaviour
     {
         return levelConfig;
     }
+
     public void TestLevelUP()
     {
         LevelUp();
