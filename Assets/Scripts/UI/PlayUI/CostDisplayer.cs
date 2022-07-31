@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class CostDisplayer : MonoBehaviour
 {
     private Text costText;
-
     private void Awake()
     {
         costText = GameObject.Find("CostText").GetComponent<Text>();        

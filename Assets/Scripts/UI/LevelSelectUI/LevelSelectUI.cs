@@ -24,7 +24,7 @@ public class LevelSelectUI : MonoBehaviour
         LevelButton_HightlightImage = Resources.Load<Sprite>(GetLevelUIButtonImagePath("highlight"));
         LevelButton_OnImage = Resources.Load<Sprite>(GetLevelUIButtonImagePath("on"));
         LevelButton_OffImage = Resources.Load<Sprite>(GetLevelUIButtonImagePath("off"));
-    
+
         // Find button parent-object in scene
         buttonsOn = GameObject.Find("button_on");
         buttonsOff = GameObject.Find("button_off");
@@ -33,13 +33,14 @@ public class LevelSelectUI : MonoBehaviour
         trackSpriteRenderer = track.GetComponent<SpriteRenderer>(); 
     }
 
-    void Start() {
-        CheckLevelButton();    
+    void Start()
+    {
+        CheckLevelButton();
     }
     public void CheckLevelButton()
     {
         RefreshCurrLevel();
-        for(int i = 0; i < NUM_MAXLEVEL; ++i)
+        for (int i = 0; i < NUM_MAXLEVEL; ++i)
         {
             Transform buttonOn_i = buttonsOn.transform.GetChild(i);
             Transform buttonOff_i = buttonsOff.transform.GetChild(i);
@@ -52,7 +53,7 @@ public class LevelSelectUI : MonoBehaviour
                 buttonOff_i_go.SetActive(false);
                 OnCurrLevel(buttonOn_i_go);
             }
-            else if (i == currLevel-1)
+            else if (i == currLevel - 1)
             {
                 buttonOn_i_go.SetActive(true);
                 buttonOff_i_go.SetActive(false);
@@ -61,7 +62,7 @@ public class LevelSelectUI : MonoBehaviour
             else
             {
                 buttonOn_i_go.SetActive(false);
-                buttonOff_i_go.SetActive(true);  
+                buttonOff_i_go.SetActive(true);
             }
         }
         ShowTrack(currLevel);
@@ -109,7 +110,7 @@ public class LevelSelectUI : MonoBehaviour
 
     }
     public void DarkCurrLevel()
-    {}
+    { }
 
     public void AddListenerSelectLevel(Button b, int i)
     {

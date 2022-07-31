@@ -42,7 +42,7 @@ public static class ConstantTable
     }
     public static string GetLevelConfigPath(int i)
     {
-        return new string(_PREFIX_CONFIG_LEVEL + i.ToString() + ".json");
+        return new string(_PREFIX_CONFIG_LEVEL + i.ToString());
     }
 
     //prefab地址-守护者

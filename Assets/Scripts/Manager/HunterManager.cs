@@ -27,7 +27,7 @@ public class HunterManager : MonoBehaviour
     }
 
     public void ResetParam(LevelConfig config)
-    { 
+    {
         totalHunterNum = config.hunterNum;
         hunterGenInfoList = config.hunterGenInfoList;
         Debug.Log(hunterGenInfoList);
@@ -51,17 +51,13 @@ public class HunterManager : MonoBehaviour
     {
         for (; genHunterNum < totalHunterNum; ++genHunterNum)
         {
-            if (TimeManager.instance.GetCurrTime() >= hunterGenInfoList[genHunterNum].birthTime)
+            if (TimeManager.instance.GetCurrTime() < hunterGenInfoList[genHunterNum].birthTime) break;
+
+            if (!GenerateHunter(hunterGenInfoList[genHunterNum].hunterID, PlayManager.instance.originalPos))
             {
-                if (!GenerateHunter(hunterGenInfoList[genHunterNum].hunterID, PlayManager.instance.originalPos))
-                {
-                    Debug.Log("Fali to generate hunter. Hunter ID : " + hunterGenInfoList[genHunterNum].hunterID.ToString());
-                }
+                Debug.Log("Fali to generate hunter. Hunter ID : " + hunterGenInfoList[genHunterNum].hunterID.ToString());
             }
-            else
-            {
-                break;
-            }
+            else Debug.Log("Hunter Generate~~~~~~~~~~~~~~~~~~~~~~~~~~" );
         }
     }
 
@@ -97,7 +93,7 @@ public class HunterManager : MonoBehaviour
     public Hunter GetHunter(int hid)
     {
         Hunter aH = null;
-        switch(hid)
+        switch (hid)
         {
             case 301:
                 aH = Resources.Load<Hunter>(PREFAB_HUNTER_01);
@@ -122,7 +118,7 @@ public class HunterManager : MonoBehaviour
     }
     public void ClearHunters()
     {
-        while(hunters.Count > 0)
+        while (hunters.Count > 0)
         {
             hunters[0].Dead();
         }
