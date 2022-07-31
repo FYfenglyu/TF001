@@ -9,6 +9,7 @@ TagManager:
   - Missile
   - Guardian
   - AttackBox
+  - EmitMissile
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3990865259
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -60,4 +64,7 @@ TagManager:
     locked: 0
   - name: MissileOfGuardian
     uniqueID: 3252889057
+    locked: 0
+  - name: UI
+    uniqueID: 3091832663
     locked: 0

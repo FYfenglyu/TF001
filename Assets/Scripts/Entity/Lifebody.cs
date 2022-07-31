@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static ConstantTable;
+using static CommonFunction;
 
 
 public class Lifebody : MonoBehaviour
@@ -83,7 +84,7 @@ public class Lifebody : MonoBehaviour
             healthPoint = Mathf.Max(0, healthPoint - attack);
 
             // show it in focus
-            UIManager.instance.SetObjectInFront(transform);
+            SetObjectInFront(transform);
         }
 
         if (healthPoint == 0)

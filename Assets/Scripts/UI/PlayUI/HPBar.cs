@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static CommonFunction;
 
 public class HPBar : MonoBehaviour
 {
@@ -70,7 +71,7 @@ public class HPBar : MonoBehaviour
 
 
         // show HP bar in focus
-        UIManager.instance.SetObjectInFront(transform);
+        SetObjectInFront(transform);
     }
 
     // set current health point

@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
     public void Project()
     {
         //通知减费
-        GameManager.instance.CutCost(gameObject.GetComponent<Missile>().GetCost());
+        PlayManager.instance.CutCost(gameObject.GetComponent<Missile>().GetCost());
         sj.enabled = false;
     }
 
@@ -78,7 +78,7 @@ public class Projectile : MonoBehaviour
             return;
 
         // hide the card scroll view if the projectile is clicked
-        UIManager.instance.DisableCardScrollView();
+        PlayUI.instance.DisableCardScrollView();
 
         isClicked = true;
 
@@ -90,7 +90,7 @@ public class Projectile : MonoBehaviour
     {
         isClicked = false;
         rb.isKinematic = false;
-        UIManager.instance.EnableCardScrollView();
+        PlayUI.instance.EnableCardScrollView();
         if (Vector2.Distance(transform.position, anchor.position) <= minDis)
         {
             transform.position = originalPos;

@@ -15,15 +15,15 @@ public class ButtonClickGH : MonoBehaviour {
 
     public void GenerateHunter(int hid)
     {
-        HunterManager.instance.GenerateHunter(hid, GameManager.instance.originalPos);
+        HunterManager.instance.GenerateHunter(hid, PlayManager.instance.originalPos);
     }   
 
     public void Add100Cost()
     {
-        GameManager.instance.AddCost(100);
+        PlayManager.instance.AddCost(100);
     }
 
     public void SetLevel(int i){
-        LevelManager.instance.LoadLevel(i);
+        GameManager.instance.LoadLevel(i);
     }
 }

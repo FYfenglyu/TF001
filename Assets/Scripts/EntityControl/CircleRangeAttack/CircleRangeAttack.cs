@@ -42,7 +42,7 @@ public class CircleRangeAttack : MonoBehaviour
 
     protected void SetTriggerBoxStatus(bool status)
     {
-        circleRangeBox.enabled = status;
+        if(circleRangeBox) circleRangeBox.enabled = status;
     }
 
     protected void GetAndSetAttackBox()

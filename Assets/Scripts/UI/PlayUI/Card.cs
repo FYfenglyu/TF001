@@ -30,10 +30,10 @@ public class Card : MonoBehaviour, IPointerClickHandler
         int cardCost = corrProjAttr.cost;
 
         // if card cost is higher than current cost, show related warnings
-        if (cardCost > GameManager.instance.GetCurrCost())
+        if (cardCost > PlayManager.instance.GetCurrCost())
         {
             // Debug.Log("Not Enough Cost.");
-            // UIManager.TwinkCostDis();
+            // PlayUI.TwinkCostDis();
             return;
         }
 
