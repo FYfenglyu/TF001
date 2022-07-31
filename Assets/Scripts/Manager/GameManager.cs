@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
 
         // create an instance
         instance = this;
-        GameObject.DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -48,16 +47,18 @@ public class GameManager : MonoBehaviour
         levelconfig = LevelData.GetLevelConfig(i);
         
         LoadScene("SampleScene");
-        SceneManager.sceneLoaded += ResetGameStatus;
 
-        //ProjectileManager.instance.SetCardsList(levelconfig.cardIDList);
+        // set callback
+        SceneManager.sceneLoaded += InitGameScene;
     }
 
     // call back
-    public void ResetGameStatus(Scene scene, LoadSceneMode sceneType)
+    public void InitGameScene(Scene scene, LoadSceneMode sceneType)
     {
         PlayManager.instance.ResetGameStatus(levelconfig);
+        ProjectileManager.instance.SetCardsList(levelconfig.cardIDList);
     }
+
     public void LoadScene(string name)
     {
         SceneManager.LoadSceneAsync(name);

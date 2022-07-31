@@ -85,6 +85,8 @@ public class ProjectileManager : MonoBehaviour
     public void ClearCards()
     {
         SetCurrCard(null);
+        if (cardList.transform.childCount == 0) return;
+
         foreach (Transform child in cardList.transform)
         {
             Destroy(child.gameObject);
