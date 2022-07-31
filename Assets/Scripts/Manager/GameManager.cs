@@ -68,4 +68,10 @@ public class GameManager : MonoBehaviour
     {
         return levelconfig;
     }
+    public void TestLevelUP()
+    {
+        LevelUp();
+        LevelSelectUI.instance.CheckLevelButton();
+
+    }
 }

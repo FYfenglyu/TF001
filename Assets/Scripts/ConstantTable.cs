@@ -66,6 +66,8 @@ public static class ConstantTable
     //图片地址
     private const string _PREFIX_IMAGE_LEVELUI = "Image/UI/Level/";
     private const string _PREFIX_IMAGE_LEVELUI_NUMBER = _PREFIX_IMAGE_LEVELUI + "/Numbers/";
+    private const string _PREFIX_IMAGE_LEVELUI_TRACK = _PREFIX_IMAGE_LEVELUI + "Track/track";
+
 
     public static string GetLevelUIButtonImagePath(string name)
     {
@@ -83,6 +85,11 @@ public static class ConstantTable
                 break;
         }
         return path;    
+    }
+
+    public static string GetLevelTrackImagePath(int level)
+    {
+        return _PREFIX_IMAGE_LEVELUI_TRACK + level.ToString();
     }
 
     //场景地址
