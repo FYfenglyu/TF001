@@ -6,10 +6,11 @@ public class ScheduledBuff : BuffBase
 {
     [Header("Buff执行时间间隔")]
     public float interval = 1;
-    public float lastPerformTime = 0;
+    protected float lastPerformTime = 0;
 
-    public bool isWorking = false;
+    private bool isWorking = false;
 
+    [Header("Buff最多执行的次数")]
     public int maxPerformTimes = 100;
 
     public virtual void OnBuffStart() { }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedUpBuff : ScheduleImmuBuff
+public class SpeedUpBuff : ScheduleTagedBuff
 {
     [Header("移速增加百分比")]
     public float speedUpPercent = 50f ;

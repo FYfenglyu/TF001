@@ -7,29 +7,12 @@ public class BuffBase : MonoBehaviour
 {
     [Header("Buff持续时间")]
     public float duration = 5f;
-    public float startTime = 0f;
+    protected float startTime = 0f;
 
-    public virtual void Perform() {}
+    public new object MemberwiseClone()
+    {
+        return base.MemberwiseClone();
+    }
 
-    // public List<string> immuneTypes;
+    public virtual void Perform() { }
 }
-
-// public class BuffManager
-// {
-//     List<BuffBase> buffList;
-
-//     public void AddBuff(BuffBase buff)
-//     {
-//         buffList.Add(buff);
-//     }
-
-//     public void RemoveBuff(BuffBase buff)
-//     {
-//         buffList.Remove(buff);
-//     }
-// }
-
-// public class EntityLogic:MonoBehaviour
-// {
-//     List<BuffBase> BuffList;
-// }

@@ -12,19 +12,20 @@ public class BuffAttack : CircleRangeAttack
 
     private BuffBase buffPattern;
 
-    private void Start() {
+    private void Start()
+    {
         base.Awake();
 
         buffPattern = gameObject.GetComponent<BuffBase>();
 
-        if(buffPattern) Debug.Log("OK");
+        if (buffPattern) Debug.Log("OK");
     }
 
     public override void OnCircleRangeAttack(Collider2D other)
     {
-        Debug.Log("Test Buff");
         BuffBase buff = other.gameObject.AddComponent(buffPattern.GetType()) as BuffBase;
-        buff = buffPattern;
+        UnityEditorInternal.ComponentUtility.CopyComponent(buffPattern);
+        UnityEditorInternal.ComponentUtility.PasteComponentValues(buff);
         buff.Perform();
     }
 }

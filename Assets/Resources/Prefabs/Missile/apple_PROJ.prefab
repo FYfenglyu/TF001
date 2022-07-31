@@ -116,8 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDuration: 0.1
   maxAttakTimes: 3
-  buffBase:
-  - {fileID: 0}
+  buffPattern: {fileID: 0}
 --- !u!114 &9194468357524581210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,5 +132,6 @@ MonoBehaviour:
   duration: 5
   interval: 1
   maxPerformTimes: 100
-  immuTags: []
+  immuTags:
+  - 
   speedUpPercent: 50
