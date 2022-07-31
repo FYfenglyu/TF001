@@ -91,7 +91,6 @@ public class PlayManager : MonoBehaviour
         TimeManager.instance.ResetTime();
         lastCostIncTime = 0f;
 
-
         //清空猎人配置
         HunterManager.instance.ResetParam(config);
 

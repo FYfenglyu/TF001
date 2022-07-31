@@ -39,12 +39,13 @@ public struct LevelConfig
 public class LevelData
 {
     // 这两个load函数可以考虑合并为一个！，遗留问题
-    public static List<HunterGenInfo> LoadHunterGenInfoList(string path)
+    public static List<HunterGenInfo> LoadHunterGenInfoList(string jsonFilePath)
     {
         // load hunter spawn information list from json file
-        List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();    // hunter spawn information list (spawn time, hunter ID)
-        string jsonFilePath = Application.streamingAssetsPath + path;
-        hunterGenInfoList = JsonMapper.ToObject<List<HunterGenInfo>>(File.ReadAllText(jsonFilePath));
+        // hunter spawn information list (spawn time, hunter ID)
+        List<HunterGenInfo> hunterGenInfoList = new List<HunterGenInfo>();
+        string jsonFileContent = TextResourceReader.Read(jsonFilePath);
+        hunterGenInfoList = JsonMapper.ToObject<List<HunterGenInfo>>(jsonFileContent);
 
         // sort hunter generation information by spawn time 
         hunterGenInfoList.Sort();
@@ -53,41 +54,25 @@ public class LevelData
             Debug.Log(new String("Spawn Hunter: ") + info_i.birthTime.ToString() + new String(" : ") + info_i.hunterID.ToString());
         }
         return hunterGenInfoList;
-
     }
 
-    // !!! this will be deprecated, Please change this into other function!
-    //！！！这个函数要被抛弃 请将 预编译 移植至其他地方
-    public static void LoadHunterGenInfoList()
-    {
-#if UNITY_EDITOR
-        string genInfoPath = new String("/../../") + new String(PATH_LEVELCONFIG_TEST);
-#else
-        string genInfoPath = new String(PATH_LEVELCONFIG_TEST);
-#endif
-        LoadHunterGenInfoList(genInfoPath);
-    }
-
-    public static LevelConfigEle LoadLevelConfig(string path)
+    public static LevelConfigEle LoadLevelConfig(string jsonFilePath)
     {
         LevelConfigEle config;
-        string jsonFilePath = Application.streamingAssetsPath + path;
-        config = JsonMapper.ToObject<LevelConfigEle>(File.ReadAllText(jsonFilePath));
+        string jsonFileContent = TextResourceReader.Read(jsonFilePath);
+        config = JsonMapper.ToObject<LevelConfigEle>(jsonFileContent);
 
-        // Debug.Log("新生成卡牌id" + config.cardIDList.ToString());
         return config;
-
     }
-
 
     public static LevelConfig GetLevelConfig(int levelIndex)
     {
         LevelConfig levelconfig = new();
 
         //load hunters generate config
-        List<HunterGenInfo> hunterGenInfoList = LoadHunterGenInfoList( GetLevelHuntersConfigPath(levelIndex));
+        List<HunterGenInfo> hunterGenInfoList = LoadHunterGenInfoList(GetLevelHuntersConfigPath(levelIndex));
         //load card config
-        LevelConfigEle config = LoadLevelConfig( GetLevelConfigPath(levelIndex));
+        LevelConfigEle config = LoadLevelConfig(GetLevelConfigPath(levelIndex));
 
         levelconfig.initCost = config.initCost;
         levelconfig.cardIDList = config.cardIDList;
@@ -96,8 +81,4 @@ public class LevelData
 
         return levelconfig;
     }
-
-
-
-
 }

@@ -84,7 +84,4 @@ public class PlayUI : MonoBehaviour
         Application.Quit();
 #endif
     }
-
-
-
 }
