@@ -5,26 +5,26 @@ using UnityEditor;
 
 public class Projectile : MonoBehaviour
 {
-
-    private SpringJoint2D sj;
-    private Rigidbody2D rb;
-
     [Header("弹射设置")]
     public float maxDis;
     public float minDis;
+
+    // anchor
     private Transform anchor;
-
-    [Space]
-
-
-    private bool isClicked = false;
-    private bool isProjected = false;
+    private GameObject anchorPoint;
     private Vector3 originalPos;
 
+    // status
+    private bool isClicked = false;
+    private bool isProjected = false;
+
+    // compoenents
+    private SpringJoint2D sj;
+    private Rigidbody2D rb;
+
+    // line drawer component
     private LineRenderer leftBranch;
     private LineRenderer rightBranch;
-    private bool test = false;
-    private GameObject anchorPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +63,7 @@ public class Projectile : MonoBehaviour
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position += new Vector3(0, 0, -Camera.main.transform.position.z);
 
-            //limit the distant
+            // limit the distant
             if (Vector2.Distance(transform.position, anchor.position) >= maxDis)
             {
                 transform.position = anchor.position + (transform.position - anchor.position).normalized * maxDis;
@@ -74,16 +74,13 @@ public class Projectile : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (isProjected)
-            return;
+        if (isProjected) return;
 
         // hide the card scroll view if the projectile is clicked
         PlayUI.instance.DisableCardScrollView();
 
         isClicked = true;
-
         rb.isKinematic = true;
-        
     }
 
     private void OnMouseUp()
@@ -99,25 +96,12 @@ public class Projectile : MonoBehaviour
         {
             isProjected = true;
             ProjectileManager.instance.SetCurrCard(null);
-            Invoke(nameof(Project), 0.12f);
+            Invoke(nameof(Project), 0.1f);
         }
         DeleteLine();
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (test)
-            GameObject.Instantiate(gameObject, originalPos, Quaternion.identity);
-        test = false;
     }
 
     public bool IsProjectiled() { return isProjected; }
-
-    private void OnDestroy()
-    {
-
-    }
 
     private void DrawLine()
     {
@@ -128,6 +112,7 @@ public class Projectile : MonoBehaviour
         rightBranch.SetPosition(1, transform.position);
 
     }
+
     private void DeleteLine()
     {
         leftBranch.SetPosition(1, leftBranch.transform.position);

@@ -5,6 +5,13 @@ using UnityEngine.UI;
 using static ConstantTable;
 using static CommonFunction;
 
+public class BuffImpact
+{
+    public float speedRate = 1.0f;
+    public int selfHeal = 0;
+    public float attackSpeedRate = 1.0f;
+    public int hitHeal = 0;
+}
 
 public class Lifebody : MonoBehaviour
 {
@@ -29,6 +36,8 @@ public class Lifebody : MonoBehaviour
     protected Rigidbody2D rb;
 
     [Header("其他设置")]
+    // add simple buff
+    public BuffImpact buffImpact;
 
     protected static Vector3 OriginalPos;
     protected bool nextStepStill = false;

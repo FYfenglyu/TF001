@@ -1,26 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ScheduleTagedBuff : ScheduledBuff
 {
+    [Header("针对类型进行附加")]
+    public bool typeAttack;
     [Header("攻击对象标签")]
-    public List<string> targetTags;
+    public List<string> targetTypes;
 
-    private GameObject buffOwner;
+    [Header("针对个体ID进行附加")]
+    public bool monomerAttack;    
+    [Header("允许附加的个体ID列表")]
+    public List<int> targetIDs; 
+
+    protected GameObject buffOwner;
+    protected Lifebody owner;
 
     public override void Perform()
     {
         buffOwner = transform.parent.gameObject;
+        if(buffOwner) owner = buffOwner.GetComponent<Lifebody>();
 
-        if(!isEffectiveTo(buffOwner)) Destroy(this);
+        if(!isEffective()) Destroy(this);
+        if(owner) System.Console.WriteLine("Tag: {0}, ID : {1}",buffOwner.tag,owner.id);
+        else System.Console.WriteLine("Tag: {0}, ID : {1}",buffOwner.tag,owner.id);
 
         base.Perform();
     }
 
-    protected bool isEffectiveTo(GameObject owner)
+    protected bool isEffective()
     {
-        Debug.Log(new string("Their Tag: ")+ owner.tag);
-        return targetTags.Contains(owner.tag);
+        return typeAttack?targetTypes.Contains(buffOwner.tag):
+        (monomerAttack?(owner&&targetIDs.Contains(owner.id)):false);
     }
 }

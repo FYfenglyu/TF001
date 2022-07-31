@@ -84,4 +84,9 @@ public class PlayUI : MonoBehaviour
         Application.Quit();
 #endif
     }
+
+    public void ButtonLoadScene(string scene)
+    {
+        GameManager.instance.LoadScene(scene);
+    }
 }

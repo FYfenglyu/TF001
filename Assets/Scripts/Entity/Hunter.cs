@@ -11,8 +11,6 @@ public class Hunter : Lifebody
     public float moveSpeed = 1.0f;
 
     private static Vector3 TargetPos;
-    private bool isMoving = true;
-
 
     // Start is called before the first frame update
     void Start()
@@ -56,15 +54,6 @@ public class Hunter : Lifebody
         base.Unstill();
         rb.isKinematic = false;
         AnimateAttackOff();
-    }
-
-    public void StopMove()
-    {
-        isMoving = false;
-    }
-    public void KeepMove()
-    {
-        isMoving = true;
     }
 
     public override void Dead()

@@ -23,8 +23,11 @@ public class BuffAttack : CircleRangeAttack
     public override void OnCircleRangeAttack(Collider2D other)
     {
         BuffBase buff = other.gameObject.AddComponent(buffPattern.GetType()) as BuffBase;
-        UnityEditorInternal.ComponentUtility.CopyComponent(buffPattern);
-        UnityEditorInternal.ComponentUtility.PasteComponentValues(buff);
+        System.Reflection.FieldInfo[] fields = buffPattern.GetType().GetFields();
+        foreach (System.Reflection.FieldInfo field in fields)
+        {
+            field.SetValue(buff, field.GetValue(buffPattern));
+        }
         buff.Perform();
     }
 }

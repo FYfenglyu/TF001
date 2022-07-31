@@ -6,7 +6,7 @@ using static ConstantTable;
 public class CircleRangeAttack : MonoBehaviour
 {
     [Header("圆形范围攻击的时间")]
-    public float attackDuration = 0.1f;
+    public float attackDuration = 0.01f;
 
     [Header("最多攻击次数")]
     public int maxAttakTimes = 3;

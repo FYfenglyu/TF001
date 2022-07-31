@@ -9,10 +9,5 @@ public class BuffBase : MonoBehaviour
     public float duration = 5f;
     protected float startTime = 0f;
 
-    public new object MemberwiseClone()
-    {
-        return base.MemberwiseClone();
-    }
-
     public virtual void Perform() { }
 }
