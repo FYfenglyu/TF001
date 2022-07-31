@@ -57,7 +57,6 @@ public class HunterManager : MonoBehaviour
             {
                 Debug.Log("Fali to generate hunter. Hunter ID : " + hunterGenInfoList[genHunterNum].hunterID.ToString());
             }
-            else Debug.Log("Hunter Generate~~~~~~~~~~~~~~~~~~~~~~~~~~" );
         }
     }
 

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public void LoadLevel(int i)
     {
         levelconfig = LevelData.GetLevelConfig(i);
-        
+
         LoadScene("SampleScene");
 
         // set callback
@@ -55,12 +55,17 @@ public class GameManager : MonoBehaviour
     // call back
     public void InitGameScene(Scene scene, LoadSceneMode sceneType)
     {
-        PlayManager.instance.ResetGameStatus(levelconfig);
-        ProjectileManager.instance.SetCardsList(levelconfig.cardIDList);
+        // PlayManager.instance.ResetGameStatus(levelconfig);
+        // ProjectileManager.instance.SetCardsList(levelconfig.cardIDList);
     }
 
     public void LoadScene(string name)
     {
         SceneManager.LoadSceneAsync(name);
+    }
+
+    public LevelConfig GetLevelConfig()
+    {
+        return levelconfig;
     }
 }

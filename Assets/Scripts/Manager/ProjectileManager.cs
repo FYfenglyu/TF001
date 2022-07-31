@@ -139,7 +139,8 @@ public class ProjectileManager : MonoBehaviour
     }
 
     public void SetCardsList(List<int> cardsList)
-    {
+    {   
+        if(cardsList.Count == 0) Debug.Log("Empty");
         cardIDList = cardsList;
         ClearCards();
         GenCards();
