@@ -46,14 +46,18 @@ public class GameManager : MonoBehaviour
     public void LoadLevel(int i)
     {
         levelconfig = LevelData.GetLevelConfig(i);
-        //其他加载逻辑
-        SceneManager.LoadSceneAsync("SampleScene");
-
-        PlayManager.instance.ResetGameStatus(levelconfig);
+        
+        LoadScene("SampleScene");
+        SceneManager.sceneLoaded += ResetGameStatus;
 
         //ProjectileManager.instance.SetCardsList(levelconfig.cardIDList);
     }
 
+    // call back
+    public void ResetGameStatus(Scene scene, LoadSceneMode sceneType)
+    {
+        PlayManager.instance.ResetGameStatus(levelconfig);
+    }
     public void LoadScene(string name)
     {
         SceneManager.LoadSceneAsync(name);

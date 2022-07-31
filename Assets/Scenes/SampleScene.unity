@@ -3425,12 +3425,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975404840}
+  - component: {fileID: 975404847}
   - component: {fileID: 975404845}
   - component: {fileID: 975404844}
   - component: {fileID: 975404843}
   - component: {fileID: 975404842}
   - component: {fileID: 975404841}
-  - component: {fileID: 975404847}
   - component: {fileID: 975404848}
   m_Layer: 0
   m_Name: PlayUI

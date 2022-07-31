@@ -44,6 +44,13 @@ public class PlayManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        // if there exists an instance, destroy the unnecessary instance 
+        if (instance)
+        {
+            GameObject.Destroy(gameObject);
+            return;
+        }
+
         instance = this;
 
         birthDoor = GameObject.FindWithTag(TAG_BIRTHDOOR);
@@ -80,7 +87,7 @@ public class PlayManager : MonoBehaviour
         // 费用重置
         currCost = initCost;  //config.initCost
         SetCurrCost(initCost);
-        
+
         // 分数重置
         totalScore = 3;
         playerScore = totalScore;
@@ -103,7 +110,7 @@ public class PlayManager : MonoBehaviour
         hunterProgress.SetCurrHP(HunterManager.instance.GetLeaveHunterNum());
         hunterProgress.SetTotalHP(HunterManager.instance.GetTotalHunterNum());
     }
-    
+
     public void RefreshScoreProgress()
     {
         scoreProgress.SetTotalHP(totalScore);
