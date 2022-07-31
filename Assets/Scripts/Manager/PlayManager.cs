@@ -77,7 +77,6 @@ public class PlayManager : MonoBehaviour
 
     public void ResetGameStatus(LevelConfig config)
     {
-
         // 费用重置
         currCost = initCost;  //config.initCost
         SetCurrCost(initCost);
