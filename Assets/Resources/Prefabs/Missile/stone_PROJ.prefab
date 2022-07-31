@@ -48,7 +48,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.7
 --- !u!114 &8607476680139544462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +240,6 @@ MonoBehaviour:
   id: 201
   attack: 35
   attackRange: 0.5
-  disapearVelocity: 0.3
+  disapearVelocity: 0.25
   persistency: 2
   cost: 10
