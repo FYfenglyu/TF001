@@ -3367,18 +3367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2e8e4a53f92ce469acc1af67aac8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  totalCost: 1000
-  costIncPerS: 1
-  initCost: 50
-  totalScore: 3
-  birthDoor: {fileID: 1330627269}
-  deadDoor: {fileID: 1715819660}
-  originalPos: {x: 0, y: 0, z: 0}
-  targetPos: {x: 0, y: 0, z: 0}
-  playerScore: 3
---- !u!114 &963551125
-=======
   currLevel: 1
 --- !u!1 &975404839
 GameObject:
@@ -3419,7 +3407,6 @@ Transform:
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &975404841
->>>>>>> e3afdac34d3f86d42c3a01b01df27044723aa9c1
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3469,12 +3456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29c1ce733ac70749867ccbd7f8139ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  cardIDList: 65000000660000006700000068000000c9000000ca000000
---- !u!114 &963551129
-=======
 --- !u!114 &975404845
->>>>>>> e3afdac34d3f86d42c3a01b01df27044723aa9c1
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
