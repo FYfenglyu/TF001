@@ -16,8 +16,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        // if there exists an instance, destroy the unnecessary instance 
+        if (instance)
+        {
+            GameObject.Destroy(gameObject);
+            return;
+        }
+
+        // create an instance
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        GameObject.DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -40,7 +48,7 @@ public class GameManager : MonoBehaviour
         levelconfig = LevelData.GetLevelConfig(i);
         //其他加载逻辑
         SceneManager.LoadSceneAsync("SampleScene");
-        
+
         PlayManager.instance.ResetGameStatus(levelconfig);
 
         //ProjectileManager.instance.SetCardsList(levelconfig.cardIDList);
