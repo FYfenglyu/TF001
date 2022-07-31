@@ -12,7 +12,6 @@ public class HunterManager : MonoBehaviour
 
     [Header("怪物数量相关")]
     private int totalHunterNum = 10;
-    private int deadHunterNum = 0;
     private int genHunterNum = 0;
     private bool isGenerateFinished = false;
 
@@ -52,7 +51,6 @@ public class HunterManager : MonoBehaviour
             {
                 Debug.Log("Fali to generate hunter. Hunter ID : " + hunterGenInfoList[genHunterNum].hunterID.ToString());
             }
-            else Debug.Log("Failed");
         }
     }
 

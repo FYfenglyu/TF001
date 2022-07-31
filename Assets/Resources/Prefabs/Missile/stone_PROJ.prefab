@@ -48,7 +48,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.8
+  m_Radius: 1
 --- !u!114 &8607476680139544462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDuration: 0.1
-  maxAttakTims: 3
+  maxAttakTimes: 2
 --- !u!1 &7819443297205149170
 GameObject:
   m_ObjectHideFlags: 0
