@@ -60,6 +60,7 @@ public class Projectile : MonoBehaviour
             PlayUI.instance.PlayAudio("project_missile");
 
         sj.enabled = false;
+        
     }
 
     private void MoveWithMouse()
