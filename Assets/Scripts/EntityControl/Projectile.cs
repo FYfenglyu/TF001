@@ -27,11 +27,14 @@ public class Projectile : MonoBehaviour
     private LineRenderer leftBranch;
     private LineRenderer rightBranch;
 
+    public float bounce;
+
     // Start is called before the first frame update
     void Start()
     {
         sj = GetComponent<SpringJoint2D>();
         rb = GetComponent<Rigidbody2D>();
+
         originalPos = transform.position;
         isClicked = false;
         sj.enabled = true;
@@ -39,8 +42,15 @@ public class Projectile : MonoBehaviour
         anchorPoint = GameObject.Find("AnchorPoint");
         sj.connectedBody = anchorPoint.GetComponent<Rigidbody2D>();
         anchor = anchorPoint.transform;
+
         rightBranch = GameObject.Find("Rightbranch").GetComponent<LineRenderer>();
         leftBranch = GameObject.Find("Leftbranch").GetComponent<LineRenderer>();
+
+        bounce = GameManager.instance.GetBounce();
+        sj.frequency = bounce;
+
+        maxDis = GameManager.instance.GetMaxDis();
+        minDis = GameManager.instance.GetMinDis();
 
     }
 
@@ -54,11 +64,6 @@ public class Projectile : MonoBehaviour
     {
         //通知减费
         PlayManager.instance.CutCost(gameObject.GetComponent<Missile>().GetCost());
-        if(gameObject.GetComponent<Missile>().missileType.Equals(TYPE_GUARDIAN))
-            PlayUI.instance.PlayAudio("project_guardian");
-        else
-            PlayUI.instance.PlayAudio("project_missile");
-
         sj.enabled = false;
         
     }
@@ -103,6 +108,11 @@ public class Projectile : MonoBehaviour
         {
             isProjected = true;
             ProjectileManager.instance.SetCurrCard(null);
+
+            if(gameObject.GetComponent<Missile>().missileType.Equals(TYPE_GUARDIAN))
+                PlayUI.instance.PlayAudio("project_guardian");
+            else
+                PlayUI.instance.PlayAudio("project_missile");
             Invoke(nameof(Project), 0.1f);
         }
         DeleteLine();

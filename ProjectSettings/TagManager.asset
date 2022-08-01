@@ -10,11 +10,13 @@ TagManager:
   - Guardian
   - AttackBox
   - EmitMissile
+  - Border
+  - DeadBorder
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Border
   - Water
   - UI
   - Road
@@ -23,7 +25,7 @@ TagManager:
   - Guardian
   - AttackBox
   - GuardianMissile
-  - 
+  - DeadBorder
   - 
   - 
   - 

@@ -92,7 +92,7 @@ public class PlayUI : MonoBehaviour
         cardScrollView.GetComponent<CardScrollView>().Display();
     }
 
-    public void PauseGame()
+     public void PauseGame()
     {
         audioSource.PlayOneShot(click_Audio);
         TimeManager.instance.Pause();
@@ -121,7 +121,7 @@ public class PlayUI : MonoBehaviour
 
     public void PlayAudio(string name)
     {
-        switch (name)
+        switch(name)
         {
             case "CardSelected":
                 audioSource.PlayOneShot(ui_Audio);
@@ -131,7 +131,7 @@ public class PlayUI : MonoBehaviour
                 break;
             case "Fail":
                 audioSource.PlayOneShot(fail_Audio);
-                break;
+                break;            
             case "project_guardian":
                 audioSource.PlayOneShot(project2_Audio);
                 break;
@@ -149,7 +149,7 @@ public class PlayUI : MonoBehaviour
 
     public void NextLevel()
     {
-        if (GameManager.instance.canLevelUp())
+        if(GameManager.instance.canLevelUp())
             GameManager.instance.LevelUp();
         GameManager.instance.ReloadLevel();
     }

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static ConstantTable;
-public class StartUI : MonoBehaviour
+
+public class HelpUI : MonoBehaviour
 {
-    public static StartUI instance;
+    public static HelpUI instance;
     private AudioSource audioSource;
     private AudioClip click_Audio;
 
@@ -14,16 +15,10 @@ public class StartUI : MonoBehaviour
         click_Audio = Resources.Load<AudioClip>(AUDIO_CLICKBUTTON);
     }
     
-    public void SelectStart()
+    public void BackStart()
     {
         audioSource.PlayOneShot(click_Audio);
-        GameManager.instance.LoadScene("Game@LevelSelect");
-    }
-
-    public void SelectHelp()
-    {
-        audioSource.PlayOneShot(click_Audio);
-        GameManager.instance.LoadScene("helper");
+        GameManager.instance.LoadScene("Game@Start");
     }
 
 }

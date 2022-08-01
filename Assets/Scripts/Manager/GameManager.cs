@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     private int lastLevel = 1;
     private int totalLevelNum = 16;
 
+    private float bounceFrequency = 2.8f;
+    private float maxDis = 1.05f;
+    private float minDis = 0.3f;
+
     private LevelConfig levelConfig;
 
     // Start is called before the first frame update
@@ -57,8 +61,6 @@ public class GameManager : MonoBehaviour
         if (jsonFileContent == null) return defaultLevelNum;
 
         int unlockedLevelNumInConfig = Convert.ToInt32(jsonFileContent);
-        Debug.Log("Content:");
-        Debug.Log(jsonFileContent);
         return unlockedLevelNumInConfig;
     }
 
@@ -86,9 +88,34 @@ public class GameManager : MonoBehaviour
     {
         levelConfig = LevelData.GetLevelConfig(level);
 
-        LoadScene("SampleScene");
+        LoadDiffScene(level);
 
         lastLevel = level;
+    }
+
+        public void LoadDiffScene(int i)
+    {
+        if(i > 0 && i < NUM_SWITCH_SCENE2)
+        {
+            bounceFrequency = NUM_BOUNCE_1;
+            maxDis = 1.05f;
+            minDis = 0.3f;
+            LoadScene("SampleScene");
+        }
+        else if(i >= NUM_SWITCH_SCENE2 && i < NUM_SWITCH_SCENE3)
+        {
+            bounceFrequency = NUM_BOUNCE_2;
+            maxDis = 1.2f;
+            minDis = 0.3f;
+            LoadScene("Scene2");
+        }
+        else if(i >= NUM_SWITCH_SCENE3 && i <= NUM_MAXLEVEL)
+        {
+            bounceFrequency = NUM_BOUNCE_3;
+            maxDis = 1.6f;
+            minDis = 0.3f;
+            LoadScene("Scene3");
+        } 
     }
 
     public int GetUnlockedLevelNum() { return unlockedLevelNum; }
@@ -104,4 +131,19 @@ public class GameManager : MonoBehaviour
     }
 
     public LevelConfig GetLevelConfig() { return levelConfig; }
+
+        public float GetBounce()
+    {
+        return bounceFrequency;
+    }
+
+    public float GetMinDis()
+    {
+        return minDis;
+    }
+
+    public float GetMaxDis()
+    {
+        return maxDis;
+    }
 }

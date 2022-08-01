@@ -40,7 +40,7 @@ public class Missile : MissileBase
         }
         else if (persistency == PERS_TIME && isAttacked)
         {
-            Invoke(nameof(base.ClearSelf), 10f);
+            Invoke(nameof(ClearBase), 10f);
         }
     }
 
@@ -53,6 +53,8 @@ public class Missile : MissileBase
     private void OnCollisionStay2D(Collision2D other)
     {
         GameObject go = other.gameObject;
+        BorderClean(go);
+
         //对于守卫者
         if (missileType.Equals(TYPE_GUARDIAN))
         {
@@ -105,5 +107,13 @@ public class Missile : MissileBase
     public int GetCost()
     {
         return cost;
+    }
+
+    public void BorderClean(GameObject go)
+    {
+        if(go.tag.Equals(TYPE_DEADBORDER))
+        {
+            ClearBase();
+        }
     }
 }
