@@ -63,9 +63,6 @@ public class PlayManager : MonoBehaviour
 
         scoreProgress = GameObject.Find("ScoreProgress").GetComponent<ProgressBar>();
         hunterProgress = GameObject.Find("HunterProgress").GetComponent<ProgressBar>();
-
-
-
     }
 
     void Start()

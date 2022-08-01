@@ -23,6 +23,8 @@ public class PlayUI : MonoBehaviour
 
     private AudioClip emit_Audio;
 
+    private GameObject successprompt;
+    private GameObject failprompt;
 
     private PlayUI() { }
 
