@@ -53,7 +53,7 @@ public class PlayUI : MonoBehaviour
         AdjustScreenScale();
     }
 
-    private void AdjustScreenScale()
+    public static void AdjustScreenScale()
     {
         // to edit
         float DevelopWidth = 1920f;

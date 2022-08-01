@@ -28,6 +28,8 @@ public class ScrollCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayUI.AdjustScreenScale();
+
         //当单指触摸时
         if (Input.touchCount == 1)
         {
