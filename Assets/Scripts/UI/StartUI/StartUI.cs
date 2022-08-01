@@ -26,4 +26,12 @@ public class StartUI : MonoBehaviour
         GameManager.instance.LoadScene("helper");
     }
 
+    public void SelectExit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }

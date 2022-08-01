@@ -143,6 +143,7 @@ public class PlayManager : MonoBehaviour
         scoreProgress.SetCurrHP(playerScore);
         if (playerScore == 0) 
         {
+            if(GameManager.instance.canLevelUp()) GameManager.instance.LevelUp();
             SceneManager.LoadSceneAsync("Game@Lose");
             // GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
             // failprompt.GetComponent<CanvasGroup>().interactable = true;

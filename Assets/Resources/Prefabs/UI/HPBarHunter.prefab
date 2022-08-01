@@ -205,4 +205,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalHP: 100
   owner: {fileID: 0}
-  yDistance: 0.8
+  yDistance: 0.5

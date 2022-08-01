@@ -67,18 +67,17 @@ public class GameManager : MonoBehaviour
 
     private void SaveUnlockedLevelNumToJson(string jsonFilePath)
     {
-        jsonFilePath = Application.persistentDataPath + "/" + jsonFilePath;
+        // jsonFilePath = Application.persistentDataPath + "/" + jsonFilePath;
 
-        UnityWebRequest request = UnityWebRequest.Get(jsonFilePath);
-        request.SendWebRequest();
+        // UnityWebRequest request = UnityWebRequest.Get(jsonFilePath);
+        // request.SendWebRequest();
 
-        while(!request.isDone())
-        {
-            request.downloadProgress();
-        }
+        // while(!request.isDone())
+        // {
+        //     request.downloadProgress();
+        // }
         
-        string str = request.downloadHandler.text;
-        
+        // string str = request.downloadHandler.text;
     }
 
     public int LevelUp()

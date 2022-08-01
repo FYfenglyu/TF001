@@ -25,30 +25,24 @@ public class Missile : MissileBase
     // Update is called once per frame
     void Update()
     {
-        ClearSelf();
+        CheckSelfStatus();
     }
 
-    public override void ClearSelf()
+    public override void CheckSelfStatus()
     {
         //碰撞后，速度小于0.5f秒则消失
         if (persistency == PERS_VELOCITY && isCollisied)
         {
             if (rb.velocity.x < 0 || rb.velocity.magnitude < disapearVelocity)
             {
-                Invoke(nameof(ClearBase), 0.12f);
+                Invoke(nameof(ClearSelf), 0.12f);
             }
         }
         else if (persistency == PERS_TIME && isAttacked)
         {
-            Invoke(nameof(ClearBase), 10f);
+            Invoke(nameof(ClearSelf), 10f);
         }
     }
-
-    private void ClearBase()
-    {
-        base.ClearSelf();
-    }
-
 
     private void OnCollisionStay2D(Collision2D other)
     {
@@ -74,20 +68,15 @@ public class Missile : MissileBase
         {
             if (go.tag.Equals(TYPE_HUNTER))
             {
-                if (isAttacked) return;
-
                 Lifebody lb = go.GetComponent<Lifebody>();
+                if (lb == null) return;
 
-                if (lb)
-                {
-                    Emit e = gameObject.GetComponent<Emit>();
-                    if (e)
-                    {
-                        e.AnimationEndOn();
-                        lb.CutHealthPoint(attack);
-                        isAttacked = true;
-                    }
-                }
+                Emit e = gameObject.GetComponent<Emit>();
+                if (e == null) return;
+
+                e.AnimationEndOn();
+                lb.CutHealthPoint(attack);
+                ClearSelf();
             }
         }
         //对普通攻击的导弹
@@ -113,7 +102,7 @@ public class Missile : MissileBase
     {
         if(go.tag.Equals(TYPE_DEADBORDER))
         {
-            ClearBase();
+            ClearSelf();
         }
     }
 }

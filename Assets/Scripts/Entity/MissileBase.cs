@@ -31,7 +31,12 @@ public class MissileBase : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public virtual void ClearSelf()
+    public virtual void CheckSelfStatus()
+    {
+        ClearSelf();
+    }
+
+    public void ClearSelf()
     {
         Destroy(gameObject);
     }

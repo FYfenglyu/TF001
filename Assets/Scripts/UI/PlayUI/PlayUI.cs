@@ -110,15 +110,6 @@ public class PlayUI : MonoBehaviour
         GameManager.instance.LoadScene(SCENE_LEVELSELECT);
     }
 
-    public void ExitGame()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-    }
-
     public void PlayAudio(string name)
     {
         switch(name)
@@ -149,11 +140,6 @@ public class PlayUI : MonoBehaviour
 
     public void NextLevel()
     {
-<<<<<<< HEAD
-=======
-        if(GameManager.instance.canLevelUp())
-            GameManager.instance.LevelUp();
->>>>>>> cdd2b0dd0bccf4d2d6e2e5c57415a2d7a99247da
         GameManager.instance.ReloadLevel();
     }
 
