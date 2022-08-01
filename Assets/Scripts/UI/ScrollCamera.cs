@@ -16,7 +16,7 @@ public class ScrollCamera : MonoBehaviour
     public float MoveSpeed = -1f;
     //x,y平面限制的移动区域，通过计算得出结果
     private float xMin = 0f; //手机右边缘，绝对值越大越靠近
-    private float xMax = f; //手机左边缘
+    private float xMax = 9f; //手机左边缘
     // Use this for initialization
     void Start()
     {
