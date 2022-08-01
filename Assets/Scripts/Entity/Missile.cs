@@ -11,7 +11,7 @@ public class Missile : MissileBase
     // delegation
     public delegate void AttackAction();
     public AttackAction Attack;
-
+    
     private void Awake()
     {
     }
@@ -33,10 +33,10 @@ public class Missile : MissileBase
         //碰撞后，速度小于0.5f秒则消失
         if (persistency == PERS_VELOCITY && isCollisied)
         {
-            float relativeVel = rb.velocity.magnitude;
-            //Debug.Log(relativeVel);
-            if (relativeVel < disapearVelocity)
-                base.ClearSelf();
+            if (rb.velocity.x < 0 || rb.velocity.magnitude < disapearVelocity)
+            {
+                Invoke(nameof(ClearBase), 0.12f);
+            }
         }
         else if (persistency == PERS_TIME && isAttacked)
         {
@@ -44,10 +44,14 @@ public class Missile : MissileBase
         }
     }
 
+    private void ClearBase()
+    {
+        base.ClearSelf();
+    }
+
 
     private void OnCollisionStay2D(Collision2D other)
     {
-
         GameObject go = other.gameObject;
         //对于守卫者
         if (missileType.Equals(TYPE_GUARDIAN))
@@ -87,16 +91,12 @@ public class Missile : MissileBase
         //对普通攻击的导弹
         else
         {
-            if (go.tag.Equals(TYPE_HUNTER))
+            Lifebody lb = go.GetComponent<Lifebody>();
+            if (lb && !lbs.Contains(lb))
             {
-                //要增加buff操作
-                Lifebody lb = go.GetComponent<Lifebody>();
-                if (lb && !lbs.Contains(lb))
-                {
-                    Attack();
-                    lbs.Add(lb);
-                    isAttacked = true;
-                }
+                Attack();
+                lbs.Add(lb);
+                isAttacked = true;
             }
         }
         isCollisied = true;

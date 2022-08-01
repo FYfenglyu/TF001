@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5265427472864938196, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265427472864938196, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
       propertyPath: m_Name
       value: monkey_GUA
       objectReference: {fileID: 0}
@@ -37,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5265427473467152969, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
       propertyPath: id
-      value: 101
+      value: 103
       objectReference: {fileID: 0}
     - target: {fileID: 5265427473467152969, guid: b1b65d48012a1de41b9d5330db6f7e6f, type: 3}
       propertyPath: gid

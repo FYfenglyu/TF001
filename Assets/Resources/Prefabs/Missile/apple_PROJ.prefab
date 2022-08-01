@@ -114,10 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed1829b607dadf4aa0622cb95e0b0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDuration: 0.1
+  attackDuration: 0.2
   maxAttakTimes: 3
   buffBase: []
---- !u!114 &9194468357524581210
+--- !u!114 &8331512119053733268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,12 +126,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8965983003406788732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfbc2d78a7e3c4349b873c14f0e8cb3f, type: 3}
+  m_Script: {fileID: 11500000, guid: f0b418e22f5a6ba4e8a247603ca4d149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 5
   interval: 1
   maxPerformTimes: 100
-  targetTags:
-  - Hunter
-  speedUpPercent: 50
+  typeAttack: 0
+  targetTypes: []
+  monomerAttack: 1
+  targetIDs: 6500000067000000
+  attackSpeedRate: 50

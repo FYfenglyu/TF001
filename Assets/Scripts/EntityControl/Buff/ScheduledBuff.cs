@@ -13,6 +13,15 @@ public class ScheduledBuff : BuffBase
     [Header("Buff最多执行的次数")]
     public int maxPerformTimes = 100;
 
+    public void CopyBuffTo(ScheduledBuff targetBuff)
+    {
+        targetBuff.interval = interval;
+        targetBuff.lastPerformTime = lastPerformTime;
+        targetBuff.isWorking = isWorking;
+        targetBuff.maxPerformTimes = maxPerformTimes;
+        base.CopyBuffTo(targetBuff);
+    }
+
     public virtual void OnBuffStart() { }
     public virtual void OnBuffUpdate() { }
     public virtual void OnBuffDestroy() { }

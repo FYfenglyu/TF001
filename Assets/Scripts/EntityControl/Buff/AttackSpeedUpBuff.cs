@@ -9,12 +9,19 @@ public class AttackSpeedUpBuff : ScheduleTagedBuff
 
     public override void OnBuffStart()
     {
-        if(owner) owner.buffImpact.attackSpeedRate *= (1+attackSpeedRate/100f); 
+        if(owner)
+        {
+            owner.buffImpact.attackSpeedRate *= (1+attackSpeedRate/100f); 
+            Debug.Log("Attack Speed Up Buff Start.");
+        }
     }
 
     public override void OnBuffDestroy()
     {
-        if(owner==null) Debug.Log("Wrong");
-        if(owner) owner.buffImpact.attackSpeedRate /= (1+attackSpeedRate/100f);
+        if(owner)
+        {
+            owner.buffImpact.attackSpeedRate /= (1+attackSpeedRate/100f);
+            Debug.Log("Attack Speed Up Buff Destroy.");
+        }
     }
 }

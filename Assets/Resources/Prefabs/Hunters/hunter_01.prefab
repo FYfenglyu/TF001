@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifebodyType: 
-  id: 0
+  id: 301
   healthPoint: 100
   attack: 10
   attackSpeed: 1

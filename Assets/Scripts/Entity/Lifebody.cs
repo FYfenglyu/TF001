@@ -37,7 +37,7 @@ public class Lifebody : MonoBehaviour
 
     [Header("其他设置")]
     // add simple buff
-    public BuffImpact buffImpact;
+    public BuffImpact buffImpact = new BuffImpact();
 
     protected static Vector3 OriginalPos;
     protected bool nextStepStill = false;
@@ -118,6 +118,7 @@ public class Lifebody : MonoBehaviour
 
     public virtual void Move(Vector3 displacement)
     {
+        displacement.x *= buffImpact.speedRate;
         transform.position += displacement;
     }
 

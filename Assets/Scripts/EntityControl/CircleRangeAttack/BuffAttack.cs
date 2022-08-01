@@ -23,6 +23,15 @@ public class BuffAttack : CircleRangeAttack
     public override void OnCircleRangeAttack(Collider2D other)
     {
         BuffBase buff = other.gameObject.AddComponent(buffPattern.GetType()) as BuffBase;
+
+        Debug.Log("On Buff");
+
+        // buff = buffPattern;
+
+        // if(buff is ScheduleTagedBuff) {Debug.Log("111");((ScheduleTagedBuff)buffPattern).CopyBuffTo((ScheduleTagedBuff)buff);}
+        // else if(buff is ScheduledBuff) {Debug.Log("222");((ScheduledBuff)buffPattern).CopyBuffTo((ScheduledBuff)buff);}
+        // else if(buff is BuffBase) {Debug.Log("333");((BuffBase)buffPattern).CopyBuffTo((BuffBase)buff);}
+
         System.Reflection.FieldInfo[] fields = buffPattern.GetType().GetFields();
         foreach (System.Reflection.FieldInfo field in fields)
         {
