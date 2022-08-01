@@ -1,4 +1,4 @@
-# Minigame UI Part
+# Minigame 
 
 ## Folders
 - Assets:
@@ -20,3 +20,5 @@
 - ProjectileInfo : 结构体(struct)，存放投射物信息
 - ProjectileInfoManager : 本来想做享元模式的信息管理器，但是不知道C#引用咋写，开摆
 - UIManager : 控制UI，目前只预留了“控制卡牌选择器关闭”的接口
+
+## ...
