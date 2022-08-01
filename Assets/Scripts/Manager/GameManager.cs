@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using LitJson;
 using static ConstantTable;
@@ -66,13 +67,16 @@ public class GameManager : MonoBehaviour
     {
         jsonFilePath = Application.persistentDataPath + "/" + jsonFilePath;
 
-        using (FileStream jsonFile = new FileStream(jsonFilePath, FileMode.Create))
+        UnityWebRequest request = UnityWebRequest.Get(jsonFilePath);
+        request.SendWebRequest();
+
+        while(!request.isDone())
         {
-            using (StreamWriter streamWriter = new StreamWriter(jsonFile))
-            {
-                streamWriter.Write(unlockedLevelNum.ToString());
-            }
+            request.downloadProgress();
         }
+        
+        string str = request.downloadHandler.text;
+        
     }
 
     public int LevelUp()
