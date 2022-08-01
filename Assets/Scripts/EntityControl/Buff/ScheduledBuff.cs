@@ -42,7 +42,7 @@ public class ScheduledBuff : BuffBase
         if (currTime - lastPerformTime < interval) return;
         if (currTime - startTime >= duration)
         {
-            GameObject.Destroy(gameObject);
+            Destroy(this);
         }
 
         lastPerformTime = currTime;

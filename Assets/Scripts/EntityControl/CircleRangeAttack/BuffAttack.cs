@@ -22,6 +22,7 @@ public class BuffAttack : CircleRangeAttack
 
     public override void OnCircleRangeAttack(Collider2D other)
     {
+        Debug.Log(other.gameObject.tag);
         BuffBase buff = other.gameObject.AddComponent(buffPattern.GetType()) as BuffBase;
 
         Debug.Log("On Buff");
