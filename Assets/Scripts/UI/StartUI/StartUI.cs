@@ -9,11 +9,12 @@ public class StartUI : MonoBehaviour
     private AudioSource audioSource;
     private AudioClip click_Audio;
 
-    private void Awake() {
+    private void Awake()
+    {
         audioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
         click_Audio = Resources.Load<AudioClip>(AUDIO_CLICKBUTTON);
     }
-    
+
     public void SelectStart()
     {
         audioSource.PlayOneShot(click_Audio);

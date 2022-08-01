@@ -72,9 +72,9 @@ public static class ConstantTable
     public static string GetLevelUIButtonImagePath(string name)
     {
         string path = _PREFIX_IMAGE_LEVELUI;
-        switch(name)
+        switch (name)
         {
-            case "highlight": 
+            case "highlight":
                 path += "gq_xz";
                 break;
             case "on":
@@ -84,7 +84,7 @@ public static class ConstantTable
                 path += "gq_wjs";
                 break;
         }
-        return path;    
+        return path;
     }
 
     public static string GetLevelTrackImagePath(int level)
@@ -110,7 +110,10 @@ public static class ConstantTable
     public const string AUDIO_SUCCESS = _PREFIX_AUDIO + "8_success";
     public const string AUDIO_FAILED = _PREFIX_AUDIO + "8_failed";
     public const string AUDIO_START = _PREFIX_AUDIO + "10_start";
-    //参数设置
 
+    //参数设置
     public const int NUM_MAXLEVEL = 16;
+
+    // 游戏本地化数据文件路径
+    public const string LOCAL_UNLOCKEDLEVELNUM_PATH = "UnlockedLevel.json";
 }

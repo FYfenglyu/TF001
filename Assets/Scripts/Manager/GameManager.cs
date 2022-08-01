@@ -1,22 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using LitJson;
+using static ConstantTable;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance; // singleton
-    [Header("当前关卡")]
-    public int currLevel = 1;
-    
-    [Header("刚才游玩的关卡")]
-    public int lastLevel = 1;
 
+    [Header("默认开启的关卡数量")]
+    public int defaultLevelNum = 3;
 
-    [Header("最大关卡")]
-    private int maxLevel = 16;
+    private int unlockedLevelNum = 1;
+    private int lastLevel = 1;
+    private int totalLevelNum = 16;
 
     private LevelConfig levelConfig;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -30,76 +32,76 @@ public class GameManager : MonoBehaviour
         // create an instance
         instance = this;
         GameObject.DontDestroyOnLoad(gameObject);
+
+        // load local unlocked level number form Application.persistentDataPath
+        unlockedLevelNum = LoadUnlockedLevelNumFromJson(LOCAL_UNLOCKEDLEVELNUM_PATH);
+        unlockedLevelNum = unlockedLevelNum > defaultLevelNum ? unlockedLevelNum : defaultLevelNum;
     }
 
-    void Start()
+    private void OnDestroy()
     {
+        // save local unlocked level number to Application.persistentDataPath
+        SaveUnlockedLevelNumToJson(LOCAL_UNLOCKEDLEVELNUM_PATH);
     }
 
-    // Update is called once per frame
-    private void Update()
+    private int LoadUnlockedLevelNumFromJson(string jsonFilePath)
     {
+        // reunion json file path
+        jsonFilePath = Application.persistentDataPath + jsonFilePath;
+
+        // if there exists no local unlocked level number json file, create one
+        if (!File.Exists(jsonFilePath)) return defaultLevelNum;
+
+        string jsonFileContent = File.ReadAllText(jsonFilePath);
+        if (jsonFileContent == null) return defaultLevelNum;
+
+        int unlockedLevelNumInConfig = JsonMapper.ToObject<int>(jsonFileContent);
+        Debug.Log("Content:");
+        Debug.Log(jsonFileContent);
+        return unlockedLevelNumInConfig;
+    }
+
+    private void SaveUnlockedLevelNumToJson(string jsonFilePath)
+    {
+        // jsonFilePath = Application.persistentDataPath + "/" + jsonFilePath;
+        // string jsonFileContent = JsonMapper.ToJson<int>(unlockedLevelNum);
+
+        // using (FileStream jsonFile = new FileStream(jsonFilePath, FileMode.Create))
+        // {
+        //     using (StreamWriter streamWriter = new StreamWriter(jsonFile))
+        //     {
+        //         streamWriter.WriteLine(jsonFileContent);
+        //     }
+        // }
     }
 
     public int LevelUp()
     {
-        currLevel = Mathf.Min(maxLevel, currLevel + 1);
-        return currLevel;
+        unlockedLevelNum = Mathf.Min(totalLevelNum, unlockedLevelNum + 1);
+        return unlockedLevelNum;
     }
-
-    public void ReplayLevel()
+    public void ReplayLevel() { LoadLevel(lastLevel); }
+    public void ReloadLevel() { LoadLevel(unlockedLevelNum); }
+    public void LoadLevel(int level)
     {
-        levelConfig = LevelData.GetLevelConfig(lastLevel);
+        levelConfig = LevelData.GetLevelConfig(level);
 
         LoadScene("SampleScene");
 
-        SceneManager.sceneLoaded += InitGameScene;
-
+        lastLevel = level;
     }
-    public void ReloadLevel()
-    {
-        levelConfig = LevelData.GetLevelConfig(currLevel);
 
-        LoadScene("SampleScene");
+    public int GetUnlockedLevelNum() { return unlockedLevelNum; }
 
-        lastLevel = currLevel; 
-        SceneManager.sceneLoaded += InitGameScene;
-
-    }
-    public void LoadLevel(int i)
-    {
-        levelConfig = LevelData.GetLevelConfig(i);
-
-        LoadScene("SampleScene");
-
-        lastLevel = i; 
-        SceneManager.sceneLoaded += InitGameScene;
-
-    }
     public bool canLevelUp()
     {
-        return currLevel == lastLevel;
-    }
-    // call back
-    public void InitGameScene(Scene scene, LoadSceneMode sceneType)
-    {
-        // PlayManager.instance.ResetGameStatus(levelconfig);
-        // ProjectileManager.instance.SetCardsList(levelconfig.cardIDList);
+        return unlockedLevelNum == lastLevel;
     }
 
-    public void LoadScene(string name)
+    public void LoadScene(string sceneName)
     {
-        SceneManager.LoadSceneAsync(name);
+        SceneManager.LoadSceneAsync(sceneName);
     }
 
-    public LevelConfig GetLevelConfig()
-    {
-        return levelConfig;
-    }
-
-    public void TestLevelUP()
-    {
-        LevelUp();
-        LevelSelectUI.instance.CheckLevelButton();
-    }
+    public LevelConfig GetLevelConfig() { return levelConfig; }
 }

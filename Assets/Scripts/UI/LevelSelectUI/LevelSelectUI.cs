@@ -21,7 +21,8 @@ public class LevelSelectUI : MonoBehaviour
     private GameObject track;
     private SpriteRenderer trackSpriteRenderer;
 
-    void Awake() {
+    void Awake()
+    {
         instance = this;
 
         // Load image of button icon
@@ -32,10 +33,10 @@ public class LevelSelectUI : MonoBehaviour
         // Find button parent-object in scene
         buttonsOn = GameObject.Find("button_on");
         buttonsOff = GameObject.Find("button_off");
-        
+
         track = GameObject.Find("Track");
 
-        trackSpriteRenderer = track.GetComponent<SpriteRenderer>(); 
+        trackSpriteRenderer = track.GetComponent<SpriteRenderer>();
 
         audioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
         UI_Audio = Resources.Load<AudioClip>(AUDIO_SELECTCARD);
@@ -58,7 +59,7 @@ public class LevelSelectUI : MonoBehaviour
             GameObject buttonOn_i_go = buttonOn_i.gameObject;
             GameObject buttonOff_i_go = buttonOff_i.gameObject;
             AddListenerSelectLevel(buttonOn_i.GetComponent<Button>(), i);
-            if(i < currLevel-1)
+            if (i < currLevel - 1)
             {
                 buttonOn_i_go.SetActive(true);
                 buttonOff_i_go.SetActive(false);
@@ -80,7 +81,7 @@ public class LevelSelectUI : MonoBehaviour
     }
     public int RefreshCurrLevel()
     {
-        currLevel = GameManager.instance.currLevel;
+        currLevel = GameManager.instance.GetUnlockedLevelNum();
         return currLevel;
     }
 
@@ -107,7 +108,7 @@ public class LevelSelectUI : MonoBehaviour
 
     public void ShowTrack(int level)
     {
-        if(level > 1 && level <= NUM_MAXLEVEL)
+        if (level > 1 && level <= NUM_MAXLEVEL)
         {
             track.SetActive(true);
             string path = GetLevelTrackImagePath(level);
@@ -125,12 +126,13 @@ public class LevelSelectUI : MonoBehaviour
 
     public void AddListenerSelectLevel(Button b, int i)
     {
-        b.onClick.AddListener( 
-            delegate{
+        b.onClick.AddListener(
+            delegate
+            {
                 //audioSource.clip = UI_Audio;
                 audioSource.PlayOneShot(UI_Audio);
                 SelectLevel(i + 1);
-            } 
+            }
             );
     }
     public void SelectLevel(int i)
@@ -145,5 +147,5 @@ public class LevelSelectUI : MonoBehaviour
         GameManager.instance.LoadScene(SCENE_START);
     }
 
-    
+
 }
