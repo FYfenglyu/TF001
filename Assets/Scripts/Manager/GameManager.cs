@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using LitJson;
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
     private int LoadUnlockedLevelNumFromJson(string jsonFilePath)
     {
         // reunion json file path
-        jsonFilePath = Application.persistentDataPath + jsonFilePath;
+        jsonFilePath = Application.persistentDataPath + "/" + jsonFilePath;
 
         // if there exists no local unlocked level number json file, create one
         if (!File.Exists(jsonFilePath)) return defaultLevelNum;
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
         string jsonFileContent = File.ReadAllText(jsonFilePath);
         if (jsonFileContent == null) return defaultLevelNum;
 
-        int unlockedLevelNumInConfig = JsonMapper.ToObject<int>(jsonFileContent);
+        int unlockedLevelNumInConfig = Convert.ToInt32(jsonFileContent);
         Debug.Log("Content:");
         Debug.Log(jsonFileContent);
         return unlockedLevelNumInConfig;
@@ -63,16 +64,15 @@ public class GameManager : MonoBehaviour
 
     private void SaveUnlockedLevelNumToJson(string jsonFilePath)
     {
-        // jsonFilePath = Application.persistentDataPath + "/" + jsonFilePath;
-        // string jsonFileContent = JsonMapper.ToJson<int>(unlockedLevelNum);
+        jsonFilePath = Application.persistentDataPath + "/" + jsonFilePath;
 
-        // using (FileStream jsonFile = new FileStream(jsonFilePath, FileMode.Create))
-        // {
-        //     using (StreamWriter streamWriter = new StreamWriter(jsonFile))
-        //     {
-        //         streamWriter.WriteLine(jsonFileContent);
-        //     }
-        // }
+        using (FileStream jsonFile = new FileStream(jsonFilePath, FileMode.Create))
+        {
+            using (StreamWriter streamWriter = new StreamWriter(jsonFile))
+            {
+                streamWriter.Write(unlockedLevelNum.ToString());
+            }
+        }
     }
 
     public int LevelUp()
