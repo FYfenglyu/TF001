@@ -97,6 +97,7 @@ public class PlayManager : MonoBehaviour
         if (HunterManager.instance.AreHuntersAllDead() && playerScore > 0)
         {
             // Debug.Log("Game Over: Win.");
+            if (GameManager.instance.canLevelUp()) GameManager.instance.LevelUp();
             SceneManager.LoadSceneAsync("Game@Win");
             // GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
             // successprompt.SetActive(true);
