@@ -84,7 +84,7 @@ MonoBehaviour:
   targetTypes: []
   monomerAttack: 1
   targetIDs: 6500000067000000
-  attackSpeedRate: 50
+  attackSpeedRate: 100
 --- !u!1001 &6784488973657223780
 PrefabInstance:
   m_ObjectHideFlags: 0

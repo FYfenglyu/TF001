@@ -4,13 +4,28 @@
         "hunterID": 301
     },
     {
-        "birthTime": 0.5,
+        "birthTime": 15,
         "hunterID": 301
     },
     {
-        "birthTime": 5,
+        "birthTime": 16.5,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 18,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 40,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 42,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 44,
         "hunterID": 301
     }
 ]
-
 
