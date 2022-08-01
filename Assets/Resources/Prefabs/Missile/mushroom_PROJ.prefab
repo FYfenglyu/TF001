@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDuration: 0.04
-  maxAttakTimes: 3
+  maxAttakTimes: 2
   buffBase: []
 --- !u!114 &5012200194879402582
 MonoBehaviour:
