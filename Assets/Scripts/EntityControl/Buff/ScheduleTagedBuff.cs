@@ -30,7 +30,7 @@ public class ScheduleTagedBuff : ScheduledBuff
 
     public override void Perform()
     {
-        buffOwner = transform.parent.gameObject;
+        buffOwner = transform.gameObject;
         if(buffOwner) owner = buffOwner.GetComponent<Lifebody>();
 
                 if(buffOwner) Debug.Log(buffOwner.tag);

@@ -19,6 +19,7 @@ public class GameBuff : ScheduledBuff
 
     public override void OnBuffDestroy()
     {
+        GameObject.Destroy(gameObject);
         PlayManager.instance.costIncPerS -= costInc;
     }
 }
