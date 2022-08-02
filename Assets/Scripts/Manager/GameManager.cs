@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         return unlockedLevelNum;
     }
     public void ReplayLevel() { LoadLevel(lastLevel); }
-    public void ReloadLevel() { LoadLevel(unlockedLevelNum); }
+    public void ReloadLevel() { LoadLevel(lastLevel + 1); }
     public void LoadLevel(int level)
     {
         levelConfig = LevelData.GetLevelConfig(level);

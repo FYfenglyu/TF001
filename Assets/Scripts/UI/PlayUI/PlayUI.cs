@@ -23,8 +23,9 @@ public class PlayUI : MonoBehaviour
 
     private AudioClip emit_Audio;
 
-    private GameObject successprompt;
-    private GameObject failprompt;
+    private GameObject playUI;
+    private GameObject successPrompt;
+    private GameObject failPrompt;
 
     private PlayUI() { }
 
@@ -50,31 +51,20 @@ public class PlayUI : MonoBehaviour
         audioSource.clip = bgm_Audio;
         audioSource.Play();
 
-        AdjustScreenScale();
-    }
+        // load play UI
+        // playUI = GameObject.Find("Play");
 
-    public static void AdjustScreenScale()
-    {
-        // to edit
-        float DevelopWidth = 1920f;
-        float DevelopHeigh = 1080f;
-        float DevelopRate = DevelopHeigh / DevelopWidth;
-        int curScreenHeight = Screen.height;
-        int curScreenWidth = Screen.width;
+        // // load success prompt and fail prompt
+        // successPrompt = transform.Find("SuccessPrompt").gameObject;
+        // failPrompt = transform.Find("FailedPrompt").gameObject;
 
-        float ScreenRate = (float)Screen.height / (float)Screen.width;
+        // // disable success prompt and fail prompt
+        // successPrompt.SetActive(false);
+        // failPrompt.SetActive(false);
 
-        float cameraRectHeightRate = DevelopHeigh / ((DevelopWidth / Screen.width) * Screen.height);
-        float cameraRectWidthRate = DevelopWidth / ((DevelopHeigh / Screen.height) * Screen.width);
-
-        if (DevelopRate <= ScreenRate)
-        {
-            GameObject.Find("Main Camera").GetComponent<Camera>().rect = new Rect(0, (1 - cameraRectHeightRate) / 2, 1, cameraRectHeightRate);
-        }
-        else
-        {
-            GameObject.Find("Main Camera").GetComponent<Camera>().rect = new Rect((1 - cameraRectWidthRate) / 2, 0, cameraRectWidthRate, 1);
-        }
+        // GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
+        // successprompt.SetActive(true);
+        // successprompt.GetComponent<CanvasGroup>().interactable = true;
     }
 
     public void DisplayCurrCost(int currCost)

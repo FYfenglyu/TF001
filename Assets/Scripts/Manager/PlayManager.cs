@@ -39,9 +39,6 @@ public class PlayManager : MonoBehaviour
     private ProgressBar scoreProgress;
     private ProgressBar hunterProgress;
 
-    // private GameObject successprompt;
-    // private GameObject failprompt;
-
     // 生命周期函数
     // Start is called before the first frame update
     private void Awake()
@@ -73,11 +70,6 @@ public class PlayManager : MonoBehaviour
         LevelConfig levelConfig = GameManager.instance.GetLevelConfig();
         ResetGameStatus(levelConfig);
         ProjectileManager.instance.SetCardsList(levelConfig.cardIDList);
-
-        // successprompt = GameObject.Find("SuccessPrompt");
-        // failprompt = GameObject.Find("FailedPrompt");
-        // successprompt.SetActive(false);
-        // failprompt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -96,12 +88,8 @@ public class PlayManager : MonoBehaviour
     {
         if (HunterManager.instance.AreHuntersAllDead() && playerScore > 0)
         {
-            // Debug.Log("Game Over: Win.");
             if (GameManager.instance.canLevelUp()) GameManager.instance.LevelUp();
             SceneManager.LoadSceneAsync("Game@Win");
-            // GameObject.Find("Play").GetComponent<CanvasGroup>().interactable = false;
-            // successprompt.SetActive(true);
-            // successprompt.GetComponent<CanvasGroup>().interactable = true;
         }
     }
 

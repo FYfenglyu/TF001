@@ -5099,8 +5099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2e8e4a53f92ce469acc1af67aac8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currLevel: 1
-  lastLevel: 1
+  defaultLevelNum: 3
 --- !u!4 &2113239106
 Transform:
   m_ObjectHideFlags: 0
@@ -5309,7 +5308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70bf9f84dc20cd94fbd0690ae041ec94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: -1
+  isXScrollable: 1
+  horizonBG: {fileID: 0}
 --- !u!1001 &2137788644
 PrefabInstance:
   m_ObjectHideFlags: 0

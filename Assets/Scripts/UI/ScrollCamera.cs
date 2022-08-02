@@ -4,53 +4,87 @@ using UnityEngine;
 
 public class ScrollCamera : MonoBehaviour 
 {
-    //刚接触屏幕时的点
-    private Vector2 oldScreenpoint;
-    //记录单指移动变化量
-    private Vector2 v;
-    //定义照相机
-    private Camera mainCamera;
-    //定义照相机的位置
-    private Vector3 mainCameraPosition;
-    //单指移动速度
-    public float MoveSpeed = -1f;
-    //x,y平面限制的移动区域，通过计算得出结果
-    private float xMin = 0f; //手机右边缘，绝对值越大越靠近
-    private float xMax = 9f; //手机左边缘
-    // Use this for initialization
-    void Start()
-    {
-        //找到相机组件
-        mainCamera = GetComponent<Camera>();
-        //获取相机的位置
-        mainCameraPosition = mainCamera.transform.position;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        PlayUI.AdjustScreenScale();
+    [Header("相机是否可以横向移动")]
+    public bool isXScrollable = false;
 
-        //当单指触摸时
-        if (Input.touchCount == 1)
+    [Header("横向背景")]
+    public GameObject horizonBG;
+
+    private Vector2 mouseWordPos, mouseStartPos;
+    private Vector2 cameraStartPos;
+    private float distance;
+
+    Camera cam;
+
+    private float coef;
+    private float maxLeftDis;
+    private float maxRightDis;
+
+    private void Awake()
+    {
+        AdjustScreenScale();
+    }
+
+    private void Start()
+    {
+        cam = GetComponent<Camera>();
+        
+        coef = Screen.height / cam.orthographicSize / 2;
+
+        // maxLeftDis = 
+    }
+
+    private void Update()
+    {
+        if(isXScrollable) OnXScrollable();
+    }
+
+    private void OnXScrollable()
+    {
+        // get world postion of mouse
+        mouseWordPos = GetWorldPos2D(Input.mousePosition);
+
+        if(Input.GetMouseButtonDown(0))
         {
-            //单指刚接触屏幕时
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                //记录接触点
-                oldScreenpoint = Input.GetTouch(0).position;
-            }
-            //当单指移动时
-            if (Input.GetTouch(0).phase == TouchPhase.Moved)
-            {
-                //记录x轴移动变化量
-                v.x = Input.GetTouch(0).deltaPosition.x * Time.deltaTime;
-                //改变相机的位置（此时相机不移动）
-                mainCameraPosition += new Vector3(v.x, 0, 0) * MoveSpeed;
-                //限制相机的移动范围, -14.79633f是镜头离物体的距离
-                mainCameraPosition = new Vector3(Mathf.Clamp(mainCameraPosition.x, xMin, xMax), 0, -14.79633f);
-                //移动相机到对应的位置（此时相机才能移动）
-                this.transform.position = mainCameraPosition;
-            }
+            mouseStartPos = mouseWordPos;
+            cameraStartPos = transform.position;
+        }
+
+        if(Input.GetMouseButton(0))
+        {
+            distance = mouseWordPos.x - mouseStartPos.x;
+            mouseStartPos = mouseWordPos;
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x - distance,0,12.5f),
+            transform.position.y,transform.position.z);
+        }
+    }
+
+    Vector2 GetWorldPos2D(Vector2 pos)
+    {
+        return new Vector2((pos.x-Screen.width/2f)/coef, (pos.y -Screen.height/2f)/coef);
+    }
+
+    public static void AdjustScreenScale()
+    {
+        // to edit
+        float DevelopWidth = 1920f;
+        float DevelopHeigh = 1080f;
+        float DevelopRate = DevelopHeigh / DevelopWidth;
+        int curScreenHeight = Screen.height;
+        int curScreenWidth = Screen.width;
+
+        float ScreenRate = (float)Screen.height / (float)Screen.width;
+
+        float cameraRectHeightRate = DevelopHeigh / ((DevelopWidth / Screen.width) * Screen.height);
+        float cameraRectWidthRate = DevelopWidth / ((DevelopHeigh / Screen.height) * Screen.width);
+
+        if (DevelopRate <= ScreenRate)
+        {
+            GameObject.Find("Main Camera").GetComponent<Camera>().rect = new Rect(0, (1 - cameraRectHeightRate) / 2, 1, cameraRectHeightRate);
+        }
+        else
+        {
+            GameObject.Find("Main Camera").GetComponent<Camera>().rect = new Rect((1 - cameraRectWidthRate) / 2, 0, cameraRectWidthRate, 1);
         }
     }
 }
