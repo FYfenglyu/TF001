@@ -1,0 +1,66 @@
+[
+    {
+        "birthTime": 0,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 2,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 4,
+        "hunterID": 302
+    },
+    {
+        "birthTime": 7,
+        "hunterID": 303
+    },
+    {
+        "birthTime": 10,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 15,
+        "hunterID": 302
+    },
+    {
+        "birthTime": 17,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 26,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 35,
+        "hunterID": 302
+    },
+    {
+        "birthTime": 60,
+        "hunterID": 302
+    },
+    {
+        "birthTime": 62,
+        "hunterID": 301
+    },
+    {
+        "birthTime": 65,
+        "hunterID": 303
+    },
+    {
+        "birthTime": 66,
+        "hunterID": 303
+    },
+    {
+        "birthTime": 80,
+        "hunterID": 303
+    },
+    {
+        "birthTime": 90,
+        "hunterID": 302
+    },
+    {
+        "birthTime": 92,
+        "hunterID": 302
+    }
+]
