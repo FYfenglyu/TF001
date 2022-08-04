@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         lastLevel = level;
     }
 
-        public void LoadDiffScene(int i)
+    public void LoadDiffScene(int i)
     {
         if(i > 0 && i < NUM_SWITCH_SCENE2)
         {
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
 
     public LevelConfig GetLevelConfig() { return levelConfig; }
 
-        public float GetBounce()
+    public float GetBounce()
     {
         return bounceFrequency;
     }

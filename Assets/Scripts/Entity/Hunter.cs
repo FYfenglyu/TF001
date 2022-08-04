@@ -16,6 +16,7 @@ public class Hunter : Lifebody
     void Start()
     {
         InitParam();
+        lifebodyType = TYPE_HUNTER;
         TargetPos = PlayManager.instance.deadDoor.transform.position;
         if (moveSpeed <= 0.0f)
             moveSpeed = 1.0f;

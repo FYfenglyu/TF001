@@ -72,13 +72,7 @@ public class Lifebody : MonoBehaviour
         OriginalPos = transform.position;
         rb = GetComponent<Rigidbody2D>();
         ator = GetComponent<Animator>();
-        //自动获取种类
-        if (tag == TYPE_GUARDIAN)
-            lifebodyType = TYPE_GUARDIAN;
-        else if (tag == TYPE_HUNTER)
-            lifebodyType = TYPE_HUNTER;
-
-
+        
         //计算时间间隔
         attackSpeed = Mathf.Max(attackSpeed, 0.02f);
         attackSpeed = Mathf.Min(attackSpeed, 50);

@@ -13,6 +13,7 @@ public class Guardian : Lifebody
 
     void Start() {
         InitParam();
+        lifebodyType = TYPE_GUARDIAN;
         emitPos = transform.Find("EmitPoint").transform.position;    
     }
     public void EmitMissile()
