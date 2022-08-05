@@ -103,17 +103,64 @@ parts + parts
 
 ## Behavioral DB
 
-- Chain of Responsibiliy
-    `<A>{if return else next->B} <B>{if return else next->C} <C>{}`
-- Command
-    `<Order>.execute();`
-- Interpreter
-    recursive call
-    `<Expression>{if <Expression>.interpret() return else return + interpret(){return}};`
-- Iterator
-    `<>{[]}; <Iterator>{hasNext() + Next(){return <>.[].next}}`
-- Mediator
-    `<Mediator>; <>{<Meiator>.x()}`
-- Memento
-    game save
-    `<Memento> + <>{save(return <Memento>) + getfromMemento(<Memento>)}`
+- Execute (allocate once do once)
+    - Command
+        Convey different commant to an operator.
+        `[<Command>] + <Executor>.execute(<Command>)`
+    - State
+        Convey context to different operator.
+        `<Context> + [<State>{doAction(<Context>)}]`
+    - Strategy
+        Create strategy with different operation and execute with different params.
+        `[<Operation>] + <Strategy>(<Operation>){execucte(param)}`
+    - Mediator
+        `<Mediator>; <>{<Meiator>.x()}`
+- Execute (allocate once do a set)
+    - Chain of Responsibiliy
+        `<A>{if return else next->B} + <B>{if return else next->C} + <C>{}`
+    - Iterator
+        `<>{[]}; <Iterator>{hasNext() + Next(){return <>.[].next}}`
+    - Template
+        Define some abstract methods with a fixed progress. Execute fixed progress with overrided abstract methods.
+        ```
+        DEF := <T>{<A> + <B> + <C> + execute(){<A>;<B>;<C>}} + <R>:<T>{<A>' + <B>' + <C>'}
+        USE := <R>.execute()
+        ``` 
+    - Observer
+        Relation for one to multiple. Observee master and Observer slaves. 
+        `<Obeservee>:<Obeservable>{L[<Observer>] + A(){foreach O in L O.do() }} + <RealObserver>:<Observer>(<Obeservable>.L.add(self)){do()}`
+    - Visitor
+        Relation for one to multiple. Visitor will go through all visitee.
+        `<AVisitee>:<Visitee>{<Visitor>.visit(self)} + <AVisitor>:<Visitor>{visit(<Visitee>)}`
+- Behavoir
+    - Interpreter
+        Recursive call.
+        `<Expression>{if <Expression>.interpret() return else return + interpret(){return}};`
+    - Memento
+        Game save.
+        `<Memento> + <CareTaker> + <>{save(return <Memento>) + getfromMemento(<Memento>)}`
+    - NullObject
+        Do default action for special cases.
+        `<Null>:<Base>`
+
+
+## J2EE DB
+
+- MVC
+    Model for data, View for display, Controller for logics.
+    `<C>(<M> + <V>){} + <V>(<M>){} + <M>`
+- Bussiness Delegate
+    Delegate service for a client.
+    `<Clinet>{askservice(<Delegate>)} + <Delegate>:<Service>{<ServiceLookup>.LookupService()} + <ServiceLookup>{[<Service>]} + <Service>{...}`
+- Composite Entity
+    `<>{<A> + <B>} + <A>{ <AA>+ <BB>} + <B>{...} + ...`
+- Data Access Object
+    `<struct> +<structDAOImpl>:<structDAO>{[<struct>] + op()}`
+- Front Controller
+    `[<Page>] + <Dispatcher>{} + <Controller>{<Dispatcher>.request()}`
+- Intercepting Filter
+    `<FilterManager>{<FilterChain>} + <FilterChain>(Msg){ foreach Filter(Msg)} + [<Filter>]`
+- Service Locator
+    `[<Service>] + [ServiceLocator]{<ServicePool> + <InitialContext>} + <ServicePool>{} + <InitialContext>`
+- Transfer Object
+    `<BO>{[<VO>]} + <VO>`
