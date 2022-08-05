@@ -164,7 +164,7 @@ parts + parts
 
     - Mediator
 
-        `<Mediator>; <>{<Meiator>.x()}`
+        `<Mediator> + <>{<Meiator>.x()}`
 
 - Execute (allocate once do a set)
 
@@ -251,7 +251,7 @@ parts + parts
 - Service Locator
 
     `[<Service>] + [ServiceLocator]{<ServicePool> + <InitialContext>} + <ServicePool>{} + <InitialContext>`
-    
+
 - Transfer Object
 
     `<BO>{[<VO>]} + <VO>`
