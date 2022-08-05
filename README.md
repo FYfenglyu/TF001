@@ -21,4 +21,57 @@
 - ProjectileInfoManager : 本来想做享元模式的信息管理器，但是不知道C#引用咋写，开摆
 - UIManager : 控制UI，目前只预留了“控制卡牌选择器关闭”的接口
 
-## ...
+## Architect of Program
+
+- Data
+    - *LevelData(need to rewrite)
+    - ProjectileData
+- Entity
+    - Lifebody
+        - Hunter
+        - Guardian
+    - MissileBase
+        - Missile
+        - ?GuardianMissile (yet not write)
+    - BirthDoor
+    - DeadDoor
+- EntityControl
+    - BuffBase
+        - ScheduledBuff
+            - ScheduleTagedBuff
+                - HitHealBuff
+                - SpeedUpBuff
+                - AttackSpeedUpBuff
+            - GameBuff
+    - CircleRangeAttack
+        - BuffAttack
+        - BoomAttack
+    - *RangeAttack (should be combined with CircleRangeAttack)
+    - *Projectile (need to change name to project)
+    - *Emit (should combine with Projectile to a Move class)
+- Manager
+    - GameManager
+    - PlayManager
+        - *TimeController (TimeManager, name should be changed, The same as below)
+        - *ProjectileController
+        - *HunterController
+        - *GuardianController
+- Tools
+- UI
+    - StartUI
+    - PlayUI
+        - Card
+        - CardScrollView
+        - ContinueButton
+        - HPBar
+        - CostDisplayer
+        - ProgressBar
+        - *InteractableUI (yet no use)
+    - HelpUI
+    - LevelSelectUI
+    - ScrollCamera
+- Test
+ConstantTable
+CommonFunction
+
+
